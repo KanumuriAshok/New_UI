@@ -30,6 +30,23 @@
             <td class="tableTitles">
               <button
                 type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow1"
+                data-bs-target="#UploadRefPoints"
+                data-bs-toggle="modal"
+              >
+              PN BOUNDRY
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">TO CHECK TO PN BOUNDARY FED BY AERIAL OR UNDERGROUND</td>
+            <td class="tableTitles">
+              <div [ngClass]="uploadRefFilesStatus"></div>
+            </td>
+          </tr>
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#shapeFilesModal"
                 class="btn btn-primary btn-sm btn-size btn_shadow1"
@@ -63,7 +80,7 @@
                 class="btn btn-primary btn-sm btn-size btn_shadow"
                 (click)="UploadGoogle()"
               >
-                GOOGLE API DATA FETCH
+              DATA FETCH
               </button>
             </td>
             <td class="tableTitles">13 nov 2021, 7:30 PM</td>
@@ -150,7 +167,8 @@
               </div>
             </td> -->
             <td class="tableTitles">
-              <div [ngClass]="pnBoundaryCheckStatus"></div>
+              <!-- <div [ngClass]="pnBoundaryCheckStatus"></div> -->
+              <p>UG &nbsp;&nbsp;<span>HB/AR</span></p>
             </td>
           </tr>
 
@@ -247,6 +265,7 @@
               <div [ngClass]="uploadRefFilesStatus"></div>
             </td>
           </tr>
+         
         </tbody>
       </table>
     </div>
@@ -611,6 +630,53 @@
           <div class="mb-3">
             <label for="message-text" class="col-form-label"
               >Reference Point:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              multiple
+              (change)="filesRefDropped($event, 'refpoint_files')"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="UploadRef()">
+          Upload Files
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="UploadRefPoints"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">
+          PN BOUNDRY
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >PN Boundry:</label
             >
             <input
               class="form-control"
