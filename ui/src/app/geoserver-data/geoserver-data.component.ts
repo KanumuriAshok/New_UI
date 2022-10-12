@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GisfileuploadfireService } from '../gisfileuploadfire.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-geoserver-data',
@@ -72,7 +73,7 @@ export class GeoserverDataComponent implements OnInit {
       'gis_tool_id',
       this.clusterCorrectionForm.value.gis_tool_id
     );
-    this.httpClient.post('/api/update_db', formData).subscribe((res) => {
+    this.httpClient.post(environment.api+'/api/update_db', formData).subscribe((res) => {
       console.log(res);
       this.outliers_data = [];
       for (var i = 0; i < res['cluster_id'].length; i++) {
@@ -111,13 +112,13 @@ export class GeoserverDataComponent implements OnInit {
     });
     this.loadingLoader = true;
     if (this.connectiopnType === '1') {
-      this.httpClient.post('/api/aerial_page', formData).subscribe((res) => {
+      this.httpClient.post(environment.api+'/api/aerial_page', formData).subscribe((res) => {
         console.log(res);
         this.dataShare.changeData(res);
         this.loadingLoader = false;
       });
     } else if (this.connectiopnType === '2') {
-      this.httpClient.post('/api/ug_page', formData).subscribe((res) => {
+      this.httpClient.post(environment.api+'/api/ug_page', formData).subscribe((res) => {
         console.log(res);
         this.dataShare.changeData(res);
       });
@@ -137,7 +138,7 @@ export class GeoserverDataComponent implements OnInit {
       }
     });
     this.loadingLoader = true;
-    this.httpClient.post('/api/nb_page', formData).subscribe((res) => {
+    this.httpClient.post(environment.api+'/api/nb_page', formData).subscribe((res) => {
       console.log(res);
       this.dataShare.sharenodeBoundary(res);
       this.loadingLoader = false;

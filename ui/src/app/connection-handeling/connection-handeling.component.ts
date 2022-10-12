@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-connection-handeling',
   templateUrl: './connection-handeling.component.html',
@@ -7,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConnectionHandelingComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
-  apiUrl = '/api/shape_file_page';
+  apiUrl = environment.api+'/api/shape_file_page';
   loadingLoader = false;
 
   uploadFilesStatus = 'none_status'; //success,fail
@@ -43,7 +44,7 @@ export class ConnectionHandelingComponent implements OnInit {
       }
     }
 
-    this.httpClient.post(this.apiUrl, formData).subscribe(
+    this.httpClient.post(environment.api+this.apiUrl, formData).subscribe(
       (res) => {
         alert('upload completed successfully');
         this.uploadFilesStatus = 'green_status';
@@ -60,7 +61,7 @@ export class ConnectionHandelingComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post('/api/secondary_structures', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/secondary_structures', formData).subscribe(
       (res) => {
         alert('completed successfully');
         this.loadingLoader = false;
@@ -81,7 +82,7 @@ export class ConnectionHandelingComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post('/api/secondary_preprocessdp', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/secondary_preprocessdp', formData).subscribe(
       (res) => {
         alert('completed successfully');
         this.loadingLoader = false;
@@ -102,7 +103,7 @@ export class ConnectionHandelingComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post('/api/secondary_preprocessgp', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/secondary_preprocessgp', formData).subscribe(
       (res) => {
         alert('completed successfully');
         this.loadingLoader = false;
@@ -123,7 +124,7 @@ export class ConnectionHandelingComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post('/api/secondary_pnb_fed_ug', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/secondary_pnb_fed_ug', formData).subscribe(
       (res) => {
         alert('completed successfully');
         this.loadingLoader = false;
@@ -148,7 +149,7 @@ export class ConnectionHandelingComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post('/api/export_output', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/export_output', formData).subscribe(
       (res) => {
         this.httpClient
           .post('/api/download_qgis_files', formData, {
@@ -208,7 +209,7 @@ export class ConnectionHandelingComponent implements OnInit {
       }
     }
 
-    this.httpClient.post('/api/ref_point_page', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/ref_point_page', formData).subscribe(
       (res) => {
         alert('upload completed successfully');
         this.uploadRefFilesStatus = 'green_status';
@@ -236,7 +237,7 @@ export class ConnectionHandelingComponent implements OnInit {
       }
     }
     */
-    this.httpClient.post('/api/googleapifetch2', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/googleapifetch2', formData).subscribe(
       (res) => {
         alert('upload completed successfully');
         this.googleFetchStatus = 'green_status';

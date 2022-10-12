@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OlMapComponent } from '../ol.map/ol.map.component';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-dragdrop',
   templateUrl: './dragdrop.component.html',
@@ -22,7 +23,7 @@ export class DragdropComponent implements OnInit {
   outliers_data = [];
   clusterCorrectionForm: FormGroup;
   isShowTerminal = false;
-  mainApi = '/api/';
+  mainApi = environment.api+'/api/';
   currentDraggedNewModel: any = null;
   currentMode = 'create'; //edit
   currentEditIndex = -1;
@@ -726,7 +727,7 @@ export class DragdropComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post('/api/export_output', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/export_output', formData).subscribe(
       (res) => {
         this.httpClient
           .post('/api/download_qgis_files', formData, {

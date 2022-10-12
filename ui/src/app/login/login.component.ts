@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -70,7 +71,7 @@ export class LoginComponent implements OnInit {
     const formData = new FormData();
     formData.append('city_name', username);
     formData.append('password', password);
-    this.httpClient.post(`/api/city_register_login`, formData).subscribe(
+    this.httpClient.post(environment.api+`/api/city_register_login`, formData).subscribe(
       (res) => {
         if (res['success'] == true) {
           localStorage.setItem('isUserLoggedId', '1');
@@ -93,7 +94,7 @@ export class LoginComponent implements OnInit {
     let username = this.loginForm.value.username;
     let password = this.loginForm.value.password;
     this.httpClient
-      .post('/api/login', {
+      .post(environment.api+'/api/login', {
         username: username, //---todo: check how to pass for city_register_login
         password: password,
       })
@@ -151,7 +152,7 @@ export class LoginComponent implements OnInit {
     formData.append('city_name', cityName);
     formData.append('username', username);
     formData.append('password', password);
-    this.httpClient.post('/api/city_register', formData).subscribe(
+    this.httpClient.post(environment.api+'/api/city_register', formData).subscribe(
       (res) => {
         alert(res['message']);
       },
