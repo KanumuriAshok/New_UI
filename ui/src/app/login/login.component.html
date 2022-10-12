@@ -1,0 +1,317 @@
+<nav class="navbar navbar-light bg-color p-4">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img
+        src="http://media-s3-us-east-1.ceros.com/cyient/images/2017/04/04/f7fa573edde0c1a740ab3a5071a45b68/cyient-white-std-rgb.png"
+        alt=""
+        width="120"
+        height="24"
+      />
+    </a>
+  </div>
+</nav>
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="card">
+    <ul class="nav login-pill mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item text-center">
+        <a
+          class="nav-link active"
+          id="pills-home-tab"
+          data-bs-toggle="pill"
+          href="#pills-home"
+          role="tab"
+          aria-controls="pills-home"
+          aria-selected="true"
+        >
+          <i class="fa fa-user-o fa-1x" aria-hidden="true"> </i> LOGIN</a
+        >
+      </li>
+      <li class="nav-item text-center">
+        <a
+          class="nav-link"
+          id="pills-profile-tab"
+          data-bs-toggle="pill"
+          href="#pills-profile"
+          role="tab"
+          aria-controls="pills-profile"
+          aria-selected="true"
+        >
+          SIGN UP <i class="fa fa-sign-in fa-1x" aria-hidden="true"></i
+        ></a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="pills-home"
+        role="tabpanel"
+        aria-labelledby="pills-home-tab"
+      >
+        <div class="form-login">
+          <div [formGroup]="loginForm">
+            <div class="mb-4">
+              <span class="text-center mt-2 text-capitalize"
+                >Enter your credentials to <b>Login</b></span
+              >
+            </div>
+            <div class="mb-4">
+              <label class="form-label text-capitalize">User type:</label>
+              <select class="form-control" formControlName="userType">
+                <option value="hld_designer">HLD LLD Designer</option>
+                <option value="google_manager">Google DB Manager</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label text-capitalize"
+                >{{
+                  loginForm.value.userType == "google_manager"
+                    ? "City name"
+                    : "PN Username"
+                }}:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="username"
+                [ngClass]="{ invalid: submitted && f['username'].invalid }"
+              />
+              <div *ngIf="submitted && f['username'].invalid">
+                <p style="color: red">Please provide a valid Username.</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Password:</label
+              >
+              <div class="input-group">
+                <input
+                  class="form-control border-end-0 border"
+                  type="password"
+                  id="exampleInputPassword1"
+                  formControlName="password"
+                  [ngClass]="{ invalid: submitted && f['password'].invalid }"
+                />
+                <span class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary bg-white border-start-0 border ms-n5"
+                    type="button"
+                  >
+                    <i class="fa fa-eye"></i>
+                  </button>
+                </span>
+              </div>
+              <div *ngIf="submitted && f['password'].invalid">
+                <p style="color: red">Password should be 6 charecter long.</p>
+              </div>
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+                formControlName="rememberMe"
+              />
+              <label
+                class="form-check-label text-capitalize"
+                for="exampleCheck1"
+              >
+                Remember me</label
+              >
+            </div>
+            <div class="container mb-5">
+              <div class="row">
+                <div class="col text-center text-danger text-capitalize">
+                  <a style="color: brown" href="">
+                    Forgot your password? <br />
+                    Click Here</a
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col d-grid gap-2">
+                  <button class="btn btn-login" (click)="login()">Login</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="pills-profile"
+        role="tabpanel"
+        aria-labelledby="pills-profile-tab"
+      >
+        <div class="container mb-5">
+          <div class="row">
+            <div class="form-login">
+              <div>
+                <div class="mb-4">
+                  <span class="text-center text-capitalize mt-2"
+                    >Enter parameters to <b>Register</b></span
+                  >
+                </div>
+                <div class="mb-4">
+                  <label class="form-label text-capitalize">User type:</label>
+                  <select
+                    class="form-control"
+                    (change)="onSignUpTypeChange()"
+                    [(ngModel)]="registerUserType"
+                  >
+                    <option value="hld_designer">HLD LLD Designer</option>
+                    <option value="google_manager">Google DB Manager</option>
+                  </select>
+                </div>
+                <ng-container
+                  *ngIf="registerUserType === 'google_manager'"
+                  [formGroup]="registerFormGoogle"
+                >
+                  <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">
+                      Username</label
+                    >
+                    <input
+                      type="text"
+                      formControlName="username"
+                      class="form-control"
+                      id="name"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label class="form-label"> City name</label>
+                    <input
+                      type="text"
+                      formControlName="cityName"
+                      class="form-control"
+                      id="name"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      formControlName="password"
+                      class="form-control"
+                    />
+                  </div>
+                  <!-- <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label"
+                      >Scheme</label
+                    >
+                    <input
+                      formControlName="scheme"
+                      type="text"
+                      class="form-control"
+                    />
+                  </div> -->
+                </ng-container>
+                <ng-container
+                  *ngIf="registerUserType === 'hld_designer'"
+                  [formGroup]="registerFormHld"
+                >
+                  <div class="mb-4">
+                    <label class="form-label"> Project Name</label>
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label=".form-select-sm example"
+                      formControlName="projectName"
+                    >
+                      <option value="default">Select Dropdown</option>
+                      <option
+                        *ngFor="let project of projects"
+                        [value]="project.name"
+                      >
+                        {{ project.name }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">
+                      PN Number</label
+                    >
+                    <input
+                      type="text"
+                      formControlName="username"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">
+                      Password</label
+                    >
+                    <input
+                      type="password"
+                      formControlName="password"
+                      class="form-control"
+                      id="name"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">
+                      Schema</label
+                    >
+                    <input
+                      type="text"
+                      formControlName="scheme"
+                      class="form-control"
+                    /></div
+                ></ng-container>
+                <div class="container mb-5">
+                  <div class="row">
+                    <div class="col d-grid gap-2">
+                      <button class="btn btn-login" (click)="register()">
+                        Sign Up
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Street Centre Line</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <div class="mb-3 mt-4">
+              <label class="form-label">Street Centre Line</label>
+              <input class="form-control" type="file" multiple />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<a [routerLink]="['/home']"> click me for home </a>

@@ -1,0 +1,214 @@
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <nav
+    class="mt-4"
+    style="--bs-breadcrumb-divider: '>'"
+    aria-label="breadcrumb"
+  >
+    <ol class="breadcrumb p-4">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item" [routerLink]="['geoData']">geoData</li>
+    </ol>
+  </nav>
+  <!-- Icon Cards-->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body shadow">
+          <div class="row">
+            <div
+              class="col-12 col-lg-4 col-md-6 col-sm-12 mt-4"
+              [routerLink]="['project-management']"
+            >
+              <a>
+                <div
+                  class="card bg-lightBlue text-white o-hidden h-100 card_hover"
+                >
+                  <!-- <div class="card-body"> -->
+                  <div
+                    class="card-body align-items-center d-flex justify-content-center"
+                    style="padding-bottom: 0px !important"
+                  >
+                    <div class="mr-5">
+                      <a class="dasbaord-name text-white text-uppercase m-b-20">
+                        <b>Manage Project</b></a
+                      >
+                    </div>
+                    <div class="card-body-icon">
+                      <img
+                        src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-project-crowdfunding-flaticons-lineal-color-flat-icons-2.png"
+                        width="110"
+                        height="90"
+                        class="float-right"
+                      />
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                </div>
+              </a>
+            </div>
+            <!-- <div class="col-12 col-lg-4 col-md-6 col-sm-12 mt-4" [routerLink]="['connection-handeling']">
+                    <a>
+                       <div class="card text-white bg-yellow o-hidden h-100 card_hover">
+                          <div class="card-body align-items-center d-flex justify-content-center">
+                             <div class="mr-5">
+                    <a class="dasbaord-name text-white text-uppercase m-b-20"> <b>
+                      Connection Handling</b></a>
+                    </div>
+                    <div class="card-body-icon">
+                    <img src="../../assets/connection.png" width="110" height="90"
+                       class="float-right" />
+                    </div>
+                    </div>
+                    </div>
+                    </a>
+                 </div> -->
+            <div
+              class="col-12 col-lg-4 col-md-6 col-sm-12 mt-4"
+              [routerLink]="['connection-handeling']"
+            >
+              <a>
+                <div
+                  class="card text-white bg-yellow o-hidden h-100 card_hover"
+                >
+                  <div
+                    class="card-body align-items-center d-flex justify-content-center"
+                  >
+                    <div class="mr-5">
+                      <a class="dasbaord-name text-white text-uppercase m-b-20">
+                        <b> Input Handling</b></a
+                      >
+                      <!-- <span class="dasbaord-name text-white text-uppercase m-b-20"> My Health Report </span> -->
+                    </div>
+                    <div class="card-body-icon">
+                      <img
+                        src="../../assets/connection.png"
+                        width="110"
+                        height="90"
+                        class="float-right"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6 col-sm-12 mt-4">
+              <a>
+                <div class="card text-white bg-green o-hidden h-100 card_hover">
+                  <div
+                    class="card-body align-items-center d-flex justify-content-center"
+                  >
+                    <div class="mr-5">
+                      <a class="dasbaord-name text-white text-uppercase m-b-20">
+                        <b>Manage Delivarables</b></a
+                      >
+                    </div>
+                    <div class="card-body-icon">
+                      <img
+                        src="../../assets/manage.png"
+                        width="110"
+                        height="90"
+                        class="float-right"
+                        class="float-right"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6 col-sm-12 mt-4">
+              <a>
+                <div
+                  class="card text-white bg-lightGreen o-hidden h-100 card_hover"
+                >
+                  <div
+                    class="card-body align-items-center d-flex justify-content-center"
+                  >
+                    <div class="mr-5">
+                      <a class="dasbaord-name text-white text-uppercase m-b-20">
+                        <b>Notifications</b></a
+                      >
+                    </div>
+                    <div class="card-body-icon">
+                      <img
+                        src="../../assets/notifications.png"
+                        width="110"
+                        height="90"
+                        class="float-right"
+                        class="float-right"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6 col-sm-12 mt-4">
+              <a>
+                <div class="card bg-blue text-white o-hidden h-100 card_hover">
+                  <!-- <div class="card-body"> -->
+                  <div
+                    class="card-body align-items-center d-flex justify-content-center"
+                  >
+                    <div class="mr-5">
+                      <a class="dasbaord-name text-white text-uppercase m-b-20">
+                        <b>Share</b></a
+                      >
+                    </div>
+                    <div class="card-body-icon">
+                      <img
+                        src="../../assets/share.png"
+                        width="110"
+                        height="90"
+                        class="float-right"
+                      />
+                    </div>
+                  </div>
+                  <!-- </div> -->
+                </div>
+              </a>
+            </div>
+            <div
+              class="col-12 col-lg-4 col-md-6 col-sm-12 mt-4"
+              [routerLink]="['workflow/all']"
+            >
+              <a>
+                <div
+                  class="card bg-sub-healthReport text-white o-hidden h-100 card_hover"
+                >
+                  <!-- <div class="card-body"> -->
+                  <div
+                    class="card-body align-items-center d-flex justify-content-center"
+                    style="padding-bottom: 0px !important"
+                  >
+                    <div class="mr-5">
+                      <a class="dasbaord-name text-white text-uppercase m-b-20">
+                        <b>Workflow</b></a
+                      >
+                    </div>
+                    <div class="card-body-icon">
+                      <img
+                        src="../../assets/workflow.png"
+                        width="110"
+                        height="90"
+                        class="float-right"
+                      />
+                    </div>
+                  </div>
+                  <!-- <div class="mr-5" style="text-align: center;padding-bottom: 10px;">
+                         <a  routerLink="/book-event" class="dasbaord-name text-white m-b-20">
+                             Register for Events</a>
+                         </div> -->
+                  <!-- </div> -->
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- end row -->
+        </div>
+      </div>
+      <!-- <br>  -->
+    </div>
+    <br />
+  </div>
+</div>

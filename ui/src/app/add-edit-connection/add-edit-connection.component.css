@@ -1,0 +1,21 @@
+.card{
+  padding: 0px 0px 0px 0px;
+  border: 1px solid #CCC;
+  box-shadow: 0 0 5px rgb(0 0 0 / 19%), 0 3px 3px rgb(0 0 0 / 23%);
+  background: #FFF;
+}
+  .bg-card {
+    background-color: #41B3A3 !important;
+    color: #fff !important;
+    margin-bottom: 13px;
+    align-items: center;
+    padding: 12px 0px;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+  }
+  #btnSearch,
+#btnClear{
+    display: inline-block;
+    vertical-align: top;
+}

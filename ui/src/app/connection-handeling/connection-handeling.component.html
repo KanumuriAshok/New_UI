@@ -1,0 +1,634 @@
+<div class="loader-class" *ngIf="loadingLoader">
+  <div class="loader"></div>
+</div>
+<div class="container mt-4">
+  <div class="clearfix pb-4">
+    <button type="button" class="btn btn-success btn-sm float-right">
+      Create Connection
+    </button>
+  </div>
+  <div class="row">
+    <div class="card">
+      <div class="card-header header">
+        <h1><b>CONNECTIONS</b></h1>
+      </div>
+      <table
+        class="card-table table-borderless myTable"
+        style="overflow-y: auto; overflow-x: auto; text-align: center"
+      >
+        <thead>
+          <tr>
+            <th>Connection Name</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
+            <!-- <th>Status</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#shapeFilesModal"
+                class="btn btn-primary btn-sm btn-size btn_shadow1"
+              >
+                SHAPEFILES PATH
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">All the Shape files to be added</td>
+            <!-- <td class="tableTitles">
+              <div>
+                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-trash fa-2x mx-3" aria-hidden="true"></i>
+                <button
+                  type="button"
+                  [routerLink]="['/dashboard/api-review']"
+                  class="btn btn-primary btn-sm"
+                >
+                  Review
+                </button>
+              </div>
+            </td> -->
+            <td class="tableTitles">
+              <div [ngClass]="uploadFilesStatus"></div>
+            </td>
+          </tr>
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+                (click)="UploadGoogle()"
+              >
+                GOOGLE API DATA FETCH
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              Algorithm fetch data from Google street view
+            </td>
+            <!-- <td class="tableTitles">
+              <div>
+                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-trash fa-2x mx-3" aria-hidden="true"></i>
+                <button
+                  type="button"
+                  [routerLink]="['/dashboard/api-review']"
+                  class="btn btn-primary btn-sm"
+                >
+                  Review
+                </button>
+              </div>
+            </td> -->
+            <td class="tableTitles">
+              <div [ngClass]="googleFetchStatus"></div>
+            </td>
+          </tr>
+
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+                (click)="secondaryPreprocessgp()"
+              >
+                GOOGLE DATA <br />
+                PRE-PROCESSING
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              Validate the raw Google pole data with existing infrastructure
+            </td>
+            <!-- <td class="tableTitles">
+              <div>
+                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-trash fa-2x mx-3" aria-hidden="true"></i>
+                <button
+                  type="button"
+                  [routerLink]="['/dashboard/api-review']"
+                  class="btn btn-primary btn-sm"
+                >
+                  Review
+                </button>
+              </div>
+            </td> -->
+            <td class="tableTitles">
+              <div [ngClass]="secondaryPreprocessgpStatus"></div>
+            </td>
+          </tr>
+
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+                (click)="pnBoundaryCheck()"
+              >
+                PN BOUNDARY<br />
+                CHECK
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              To check to PN boundary fed by Aerial or Underground
+            </td>
+            <!-- <td class="tableTitles">
+              <div>
+                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-trash fa-2x mx-3" aria-hidden="true"></i>
+                <button
+                  type="button"
+                  [routerLink]="['/dashboard/api-review']"
+                  class="btn btn-primary btn-sm"
+                >
+                  Review
+                </button>
+              </div>
+            </td> -->
+            <td class="tableTitles">
+              <div [ngClass]="pnBoundaryCheckStatus"></div>
+            </td>
+          </tr>
+
+          <!--tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#reviewModal"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+              >
+                REVIEW
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">Review the data manually in QGIS</td>
+            <td class="tableTitles">
+                            <div class="red_status"></div>
+                        </td>
+          </tr-->
+
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+                (click)="extractExisting()"
+              >
+                EXTRACT EXISTING <br />
+                INFRASTRUCTURE
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              Combine poles from google street view and PIA structure
+            </td>
+            <td class="tableTitles">
+              <div [ngClass]="extractExistingStatus"></div>
+            </td>
+          </tr>
+
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+                (click)="missingDemand()"
+              >
+                MISSING DEMAND <br />
+                POINT CAPTURE
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              Generate missing demand points from cartographic text
+            </td>
+            <td class="tableTitles">
+              <div [ngClass]="missingDemandStatus"></div>
+            </td>
+          </tr>
+
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow1"
+                (click)="export()"
+              >
+                EXPORT
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              Exporting all input to a qgis workspace and to create REF.POINTS
+            </td>
+            <td class="tableTitles">
+              <div [ngClass]="exportStatus"></div>
+            </td>
+          </tr>
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow1"
+                data-bs-target="#UploadRefPoint"
+                data-bs-toggle="modal"
+              >
+                UPLOAD REF. POINT
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">Upload ref. points created in QGIS</td>
+            <td class="tableTitles">
+              <div [ngClass]="uploadRefFilesStatus"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">PREPROCESSING</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Pia Structure:</label
+            >
+            <input type="file" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Google Api Output:</label
+            >
+            <input type="file" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Gaist Data:</label>
+            <input type="file" class="form-control" id="recipient-name" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal1"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">
+          EXTRACT DATA USING GOOGLE API
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Pnboundary files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesGoogleDropped($event, 'pnboundary_files')"
+              multiple
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Citygooglepoles files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesGoogleDropped($event, 'citygooglepoles_files')"
+              multiple
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="UploadGoogle()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="reviewModal"
+  tabindex="-1"
+  aria-labelledby="reviewModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">REVIEW</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <button type="button" class="btn btn-primary btn-sm btn-size">
+              EXPORT TO QGIS WORKSPACE
+            </button>
+          </div>
+          <div class="mb-3">
+            <button type="button" class="btn btn-primary btn-sm btn-size">
+              REVIEW ONLY POLES VISIBLE
+            </button>
+          </div>
+          <div class="mb-3">
+            <button type="button" class="btn btn-primary btn-sm btn-size">
+              POLES FROM GOOGLE TO BE UPLOADED AS INPUT
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="shapeFilesModal"
+  tabindex="-1"
+  aria-labelledby="shapeFilesLabel"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Shape Files Upload</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Demand Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'demand_files')"
+              multiple
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >PIA Duct Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'duct_files')"
+              multiple
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Land Boundaries Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'landboundary_files')"
+              multiple
+            />
+          </div>
+          <!-- <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Googlepoles files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'googlepoles_files')"
+              multiple
+            />
+          </div> -->
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >PIA Structure Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'piastruc_files')"
+              multiple
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Street centerline files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'streetcenterline_files')"
+              multiple
+            />
+          </div>
+          <!-- <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Aerialdp files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'aerialdp_files')"
+              multiple
+            />
+          </div> -->
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Gaist Data Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'gaistdata_files')"
+              multiple
+            />
+          </div>
+          <!-- <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Underground Demand Point Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'undergrounddp_files')"
+              multiple
+            />
+          </div> -->
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Topographic Lines Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'topographiclines_files')"
+              multiple
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Cartographic Text Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'cartograpgictext_file')"
+              multiple
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Primary NodeBoundary:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'pnboundary_files')"
+              multiple
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Primary Node Files:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              (change)="filesDropped($event, 'primarynodes_files')"
+              multiple
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="uploadFiles()" class="btn btn-primary">
+          Upload Files
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="UploadRefPoint"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">
+          Upload Reference Point
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"
+              >Reference Point:</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              multiple
+              (change)="filesRefDropped($event, 'refpoint_files')"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="UploadRef()">
+          Upload Files
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

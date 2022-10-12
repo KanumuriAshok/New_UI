@@ -1,0 +1,10 @@
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  background-color: #75787b !important;
+  color: #ffffff !important;
+}
+.nav-link {
+  color: #000 !important;
+  font-weight: 600;
+}

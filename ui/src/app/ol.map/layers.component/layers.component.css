@@ -1,0 +1,17 @@
+.map-layers-btn{
+    position: absolute;
+    z-index: 1;
+    top: 75px;
+    left: 10px;
+    background-color: #7596b4;
+}
+.map-layers-pnl{
+    position: absolute;
+    top: 75px;
+    left: 10px;
+    /* width: 300px; */
+    padding:10px;
+    background-color: white;
+    /* display: flex;  */
+    z-index: 1;
+}

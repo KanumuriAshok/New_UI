@@ -1,0 +1,41 @@
+<button
+  *ngIf="!showPanel"
+  (click)="showPanel = !showPanel"
+  class="btn btn-primary btn-sm map-layers-btn"
+>
+  <i class="fa fa-bars"></i>
+</button>
+<div class="map-layers-pnl" [style.display]="showPanel ? 'block' : 'none'">
+  <button title="close panel" (click)="showPanel = false">
+    <i class="fa fa-arrow-left"></i>
+  </button>
+  <table>
+    <tr *ngFor="let layerItem of layerItems">
+      <td>
+        <input
+          type="checkbox"
+          checked
+          (change)="switchLayer($event, layerItem.name)"
+        />
+      </td>
+      <td>{{ layerItem.fullName }}</td>
+      <td>
+        <button
+          class="btn btn-sm btn-primary"
+          title="zoom to layer"
+          (click)="zoomToLayer(layerItem.fullName)"
+        >
+          <i class="fa fa-eye"></i>
+        </button>
+      </td>
+      <td>
+        <a
+          title="download shapefile"
+          [href]="getDdownloadShapefileUrl(layerItem.fullName)"
+          download
+          ><i class="fa fa-download"></i
+        ></a>
+      </td>
+    </tr>
+  </table>
+</div>

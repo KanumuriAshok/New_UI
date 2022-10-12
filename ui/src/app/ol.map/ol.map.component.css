@@ -1,0 +1,6 @@
+.map-container {
+  width: inherit;
+  height: inherit;
+  z-index: 1;
+  position: relative;
+}

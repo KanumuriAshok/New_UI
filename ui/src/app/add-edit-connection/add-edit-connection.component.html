@@ -1,0 +1,221 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="fw-bold mb-4">Create Connection</h1>
+      <div class="container">
+        <!-- <div class="row bg-card">
+                    <div class="col align-middle">DataBase</div>
+                </div> -->
+
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="input3" class="form-label">Connection Name</label>
+            <input type="text" class="form-control" id="input3" />
+          </div>
+          <div class="col-md-6">
+            <label for="input3" class="form-label">Type</label>
+            <select class="form-select" name="selectedType" [(ngModel)]="selectedType" #selectedTypeModel="ngModel"
+              aria-label="Default select example">
+              <option selected>Select Type</option>
+              <option value="1">Database</option>
+              <option value="2">Shpfile</option>
+              <option value="3">Excel</option>
+              <option value="4">Csv</option>
+            </select>
+          </div>
+
+
+
+
+          <div class="card" *ngIf="selectedType == 1">
+            <div class="card-header p-4 text-center bg-success text-white">
+              DataBase
+            </div>
+            <div class="card-body">
+              <div class="row mt-2">
+                <div class="col-md-6">
+                  <label for="input2" class="form-label">Server Name</label>
+                  <input type="text" class="form-control" id="input2" />
+                </div>
+                <div class="col-md-6">
+                  <label for="input1" class="form-label">Port</label>
+                  <input type="text" class="form-control" id="input1" />
+                </div>
+                <div class="col-md-6">
+                  <label for="input3" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="input3" />
+                </div>
+                <div class="col-md-6">
+                  <label for="input3" class="form-label">Password</label>
+                  <input type="text" class="form-control" id="input3" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card" *ngIf="selectedType == 2">
+            <div class="card-header p-4 text-center bg-success text-white">
+              Shpfile
+            </div>
+            <div class="card-body">
+              <div class="row mt-2">
+                <div>
+                  <label for="formFile" class="form-label">Shpfile</label>
+                  <input class="form-control" type="file" id="formFile" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" *ngIf="selectedType == 3">
+            <div class="card-header p-4 text-center bg-success text-white">
+              Excel
+            </div>
+            <div class="card-body">
+              <div class="row mt-2">
+                <div class="row mt-2">
+                  <div>
+                    <label for="formFile" class="form-label">Excel</label>
+                    <input class="form-control" type="file" id="formFile" />
+                  </div>
+                </div>
+            </div>
+          </div>
+          </div>
+        
+
+          <div class="card" *ngIf="selectedType == 4">
+            <div class="card-header p-4 text-center bg-success text-white">
+              Csv
+            </div>
+            <div class="card-body">
+              <div class="row mt-2">
+                <div class="row mt-2">
+                  <div>
+                    <label for="formFile" class="form-label">Csv</label>
+                    <input class="form-control" type="file" id="formFile" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- <div class="accordion mt-2" id="accordionExample">
+            <div class="accordion-item" *ngIf="selectedType == 1">
+              <h2 class="accordion-header text-center bg-card" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  DataBase
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="row mt-2">
+                    <div class="col-md-6">
+                      <label for="input2" class="form-label">Server Name</label>
+                      <input type="text" class="form-control" id="input2" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="input1" class="form-label">Port</label>
+                      <input type="text" class="form-control" id="input1" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="input3" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="input3" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="input3" class="form-label">Password</label>
+                      <input type="text" class="form-control" id="input3" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="accordion-item" *ngIf="selectedType == 2">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                  aria-expanded="true" aria-controls="collapseTwo">
+                  Shpfile
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="row mt-2">
+                    <div>
+                      <label for="formFile" class="form-label">Shpfile</label>
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item" *ngIf="selectedType == 3">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                  aria-expanded="true" aria-controls="collapseThree">
+                  Excel
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="row mt-2">
+                    <div>
+                      <label for="formFile" class="form-label">Excel</label>
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="accordion-item" *ngIf="selectedType == 4">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                  aria-expanded="true" aria-controls="collapseFour">
+                  Csv
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="row mt-2">
+                    <div>
+                      <label for="formFile" class="form-label">Csv</label>
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div> -->
+          <div class="col-12 text-center mt-4">
+            <button id="save" class="btn btn-success btn-md ml-2" Style="width: 100px;">
+              Save
+            </button>
+            <button id="test" class="btn btn-danger btn-md ml-2" Style="width: 170px; ">
+              Test Connection
+            </button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,278 @@
+<div class="loader-class" *ngIf="loadingLoader">
+  <div class="loader"></div>
+</div>
+
+<div class="col-12 someClass" [ngClass]="loadingLoader ? 'step1' : ''">
+  <div class="col-5">
+    <div class="container">
+      <div class="row">
+        <form class="mb-3" *ngIf="clusteringFormShow">
+          <h4 class="text-center text-warning p-2 mb-4 text-uppercase">
+            Cluster Grouping
+          </h4>
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label"
+              >Select Cluster type</label
+            >
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="connectiopnType"
+              [(ngModel)]="connectiopnType"
+            >
+              <option value="1" selected>Arial</option>
+              <option value="2">Underground</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label"
+              >Choose files for Demand points</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              name="file"
+              id="formFileMultiple"
+              multiple
+              (change)="filesDropped($event, 'demandpoints')"
+            />
+          </div>
+          <div class="mb-3 mt-4">
+            <label for="formFileMultiple" class="form-label"
+              >Choose files for Street lines</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              id="formFileMultiple"
+              (change)="filesDropped($event, 'streetlines')"
+              multiple
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary mt-4"
+            (click)="submitCLusturing()"
+          >
+            Execute
+          </button>
+        </form>
+
+        <!-- <form class="mb-3" *ngIf="clusterGroupingFormShow">
+          <h4 class="text-center text-warning p-2 mb-4 text-uppercase">Cluster Grouping</h4>
+          <div class="mb-3">
+            <div class="card text-white bg-success mb-3" style="width: auto;">
+              <div class="card-body">
+                <h5 class="card-title text-center">Aerial Clusturing op</h5>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Move on to node boundary</button>
+        </form> -->
+
+        <form class="mb-3" *ngIf="nodeBoundaryShow">
+          <h4 class="text-center text-warning p-2 mb-4 text-uppercase">
+            Node Boundary
+          </h4>
+          <div class="mb-3">
+            <label for="formFileMultiple" class="pb-2" style="font-weight: 900"
+              >Output from cluster grouping already uploaded</label
+            >
+            <input class="form-control" type="file" disabled />
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="formFileMultiple" class="form-label"
+              >Choose files for Land boundary</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              id="formFileMultiple"
+              multiple
+              (change)="filesDropped($event, 'landbndry')"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="submitNodeBoundary()"
+          >
+            Execute
+          </button>
+        </form>
+        <hr />
+        <form class="mb-3 mt-2" *ngIf="clusterCorrectionShow">
+          <div class="d-grid gap-2 col-8 mx-auto">
+            <button
+              class="btn btn-success"
+              type="button"
+              (click)="fallbackClusterCorrection()"
+            >
+              Move on to Cluster Correction
+            </button>
+            <button
+              class="btn btn-success"
+              (click)="fallbackNodePlacement()"
+              type="button"
+            >
+              Move on to Node placement
+            </button>
+          </div>
+        </form>
+
+        <!-- Cluster Correction Start -->
+        <div class="container mt-3" *ngIf="clusterCorrectionProcess">
+          <h4 class="text-center text-warning p-2 mb-4 text-uppercase">
+            Cluster Correction
+          </h4>
+          <div style="height: 500px; overflow-y: auto">
+            <table class="table table-hover">
+              <thead>
+                <th>Cluster Id</th>
+                <th>Sum Pon Homes</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of outliers_data">
+                  <td>{{ item["cluster_id"] }}</td>
+                  <td>{{ item["sum_pon_homes"] }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <form
+            [formGroup]="clusterCorrectionForm"
+            (ngSubmit)="onSubmitClusterCorrection()"
+          >
+            <div class="mb-3 mt-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Input Cluster Id</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="01"
+                formControlName="input_cluster_id"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Output Cluster Id</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="02"
+                formControlName="output_cluster_id"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="disabledTextInput" class="fw-bold">GIS Tool Id</label>
+              <input
+                type="text"
+                id="disabledTextInput"
+                class="form-control"
+                placeholder="03"
+                formControlName="gis_tool_id"
+              />
+            </div>
+            <div class="d-grid gap-2 mb-3 col-3 mx-auto">
+              <button class="btn btn-primary" type="submit">Execute</button>
+            </div>
+          </form>
+          <div class="mb-3 col-6">
+            <button class="btn btn-success" type="button">
+              Go to Node Boundary
+            </button>
+            <button class="btn btn-success" type="button">
+              Node Placements
+            </button>
+          </div>
+        </div>
+        <!-- Cluster Correction End -->
+        <!-- Node Placement Start -->
+        <div class="container mt-3" *ngIf="nodePlacementProcess">
+          <form>
+            <h4 class="text-center text-warning p-2 mb-4 text-uppercase">
+              Node Placement
+            </h4>
+            <div class="mb-3">
+              <label class="form-label">Select CLuster type</label>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                name="connectiopnTypeNodePlacement"
+                [(ngModel)]="connectiopnTypeNodePlacement"
+              >
+                <option value="1">Arial</option>
+                <option value="2">Underground</option>
+              </select>
+            </div>
+            <div class="mb-3 mt-4">
+              <label class="form-label">Choose files for Existing</label>
+              <input
+                class="form-control"
+                type="file"
+                (change)="filesDropped($event, 'existing')"
+                multiple
+              />
+            </div>
+            <div class="mb-3 mt-4">
+              <label class="form-label">Choose files for Gaist</label>
+              <input
+                class="form-control"
+                type="file"
+                (change)="filesDropped($event, 'gaist')"
+                multiple
+              />
+            </div>
+            <div class="mb-3 mt-4">
+              <label class="form-label">Choose files for LandBoundary</label>
+              <input
+                class="form-control"
+                type="file"
+                (change)="filesDropped($event, 'landBoundary')"
+                multiple
+              />
+            </div>
+            <div class="mb-3 mt-4">
+              <label class="form-label">Choose files for Node</label>
+              <input
+                disabled
+                class="form-control"
+                type="file"
+                (change)="filesDropped($event, 'node')"
+                multiple
+              />
+            </div>
+            <div class="mb-3 col-6">
+              <button
+                class="btn btn-success"
+                type="button"
+                (click)="submitNodePlacement()"
+              >
+                Execute
+              </button>
+            </div>
+          </form>
+          <div class="mb-3 col-6">
+            <button class="btn btn-success" type="button">
+              Go to Node Boundary
+            </button>
+            <button class="btn btn-success" type="button">
+              Node Placements
+            </button>
+          </div>
+        </div>
+        <!-- Node Placement End -->
+      </div>
+    </div>
+  </div>
+  <div class="col-7">
+    <app-geoserver-map></app-geoserver-map>
+  </div>
+</div>
+<!-- </ng-template> -->

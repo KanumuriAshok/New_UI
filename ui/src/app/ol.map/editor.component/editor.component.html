@@ -1,0 +1,90 @@
+<div class="ol-map-editor">
+  <select
+    class="form-select"
+    [disabled]="editorStarted"
+    (change)="onLayerChange($event)"
+  >
+    <option [ngValue]="null">Select layer to edit</option>
+    <option *ngFor="let layer_ of editingLayers; let j = index" [value]="j">
+      {{ layer_.fullName }}
+    </option>
+  </select>
+  <button
+    class="btn btn-sm btn-info"
+    (click)="startEndEditing()"
+    style="font-size: 10px"
+  >
+    {{ editorStarted ? "Finish and save" : "Start editing" }}
+  </button>
+  <button
+    class="btn btn-sm btn-success"
+    (click)="switchStartInteractions('add')"
+    style="font-size: 10px"
+    title="add feature"
+    [disabled]="!editorStarted"
+  >
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+  <button
+    class="btn btn-sm btn-success"
+    (click)="switchStartInteractions('modify')"
+    style="font-size: 10px"
+    title="modify feature"
+    [disabled]="!editorStarted"
+  >
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+  </button>
+  <button
+    class="btn btn-sm btn-success"
+    (click)="switchStartInteractions('drag')"
+    style="font-size: 10px"
+    title="drag feature"
+    [disabled]="!editorStarted"
+  >
+    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+  </button>
+  <button
+    class="btn btn-sm btn-success"
+    (click)="switchStartInteractions('remove')"
+    style="font-size: 10px"
+    title="remove feature"
+    [disabled]="!editorStarted"
+  >
+    <i class="fa fa-trash" aria-hidden="true"></i>
+  </button>
+</div>
+
+<div class="ol-map-editor-attributes" *ngIf="editorStarted">
+  <button
+    *ngIf="!showAttributePanel"
+    (click)="showAttributePanel = !showAttributePanel"
+    class="btn btn-primary btn-sm map-layers-btn"
+  >
+    <i class="fa fa-bars"></i>
+  </button>
+  <div
+    class="feature-attributes-pnl"
+    [style.display]="showAttributePanel ? 'block' : 'none'"
+  >
+    <button title="close panel" (click)="showAttributePanel = false">
+      <i class="fa fa-arrow-right"></i>
+    </button>
+    <table *ngIf="attributes.length > 0">
+      <ng-container *ngFor="let props_ of attributes">
+        <tr *ngIf="props_.name != 'geom'">
+          <td>
+            {{ props_.name }}
+          </td>
+          <td>
+            <input
+              *ngIf="currentEditFeature"
+              type="text"
+              [value]="currentEditFeature.getProperties()[props_.name]"
+              (change)="updateFeature($event, props_.name)"
+            />
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+</div>

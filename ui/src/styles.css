@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url("../src/assets/bootstrap.min.css");
+@import url("../src/assets/ol.css");
+.card {
+    /* width: 700px; */
+    border: 1px solid #cbb6b6;
+}
+
+
+.btn-login {
+    color: #ffffff;
+    background-color: #00a5df;
+    border-color: #000000;
+}
+
+
+.login-pill {
+    display: table !important;
+    width: 100%
+}
+
+.login-pill .nav-link {
+    border-radius: 0px;
+    padding: 20px 0px;
+    border-bottom: 1px solid #0d6efd40;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.nav-item {
+    display: table-cell;
+    background: #93c90f;
+}
+.login-pill .nav-link.active, .login-pill .show>.nav-link {
+    color: #000;
+    background-color: #fff;
+}
+
+.form-login {
+    padding: 3rem 4rem 0rem 7rem !important
+}
+
+.form-login input {
+    margin-bottom: 12px;
+    border-radius: 16px;
+}
+.form-label{
+    font-weight: 600;
+}
+.form input:focus {
+    box-shadow: none
+}
+.bg-color{
+    background-color: #009ca5;
+}
+.form-label:after {
+    content:" * ";color:red;
+    font-weight: bold;
+  }
+  @media screen and (max-width: 600px) {
+    .form-login {
+        padding: 3rem 4rem 0rem 4rem !important
+    }
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

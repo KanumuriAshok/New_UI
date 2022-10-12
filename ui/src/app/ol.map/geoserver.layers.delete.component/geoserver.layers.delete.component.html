@@ -1,0 +1,51 @@
+<button
+  title="Remove working layers from geoserver"
+  (click)="showModal = true"
+  class="btn btn-primary btn-sm geoserver-layers-delete-btn"
+>
+  <i class="fa fa-trash"></i>
+</button>
+
+<div
+  class="geoserver-layers-delete-pnl"
+  [style.display]="showModal ? 'block' : 'none'"
+>
+  <div>
+    <input
+      type="text"
+      placeholder="type geoserver username"
+      class="form-control"
+      [(ngModel)]="username"
+    />
+    <input
+      type="text"
+      placeholder="type geoserver passowrd"
+      class="form-control"
+      [(ngModel)]="password"
+    />
+    <button
+      title="close panel"
+      (click)="tryToStart()"
+      class="btn btn-warning btn-sm"
+    >
+      Start
+    </button>
+  </div>
+  <br />
+  <table style="max-height: 400px; overflow: auto" cellspacing="">
+    <tr *ngFor="let log of logs">
+      <td>
+        {{ log }}
+      </td>
+    </tr>
+  </table>
+  <div>
+    <button
+      title="close panel"
+      (click)="tryToClose()"
+      class="btn btn-danger btn-sm"
+    >
+      Close
+    </button>
+  </div>
+</div>

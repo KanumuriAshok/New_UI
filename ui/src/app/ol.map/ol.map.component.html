@@ -1,0 +1,10 @@
+<div class="map-container" id="map">
+  <app-ol-map-layers #mapLayers [configs]="configs"></app-ol-map-layers>
+  <!--app-geoserver-layers-delete
+    [configs]="configs"
+  ></app-geoserver-layers-delete-->
+  <app-ol-map-wms-layer-editor
+    #mapEditor
+    [configs]="configs"
+  ></app-ol-map-wms-layer-editor>
+</div>

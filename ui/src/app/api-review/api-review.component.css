@@ -1,0 +1,20 @@
+.card-left{
+    background: linear-gradient(to right, #047edf, #085696) !important;
+    height: 600px;
+    border-right: 4px solid #fff;
+    text-align: center;
+    font-size: 16px;
+    overflow-y: scroll;
+    color: #fff;
+    font-weight: 500;
+    padding-top: 10px;
+}
+.card-right{
+    background: linear-gradient(to right, #047edf, #085696) !important;
+    height: 600px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    padding-top: 10px;
+}
