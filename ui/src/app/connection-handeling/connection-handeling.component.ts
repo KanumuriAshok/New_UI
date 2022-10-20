@@ -198,6 +198,7 @@ export class ConnectionHandelingComponent implements OnInit {
               alert(' completed with error');
               this.loadingLoader = false;
               this.exportStatus = 'red_status';
+              // debugger;
               // this.UploadRefPoint();
             },
             () => {
