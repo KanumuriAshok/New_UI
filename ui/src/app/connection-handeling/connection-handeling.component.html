@@ -3,7 +3,7 @@
 </div>
 <div class="container mt-4">
   <div class="clearfix pb-4">
-    <button type="button" class="btn btn-success btn-sm float-right">
+    <button [ngStyle]="{'display':userType === 'hld_designer' ? 'none' : 'block' }" type="button" class="btn btn-success btn-sm float-right">
       Create Connection
     </button>
   </div>
@@ -46,6 +46,7 @@
           <tr class="tableColor">
             <td class="tableTitles">
               <button
+                [ngStyle]="{'display':userType === 'hld_designer' ? 'none' : 'block' }"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#shapeFilesModal"

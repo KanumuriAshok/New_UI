@@ -100,9 +100,13 @@ export class LoginComponent implements OnInit {
       })
       .subscribe(
         (res) => {
+          console.log(res);
           if (res['success'] == true) {
             localStorage.setItem('isUserLoggedId', '1');
             localStorage.setItem('username', username);
+            var user_type = 'hld_designer';
+            let usertype = localStorage.setItem('usertype', user_type);
+            console.log(usertype);
             this.router.navigate(['dashboard']);
           } else {
             alert(res['message']);

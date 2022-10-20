@@ -10,7 +10,7 @@ export class ConnectionHandelingComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
   apiUrl = environment.api+'/api/shape_file_page';
   loadingLoader = false;
-
+ 
   uploadFilesStatus = 'none_status'; //success,fail
   uploadRefFilesStatus = 'none_status'; //success,fail
   extractExistingStatus = 'none_status'; //success,fail
@@ -19,7 +19,12 @@ export class ConnectionHandelingComponent implements OnInit {
   pnBoundaryCheckStatus = 'none_status'; //success,fail
   exportStatus = 'none_status'; //success,fail
   googleFetchStatus = 'none_status'; //success,fail
-  ngOnInit(): void {}
+
+  userType:any;
+  ngOnInit(): void {
+    this.userType= localStorage.getItem('usertype');
+    console.log(this.userType);
+  }
   files = {};
   filesRef = {};
   filesGoogle = {};
