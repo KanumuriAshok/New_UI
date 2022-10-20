@@ -21,9 +21,15 @@ export class ConnectionHandelingComponent implements OnInit {
   googleFetchStatus = 'none_status'; //success,fail
 
   userType:any;
+
+  sigdisplay = 'none';
   ngOnInit(): void {
     this.userType= localStorage.getItem('usertype');
     console.log(this.userType);
+  }
+
+  UploadRefPoint() {
+    this.sigdisplay = 'block';
   }
   files = {};
   filesRef = {};
@@ -71,6 +77,7 @@ export class ConnectionHandelingComponent implements OnInit {
         alert('completed successfully');
         this.loadingLoader = false;
         this.extractExistingStatus = 'green_status';
+        this.missingDemand();
       },
       (err) => {
         console.error(err);
@@ -92,6 +99,7 @@ export class ConnectionHandelingComponent implements OnInit {
         alert('completed successfully');
         this.loadingLoader = false;
         this.missingDemandStatus = 'green_status';
+        this.export();
       },
       (err) => {
         console.error(err);
@@ -113,6 +121,7 @@ export class ConnectionHandelingComponent implements OnInit {
         alert('completed successfully');
         this.loadingLoader = false;
         this.secondaryPreprocessgpStatus = 'green_status';
+        this.pnBoundaryCheck();
       },
       (err) => {
         console.error(err);
@@ -134,6 +143,7 @@ export class ConnectionHandelingComponent implements OnInit {
         alert('completed successfully');
         this.loadingLoader = false;
         this.pnBoundaryCheckStatus = 'green_status';
+        this.extractExisting();
       },
       (err) => {
         console.error(err);
@@ -181,12 +191,14 @@ export class ConnectionHandelingComponent implements OnInit {
               this.loadingLoader = false;
               this.exportStatus = 'green_status';
               document.body.removeChild(a);
+              this.UploadRefPoint();
             },
             (err2) => {
               console.error(err2);
               alert(' completed with error');
               this.loadingLoader = false;
               this.exportStatus = 'red_status';
+              // this.UploadRefPoint();
             },
             () => {
               this.loadingLoader = false;
@@ -218,6 +230,7 @@ export class ConnectionHandelingComponent implements OnInit {
       (res) => {
         alert('upload completed successfully');
         this.uploadRefFilesStatus = 'green_status';
+        this.UploadGoogle();
       },
       (err) => {
         console.error(err);
@@ -246,6 +259,7 @@ export class ConnectionHandelingComponent implements OnInit {
       (res) => {
         alert('upload completed successfully');
         this.googleFetchStatus = 'green_status';
+        this.secondaryPreprocessgp();
       },
       (err) => {
         console.error(err);

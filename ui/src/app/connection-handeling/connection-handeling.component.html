@@ -43,10 +43,10 @@
               <div [ngClass]="uploadRefFilesStatus"></div>
             </td>
           </tr>
-          <tr class="tableColor">
+          <tr class="tableColor" [ngStyle]="{'display':userType === 'hld_designer' ? 'none' : 'block' }">
             <td class="tableTitles">
               <button
-                [ngStyle]="{'display':userType === 'hld_designer' ? 'none' : 'block' }"
+                
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#shapeFilesModal"
@@ -255,7 +255,8 @@
                 type="button"
                 class="btn btn-primary btn-sm btn-size btn_shadow1"
                 data-bs-target="#UploadRefPoint"
-                data-bs-toggle="modal"
+                data-bs-toggle="modal" 
+                (click)="UploadRefPoint()"
               >
                 UPLOAD REF. POINT
               </button>
@@ -612,8 +613,9 @@
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
+  [ngStyle]="{'display':sigdisplay}"
 >
-  <div class="modal-dialog">
+  <div class="modal-dialog" [ngStyle]="{'display':sigdisplay}">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">
