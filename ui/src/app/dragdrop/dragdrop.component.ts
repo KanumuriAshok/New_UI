@@ -23,7 +23,7 @@ export class DragdropComponent implements OnInit {
   outliers_data = [];
   clusterCorrectionForm: FormGroup;
   isShowTerminal = false;
-  mainApi = environment.api+'/api/';
+  mainApi = environment.api + '/api/';
   currentDraggedNewModel: any = null;
   currentMode = 'create'; //edit
   currentEditIndex = -1;
@@ -246,6 +246,68 @@ export class DragdropComponent implements OnInit {
               {
                 label: 'Street center line files',
                 name: 'streetcenterline_files',
+                files: [],
+              },
+            ],
+          },
+        },
+        {
+          name: 'SHAPEFILES PATH',
+          key: 'SHAPEFILES_PATH',
+          result: {},
+          formData: null,
+          form: {
+            endpointApi: 'shape_file_page',
+            showInputsFormOnDrag: true,
+            inputFiles: [
+              {
+                label: 'demand files',
+                name: 'demand_files',
+                files: [],
+              },
+              {
+                label: 'duct files',
+                name: 'duct_files',
+                files: [],
+              },
+              {
+                label: 'landboundary files',
+                name: 'landboundary_files',
+                files: [],
+              },
+              {
+                label: 'piastruc files',
+                name: 'piastruc_files',
+                files: [],
+              },
+              {
+                label: 'streetcenterline files',
+                name: 'streetcenterline_files',
+                files: [],
+              },
+              {
+                label: 'gaistdata files',
+                name: 'gaistdata_files',
+                files: [],
+              },
+              {
+                label: 'topographiclines files',
+                name: 'topographiclines_files',
+                files: [],
+              },
+              {
+                label: 'cartograpgictext_file',
+                name: 'cartograpgictext_file',
+                files: [],
+              },
+              {
+                label: 'pnboundary_files',
+                name: 'pnboundary_files',
+                files: [],
+              },
+              {
+                label: 'primarynodes_files',
+                name: 'primarynodes_files',
                 files: [],
               },
             ],
@@ -727,43 +789,45 @@ export class DragdropComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post(environment.api+'/api/export_output', formData).subscribe(
-      (res) => {
-        this.httpClient
-          .post('/api/download_qgis_files', formData, {
-            responseType: 'arraybuffer',
-          })
-          .subscribe(
-            (res2: any) => {
-              let blob = new Blob([res2], { type: 'application/zip' });
-              let url = window.URL.createObjectURL(blob);
-              let pwa = window.open(url);
-              if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-                alert('Please disable your Pop-up blocker and try again.');
-              }
+    this.httpClient
+      .post(environment.api + '/api/export_output', formData)
+      .subscribe(
+        (res) => {
+          this.httpClient
+            .post('/api/download_qgis_files', formData, {
+              responseType: 'arraybuffer',
+            })
+            .subscribe(
+              (res2: any) => {
+                let blob = new Blob([res2], { type: 'application/zip' });
+                let url = window.URL.createObjectURL(blob);
+                let pwa = window.open(url);
+                if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+                  alert('Please disable your Pop-up blocker and try again.');
+                }
 
-              alert('completed successfully');
-              this.loadingLoader = false;
-              this.exportStatus = 'success';
-            },
-            (err2) => {
-              console.error(err2);
-              alert(' completed with error');
-              this.loadingLoader = false;
-              this.exportStatus = 'fail';
-            },
-            () => {
-              this.loadingLoader = false;
-            }
-          );
-      },
-      (err) => {
-        console.error(err);
-        alert(' completed with error');
-        this.loadingLoader = false;
-        this.exportStatus = 'fail';
-      },
-      () => {}
-    );
+                alert('completed successfully');
+                this.loadingLoader = false;
+                this.exportStatus = 'success';
+              },
+              (err2) => {
+                console.error(err2);
+                alert(' completed with error');
+                this.loadingLoader = false;
+                this.exportStatus = 'fail';
+              },
+              () => {
+                this.loadingLoader = false;
+              }
+            );
+        },
+        (err) => {
+          console.error(err);
+          alert(' completed with error');
+          this.loadingLoader = false;
+          this.exportStatus = 'fail';
+        },
+        () => {}
+      );
   }
 }
