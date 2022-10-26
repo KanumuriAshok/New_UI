@@ -3,7 +3,11 @@
 </div>
 <div class="container mt-4">
   <div class="clearfix pb-4">
-    <button [ngStyle]="{'display':userType === 'hld_designer' ? 'none' : 'block' }" type="button" class="btn btn-success btn-sm float-right">
+    <button
+      [ngStyle]="{ display: userType === 'hld_designer' ? 'none' : 'block' }"
+      type="button"
+      class="btn btn-success btn-sm float-right"
+    >
       Create Connection
     </button>
   </div>
@@ -34,19 +38,25 @@
                 data-bs-target="#UploadRefPoints"
                 data-bs-toggle="modal"
               >
-              PN BOUNDRY
+                PN BOUNDRY
               </button>
             </td>
             <td class="tableTitles">13 nov 2021, 7:30 PM</td>
-            <td class="tableTitles">TO CHECK TO PN BOUNDARY FED BY AERIAL OR UNDERGROUND</td>
+            <td class="tableTitles">
+              TO CHECK TO PN BOUNDARY FED BY AERIAL OR UNDERGROUND
+            </td>
             <td class="tableTitles">
               <div [ngClass]="uploadRefFilesStatus"></div>
             </td>
           </tr>
-          <tr class="tableColor" [ngStyle]="{'display':userType === 'hld_designer' ? 'none' : 'block' }">
+          <tr
+            class="tableColor"
+            [ngStyle]="{
+              display: userType === 'hld_designer' ? 'none' : 'block'
+            }"
+          >
             <td class="tableTitles">
               <button
-                
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#shapeFilesModal"
@@ -81,7 +91,7 @@
                 class="btn btn-primary btn-sm btn-size btn_shadow"
                 (click)="UploadGoogle()"
               >
-              DATA FETCH
+                DATA FETCH
               </button>
             </td>
             <td class="tableTitles">13 nov 2021, 7:30 PM</td>
@@ -169,7 +179,7 @@
             </td> -->
             <td class="tableTitles">
               <!-- <div [ngClass]="pnBoundaryCheckStatus"></div> -->
-              <p>UG &nbsp;&nbsp;<span>HB/AR</span></p>
+              <p>{{ pnBoundaryCheckStatus }}</p>
             </td>
           </tr>
 
@@ -255,7 +265,7 @@
                 type="button"
                 class="btn btn-primary btn-sm btn-size btn_shadow1"
                 data-bs-target="#UploadRefPoint"
-                data-bs-toggle="modal" 
+                data-bs-toggle="modal"
                 (click)="UploadRefPoint()"
               >
                 UPLOAD REF. POINT
@@ -267,7 +277,6 @@
               <div [ngClass]="uploadRefFilesStatus"></div>
             </td>
           </tr>
-         
         </tbody>
       </table>
     </div>
@@ -613,9 +622,9 @@
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
-  [ngStyle]="{'display':sigdisplay}"
+  [ngStyle]="{ display: sigdisplay }"
 >
-  <div class="modal-dialog" [ngStyle]="{'display':sigdisplay}">
+  <div class="modal-dialog" [ngStyle]="{ display: sigdisplay }">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">
@@ -665,9 +674,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">
-          PN BOUNDRY
-        </h3>
+        <h3 class="modal-title" id="exampleModalLabel">PN BOUNDRY</h3>
         <button
           type="button"
           class="btn-close"
@@ -678,9 +685,7 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label"
-              >PN Boundry:</label
-            >
+            <label for="message-text" class="col-form-label">PN Boundry:</label>
             <input
               class="form-control"
               type="file"
