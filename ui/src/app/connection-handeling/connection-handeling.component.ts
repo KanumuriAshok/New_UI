@@ -99,7 +99,7 @@ export class ConnectionHandelingComponent implements OnInit {
         alert('completed successfully');
         this.loadingLoader = false;
         this.missingDemandStatus = 'green_status';
-        this.export();
+        // this.export();
       },
       (err) => {
         console.error(err);
@@ -191,7 +191,7 @@ export class ConnectionHandelingComponent implements OnInit {
               this.loadingLoader = false;
               this.exportStatus = 'green_status';
               document.body.removeChild(a);
-              this.UploadRefPoint();
+              // this.UploadRefPoint();
             },
             (err2) => {
               console.error(err2);
