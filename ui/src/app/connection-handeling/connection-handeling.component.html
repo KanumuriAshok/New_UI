@@ -288,13 +288,14 @@
                 class="btn btn-primary btn-sm btn-size btn_shadow1"
                 data-bs-target="#ValidatedRefPoles"
                 data-bs-toggle="modal"
-              >VALIDATED POLES
+              >
+                VALIDATED POLES
               </button>
             </td>
             <td class="tableTitles">13 nov 2021, 7:30 PM</td>
             <td class="tableTitles">Upload ref. Validated Poles</td>
             <td class="tableTitles">
-              <div [ngClass]="uploadRefFilesStatus"></div>
+              <div [ngClass]="uploadValidatedpolesStatus"></div>
             </td>
           </tr>
         </tbody>
@@ -736,7 +737,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Upload Validated Poles</h3>
+        <h3 class="modal-title" id="exampleModalLabel">
+          Upload Validated Poles
+        </h3>
         <button
           type="button"
           class="btn-close"
@@ -747,18 +750,24 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Validated Poles:</label>
+            <label for="message-text" class="col-form-label"
+              >Validated Poles:</label
+            >
             <input
               class="form-control"
               type="file"
               multiple
-              (change)="filesRefDropped($event, 'refpoint_files')"
+              (change)="filesValidatedpoles($event, 'googlepoles_files')"
             />
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="UploadRef()">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="UploadValidatedpoles()"
+        >
           Upload Files
         </button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

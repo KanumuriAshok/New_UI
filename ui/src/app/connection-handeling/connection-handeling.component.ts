@@ -19,7 +19,7 @@ export class ConnectionHandelingComponent implements OnInit {
   pnBoundaryCheckStatus = 'none'; //success,fail
   exportStatus = 'none_status'; //success,fail
   googleFetchStatus = 'none_status'; //success,fail
-
+  uploadValidatedpolesStatus = 'none_status'; //success,fail
   userType: any;
 
   sigdisplay = 'none';
@@ -34,6 +34,7 @@ export class ConnectionHandelingComponent implements OnInit {
   files = {};
   filesRef = {};
   filesGoogle = {};
+  fileValidatedpoles = {};
   filesDropped(event, fileType) {
     this.files[fileType] = event.target.files;
   }
@@ -44,6 +45,10 @@ export class ConnectionHandelingComponent implements OnInit {
 
   filesGoogleDropped(event, fileType) {
     this.filesGoogle[fileType] = event.target.files;
+  }
+
+  filesValidatedpoles(event, fileType) {
+    this.fileValidatedpoles[fileType] = event.target.files;
   }
 
   uploadFiles() {
@@ -281,6 +286,35 @@ export class ConnectionHandelingComponent implements OnInit {
           console.error(err);
           alert(' upload completed with error');
           this.googleFetchStatus = 'red_status';
+        },
+        () => {
+          this.loadingLoader = false;
+        }
+      );
+  }
+
+  UploadValidatedpoles() {
+    ///upload_validatedpoles googlepoles_files
+    this.loadingLoader = true;
+    const formData = new FormData();
+    formData.append('username', localStorage.getItem('username'));
+    for (var k in this.fileValidatedpoles) {
+      for (let j = 0; j < this.fileValidatedpoles[k].length; j++) {
+        formData.append(k, this.fileValidatedpoles[k][j]);
+      }
+    }
+
+    this.httpClient
+      .post(environment.api + '/api/upload_validatedpoles', formData)
+      .subscribe(
+        (res) => {
+          alert('upload completed successfully');
+          this.uploadValidatedpolesStatus = 'green_status';
+        },
+        (err) => {
+          console.error(err);
+          alert(' upload completed with error');
+          this.uploadValidatedpolesStatus = 'red_status';
         },
         () => {
           this.loadingLoader = false;
