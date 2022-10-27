@@ -281,6 +281,22 @@
               <div [ngClass]="uploadRefFilesStatus"></div>
             </td>
           </tr>
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow1"
+                data-bs-target="#ValidatedRefPoles"
+                data-bs-toggle="modal"
+              >VALIDATED POLES
+              </button>
+            </td>
+            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">Upload ref. Validated Poles</td>
+            <td class="tableTitles">
+              <div [ngClass]="uploadRefFilesStatus"></div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -690,6 +706,48 @@
         <form>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">PN Boundry:</label>
+            <input
+              class="form-control"
+              type="file"
+              multiple
+              (change)="filesRefDropped($event, 'refpoint_files')"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="UploadRef()">
+          Upload Files
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="ValidatedRefPoles"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Upload Validated Poles</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Validated Poles:</label>
             <input
               class="form-control"
               type="file"
