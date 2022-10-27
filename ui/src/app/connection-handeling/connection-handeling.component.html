@@ -179,7 +179,11 @@
             </td> -->
             <td class="tableTitles">
               <!-- <div [ngClass]="pnBoundaryCheckStatus"></div> -->
-              <p>{{ pnBoundaryCheckStatus }}</p>
+              <p *ngIf="!pnBoundaryCheckStatus">HB/AR</p>
+              <p *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'ug'">UG</p>
+              <p *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'error'">
+                Error
+              </p>
             </td>
           </tr>
 

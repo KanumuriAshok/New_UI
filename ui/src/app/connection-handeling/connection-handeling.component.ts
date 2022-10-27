@@ -16,7 +16,7 @@ export class ConnectionHandelingComponent implements OnInit {
   extractExistingStatus = 'none_status'; //success,fail
   missingDemandStatus = 'none_status'; //success,fail
   secondaryPreprocessgpStatus = 'none_status'; //success,fail
-  pnBoundaryCheckStatus = ''; //success,fail
+  pnBoundaryCheckStatus = 'none'; //success,fail
   exportStatus = 'none_status'; //success,fail
   googleFetchStatus = 'none_status'; //success,fail
 
@@ -158,7 +158,7 @@ export class ConnectionHandelingComponent implements OnInit {
           console.error(err);
           alert(' completed with error');
           this.loadingLoader = false;
-          this.pnBoundaryCheckStatus = '';
+          this.pnBoundaryCheckStatus = 'error';
         },
         () => {
           this.loadingLoader = false;

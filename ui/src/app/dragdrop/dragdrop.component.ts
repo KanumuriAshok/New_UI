@@ -165,6 +165,12 @@ export class DragdropComponent implements OnInit {
 
   dropNewModel(event, node_) {
     if (this.activatedRoute.snapshot.params['type'] == 'google') {
+      if (this.draggedNodes.length == 0 && node_.key != 'SHAPEFILES_PATH') {
+        alert(
+          'Warning!!! First model should be one of the following: SHAPEFILES_PATH!'
+        );
+        return;
+      }
     } else {
       if (
         this.draggedNodes.length == 0 &&
@@ -235,23 +241,6 @@ export class DragdropComponent implements OnInit {
     if (this.activatedRoute.snapshot.params['type'] == 'google') {
       this.mainNodes = [
         {
-          name: 'Google api fetch',
-          key: 'google_api_fetch',
-          result: {},
-          formData: null,
-          form: {
-            endpointApi: 'upload_streetcenterline',
-            showInputsFormOnDrag: true,
-            inputFiles: [
-              {
-                label: 'Street center line files',
-                name: 'streetcenterline_files',
-                files: [],
-              },
-            ],
-          },
-        },
-        {
           name: 'SHAPEFILES PATH',
           key: 'SHAPEFILES_PATH',
           result: {},
@@ -308,6 +297,23 @@ export class DragdropComponent implements OnInit {
               {
                 label: 'primarynodes_files',
                 name: 'primarynodes_files',
+                files: [],
+              },
+            ],
+          },
+        },
+        {
+          name: 'Google api fetch',
+          key: 'google_api_fetch',
+          result: {},
+          formData: null,
+          form: {
+            endpointApi: 'upload_streetcenterline',
+            showInputsFormOnDrag: true,
+            inputFiles: [
+              {
+                label: 'Street center line files',
+                name: 'streetcenterline_files',
                 files: [],
               },
             ],
