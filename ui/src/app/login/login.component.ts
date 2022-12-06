@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   registerFormGoogle: FormGroup;
   registerFormHld: FormGroup;
+  changePasswordForm: FormGroup;
   registerUserType = 'google_manager'; //hld_designer,google_manager
   projects = [];
   constructor(
@@ -37,6 +38,16 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(3)]],
       cityName: ['', [Validators.required]],
+    });
+
+    this.changePasswordForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      old_pass: ['', [Validators.required, Validators.minLength(3)]],
+      new_pass: ['', [Validators.required, Validators.minLength(3)]],
+      c_pass: ['', [Validators.required, Validators.minLength(3)]],
+      submitted: false,
+      success: false,
+      error_text: '',
     });
 
     this.registerFormHld = this.formBuilder.group({
@@ -71,30 +82,32 @@ export class LoginComponent implements OnInit {
     const formData = new FormData();
     formData.append('city_name', username);
     formData.append('password', password);
-    this.httpClient.post(environment.api+`/api/city_register_login`, formData).subscribe(
-      (res) => {
-        if (res['success'] == true) {
-          localStorage.setItem('isUserLoggedId', '1');
-          localStorage.setItem('username', username);
-          this.router.navigate(['dashboard/workflow/google']);
-        } else {
-          alert(res['message']);
+    this.httpClient
+      .post(environment.api + `/api/city_register_login`, formData)
+      .subscribe(
+        (res) => {
+          if (res['success'] == true) {
+            localStorage.setItem('isUserLoggedId', '1');
+            localStorage.setItem('username', username);
+            this.router.navigate(['dashboard/workflow/google']);
+          } else {
+            alert(res['message']);
+            return;
+          }
+        },
+        (err) => {
+          alert('something went wrong, try later!!');
           return;
-        }
-      },
-      (err) => {
-        alert('something went wrong, try later!!');
-        return;
-      },
-      () => {}
-    );
+        },
+        () => {}
+      );
   }
   loginHld() {
     this.submitted = true;
     let username = this.loginForm.value.username;
     let password = this.loginForm.value.password;
     this.httpClient
-      .post(environment.api+'/api/login', {
+      .post(environment.api + '/api/login', {
         username: username, //---todo: check how to pass for city_register_login
         password: password,
       })
@@ -156,16 +169,18 @@ export class LoginComponent implements OnInit {
     formData.append('city_name', cityName);
     formData.append('username', username);
     formData.append('password', password);
-    this.httpClient.post(environment.api+'/api/city_register', formData).subscribe(
-      (res) => {
-        alert(res['message']);
-      },
-      (err) => {
-        alert('something went wrong, try later!!');
-        return;
-      },
-      () => {}
-    );
+    this.httpClient
+      .post(environment.api + '/api/city_register', formData)
+      .subscribe(
+        (res) => {
+          alert(res['message']);
+        },
+        (err) => {
+          alert('something went wrong, try later!!');
+          return;
+        },
+        () => {}
+      );
   }
 
   registerHld() {
@@ -245,6 +260,42 @@ export class LoginComponent implements OnInit {
       );
   }
 
+  changePassword() {
+    //change_password
+    /*
+     username = request.form.get('username')
+            old_pass = request.form.get('old_pass')
+            usernameold_passnew_pass = request.form.get('new_pass')
+            c_pass = request.form.get('c_pass')
+    */
+
+    let username = this.changePasswordForm.value.username;
+    let old_pass = this.changePasswordForm.value.old_pass;
+    let new_pass = this.changePasswordForm.value.new_pass;
+    let c_pass = this.changePasswordForm.value.c_pass;
+
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('old_pass', old_pass);
+    formData.append('new_pass', new_pass);
+    formData.append('c_pass', c_pass);
+    this.httpClient
+      .post(environment.api + '/api/change_password', formData)
+      .subscribe(
+        (res) => {
+          this.changePasswordForm.value.success = true;
+          this.changePasswordForm.value.error_text = res['message'];
+        },
+        (err) => {
+          this.changePasswordForm.value.error_text = 'Error occured';
+          this.changePasswordForm.value.success = false;
+          return;
+        },
+        () => {
+          this.changePasswordForm.value.submitted = true;
+        }
+      );
+  }
   onSelectLoginUserType(e) {
     debugger;
   }

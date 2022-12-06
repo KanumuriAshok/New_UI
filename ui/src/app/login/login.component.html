@@ -122,7 +122,12 @@
             <div class="container mb-5">
               <div class="row">
                 <div class="col text-center text-danger text-capitalize">
-                  <a style="color: brown" href="">
+                  <a
+                    style="color: brown"
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
                     Forgot your password? <br />
                     Click Here</a
                   >
@@ -287,7 +292,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Street Centre Line</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Reset password</h3>
         <button
           type="button"
           class="btn-close"
@@ -296,20 +301,66 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <div class="mb-3 mt-4">
-              <label class="form-label">Street Centre Line</label>
-              <input class="form-control" type="file" multiple />
-            </div>
+        <form [formGroup]="changePasswordForm">
+          <div class="mb-4">
+            <label class="form-label text-capitalize">User name:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="username"
+            />
           </div>
+          <div class="mb-4">
+            <label class="form-label text-capitalize">Old password:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="old_pass"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="form-label text-capitalize">New password:</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="new_pass"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="form-label text-capitalize"
+              >Password confirmation:</label
+            >
+            <input type="text" class="form-control" formControlName="c_pass" />
+          </div>
+          <label
+            *ngIf="
+              changePasswordForm.value.submitted &&
+              !changePasswordForm.value.success
+            "
+            style="color: red"
+            >{{ "Error: " + changePasswordForm.value.error_text }}</label
+          >
+          <label
+            *ngIf="
+              changePasswordForm.value.submitted &&
+              changePasswordForm.value.success
+            "
+            style="color: green"
+            >{{ changePasswordForm.value.error_text }}</label
+          >
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="changePassword()"
+        >
+          Submit
+        </button>
       </div>
     </div>
   </div>
