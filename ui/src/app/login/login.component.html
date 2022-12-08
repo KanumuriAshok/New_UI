@@ -121,16 +121,14 @@
             </div>
             <div class="container mb-5">
               <div class="row">
-                <div class="col text-center text-danger text-capitalize">
-                  <a
-                    style="color: brown"
-                    href=""
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
+                <div
+                  class="col text-center text-danger text-capitalize"
+                  (click)="showDialog()"
+                >
+                  <button style="color: brown">
                     Forgot your password? <br />
-                    Click Here</a
-                  >
+                    Click Here
+                  </button>
                 </div>
               </div>
               <div class="row">
@@ -283,20 +281,24 @@
 </div>
 
 <div
+  (click)="onContainerClicked($event)"
   class="modal fade"
-  id="exampleModal"
+  style="background: #8080804f"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
+  [ngClass]="{ in: visibleAnimate }"
+  [ngStyle]="{
+    display: visible ? 'block' : 'none',
+    opacity: visibleAnimate ? 1 : 0
+  }"
 >
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="margin-top: 10%">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">Reset password</h3>
         <button
           type="button"
           class="btn-close"
-          data-bs-dismiss="modal"
+          (click)="hideDialog()"
           aria-label="Close"
         ></button>
       </div>
@@ -351,7 +353,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-secondary" (click)="hideDialog()">
           Close
         </button>
         <button

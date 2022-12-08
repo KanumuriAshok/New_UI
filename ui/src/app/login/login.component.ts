@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  $: any;
   submitted = false;
   loginForm: FormGroup;
   registerFormGoogle: FormGroup;
@@ -284,7 +285,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (res) => {
           this.changePasswordForm.value.success = true;
-          this.changePasswordForm.value.error_text = res['message'];
+          this.changePasswordForm.value.error_text = res['message '];
+          this.hideDialog();
+          alert(this.changePasswordForm.value.error_text);
         },
         (err) => {
           this.changePasswordForm.value.error_text = 'Error occured';
@@ -293,9 +296,38 @@ export class LoginComponent implements OnInit {
         },
         () => {
           this.changePasswordForm.value.submitted = true;
+          this.changePasswordForm = this.formBuilder.group({
+            username: ['', [Validators.required]],
+            old_pass: ['', [Validators.required, Validators.minLength(3)]],
+            new_pass: ['', [Validators.required, Validators.minLength(3)]],
+            c_pass: ['', [Validators.required, Validators.minLength(3)]],
+            submitted: false,
+            success: false,
+            error_text: '',
+          });
         }
       );
   }
+
+  public visible = false;
+  public visibleAnimate = false;
+
+  public showDialog(): void {
+    this.visible = true;
+    setTimeout(() => (this.visibleAnimate = true), 100);
+  }
+
+  public hideDialog(): void {
+    this.visible = false;
+    this.visibleAnimate = false;
+  }
+
+  public onContainerClicked(event: MouseEvent): void {
+    if ((<HTMLElement>event.target).classList.contains('modal')) {
+      this.hideDialog();
+    }
+  }
+
   onSelectLoginUserType(e) {
     debugger;
   }
