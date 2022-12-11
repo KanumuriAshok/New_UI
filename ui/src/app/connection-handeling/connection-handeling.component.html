@@ -41,7 +41,7 @@
                 PN BOUNDRY
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">{{ lastUpdateDates.pn_boundry }}</td>
             <td class="tableTitles">
               TO CHECK TO PN BOUNDARY FED BY AERIAL OR UNDERGROUND
             </td>
@@ -65,7 +65,7 @@
                 SHAPEFILES PATH
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">{{ lastUpdateDates.shape_file_path }}</td>
             <td class="tableTitles">All the Shape files to be added</td>
             <!-- <td class="tableTitles">
               <div>
@@ -94,7 +94,7 @@
                 DATA FETCH
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">{{ lastUpdateDates.data_fetch }}</td>
             <td class="tableTitles">
               Algorithm fetch data from Google street view
             </td>
@@ -127,7 +127,9 @@
                 PRE-PROCESSING
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              {{ lastUpdateDates.google_data_pre_process }}
+            </td>
             <td class="tableTitles">
               Validate the raw Google pole data with existing infrastructure
             </td>
@@ -160,7 +162,7 @@
                 CHECK
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">{{ lastUpdateDates.pn_boundry_check }}</td>
             <td class="tableTitles">
               To check to PN boundary fed by Aerial or Underground
             </td>
@@ -216,7 +218,9 @@
                 INFRASTRUCTURE
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              {{ lastUpdateDates.extract_existing_infrastructure }}
+            </td>
             <td class="tableTitles">
               Combine poles from google street view and PIA structure
             </td>
@@ -236,7 +240,9 @@
                 POINT CAPTURE
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">
+              {{ lastUpdateDates.missing_demand_infrastructure }}
+            </td>
             <td class="tableTitles">
               Generate missing demand points from cartographic text
             </td>
@@ -255,7 +261,7 @@
                 EXPORT
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">{{ lastUpdateDates.export }}</td>
             <td class="tableTitles">
               Exporting all input to a qgis workspace and to create REF.POINTS
             </td>
@@ -275,7 +281,7 @@
                 UPLOAD REF. POINT
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">{{ lastUpdateDates.upload_ref_points }}</td>
             <td class="tableTitles">Upload ref. points created in QGIS</td>
             <td class="tableTitles">
               <div [ngClass]="uploadRefFilesStatus"></div>
@@ -292,7 +298,7 @@
                 VALIDATED POLES
               </button>
             </td>
-            <td class="tableTitles">13 nov 2021, 7:30 PM</td>
+            <td class="tableTitles">{{ lastUpdateDates.validated_poles }}</td>
             <td class="tableTitles">Upload ref. Validated Poles</td>
             <td class="tableTitles">
               <div [ngClass]="uploadValidatedpolesStatus"></div>

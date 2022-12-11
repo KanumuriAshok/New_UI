@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit {
     });
     this.registerFormGoogle = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      password: [
+        { value: '123', disabled: true },
+        [Validators.required, Validators.minLength(3)],
+      ],
       cityName: ['', [Validators.required]],
     });
 
@@ -54,7 +57,11 @@ export class LoginComponent implements OnInit {
     this.registerFormHld = this.formBuilder.group({
       projectName: [null, [Validators.required]],
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      nameuser: ['', [Validators.required]],
+      password: [
+        { value: '123', disabled: true },
+        [Validators.required, Validators.minLength(3)],
+      ],
       scheme: ['', [Validators.required]],
     });
   }
@@ -164,12 +171,12 @@ export class LoginComponent implements OnInit {
 
     let username = this.registerFormGoogle.value.username;
     let cityName = this.registerFormGoogle.value.cityName;
-    let password = this.registerFormGoogle.value.password;
+    //let password = this.registerFormGoogle.value.password;
     // let scheme = this.registerFormGoogle.value.scheme;
     const formData = new FormData();
     formData.append('city_name', cityName);
     formData.append('username', username);
-    formData.append('password', password);
+    //formData.append('password', password);
     this.httpClient
       .post(environment.api + '/api/city_register', formData)
       .subscribe(
@@ -189,13 +196,15 @@ export class LoginComponent implements OnInit {
 
     let projectName = this.registerFormHld.value.projectName;
     let username = this.registerFormHld.value.username;
-    let password = this.registerFormHld.value.password;
+    let nameuser = this.registerFormHld.value.nameuser; //label:username
+    //let password = this.registerFormHld.value.password;
     let scheme = this.registerFormHld.value.scheme;
     this.httpClient
       .post('/api/register', {
         username: username,
-        password: password,
+        //password: password,
         schemaname: scheme,
+        nameuser: nameuser,
       })
       .subscribe(
         (res) => {

@@ -23,8 +23,27 @@ export class ConnectionHandelingComponent implements OnInit {
   userType: any;
 
   sigdisplay = 'none';
+
+  lastUpdateDates: any = {
+    data_fetch: '',
+    export: '',
+    extract_existing_infrastructure: '',
+    google_data_pre_process: '',
+    id: 6,
+    'message ': 'successfully.',
+    missing_demand_infrastructure: '',
+    pn_boundry: '',
+    pn_boundry_check: '',
+    status: 200,
+    upload_ref_points: '',
+    username: 'pn5',
+    validated_poles: '',
+    //shape_file_path - not returning
+  };
+
   ngOnInit(): void {
     this.userType = localStorage.getItem('usertype');
+    this.loadLastUpdateDates();
     console.log(this.userType);
   }
 
@@ -70,7 +89,9 @@ export class ConnectionHandelingComponent implements OnInit {
         alert(' upload completed with error');
         this.uploadFilesStatus = 'red_status';
       },
-      () => {}
+      () => {
+        this.loadLastUpdateDates();
+      }
     );
   }
   extractExisting() {
@@ -94,6 +115,7 @@ export class ConnectionHandelingComponent implements OnInit {
         },
         () => {
           this.loadingLoader = false;
+          this.loadLastUpdateDates();
         }
       );
   }
@@ -101,22 +123,25 @@ export class ConnectionHandelingComponent implements OnInit {
     this.loadingLoader = true;
     const formData = new FormData();
     formData.append('username', localStorage.getItem('username'));
-    this.httpClient.post(environment.api+'/api/secondary_preprocessdp', formData).subscribe(
-      (res) => {
-        alert('completed successfully');
-        this.loadingLoader = false;
-        this.missingDemandStatus = 'green_status';
-        // this.export();
-      },
-      (err) => {
-        console.error(err);
-        alert(' completed with error');
-        this.missingDemandStatus = 'red_status';
-      },
-      () => {
-        this.loadingLoader = false;
-      }
-    );
+    this.httpClient
+      .post(environment.api + '/api/secondary_preprocessdp', formData)
+      .subscribe(
+        (res) => {
+          alert('completed successfully');
+          this.loadingLoader = false;
+          this.missingDemandStatus = 'green_status';
+          // this.export();
+        },
+        (err) => {
+          console.error(err);
+          alert(' completed with error');
+          this.missingDemandStatus = 'red_status';
+        },
+        () => {
+          this.loadingLoader = false;
+          this.loadLastUpdateDates();
+        }
+      );
   }
   secondaryPreprocessgp() {
     //
@@ -140,6 +165,7 @@ export class ConnectionHandelingComponent implements OnInit {
         },
         () => {
           this.loadingLoader = false;
+          this.loadLastUpdateDates();
         }
       );
   }
@@ -165,6 +191,7 @@ export class ConnectionHandelingComponent implements OnInit {
         },
         () => {
           this.loadingLoader = false;
+          this.loadLastUpdateDates();
         }
       );
   }
@@ -226,7 +253,9 @@ export class ConnectionHandelingComponent implements OnInit {
           this.loadingLoader = false;
           this.exportStatus = 'red_status';
         },
-        () => {}
+        () => {
+          this.loadLastUpdateDates();
+        }
       );
   }
 
@@ -236,7 +265,6 @@ export class ConnectionHandelingComponent implements OnInit {
     formData.append('username', localStorage.getItem('username'));
     for (var k in this.filesRef) {
       for (let j = 0; j < this.filesRef[k].length; j++) {
-        debugger;
         formData.append(k, this.filesRef[k][j]);
       }
     }
@@ -256,6 +284,7 @@ export class ConnectionHandelingComponent implements OnInit {
         },
         () => {
           this.loadingLoader = false;
+          this.loadLastUpdateDates();
         }
       );
   }
@@ -287,6 +316,7 @@ export class ConnectionHandelingComponent implements OnInit {
         },
         () => {
           this.loadingLoader = false;
+          this.loadLastUpdateDates();
         }
       );
   }
@@ -316,6 +346,26 @@ export class ConnectionHandelingComponent implements OnInit {
         },
         () => {
           this.loadingLoader = false;
+          this.loadLastUpdateDates();
+        }
+      );
+  }
+
+  loadLastUpdateDates(): void {
+    const formData = new FormData();
+    formData.append('username', localStorage.getItem('username'));
+    this.httpClient
+      .post(environment.api + `/api/get_model_history`, formData)
+      .subscribe(
+        (res) => {
+          this.lastUpdateDates = res;
+        },
+        (err) => {
+          alert('something went wrong, on getting last execute dates!!');
+          return;
+        },
+        () => {
+          this.loadLastUpdateDates();
         }
       );
   }
