@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   changePasswordForm: FormGroup;
   registerUserType = 'google_manager'; //hld_designer,google_manager
   projects = [];
+  pn_list = [];
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
@@ -37,10 +38,10 @@ export class LoginComponent implements OnInit {
     });
     this.registerFormGoogle = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: [
+      /*password: [
         { value: '123', disabled: true },
         [Validators.required, Validators.minLength(3)],
-      ],
+      ],*/
       cityName: ['', [Validators.required]],
     });
 
@@ -58,10 +59,10 @@ export class LoginComponent implements OnInit {
       projectName: [null, [Validators.required]],
       username: ['', [Validators.required]],
       nameuser: ['', [Validators.required]],
-      password: [
+      /*password: [
         { value: '123', disabled: true },
         [Validators.required, Validators.minLength(3)],
-      ],
+      ],*/
       scheme: ['', [Validators.required]],
     });
   }
@@ -69,6 +70,9 @@ export class LoginComponent implements OnInit {
     if (this.registerUserType == 'hld_designer') {
       if (!this.projects || this.projects.length == 0) {
         this.getProjects();
+      }
+      if (!this.pn_list || this.pn_list.length == 0) {
+        this.getPnList();
       }
     }
   }
@@ -141,9 +145,24 @@ export class LoginComponent implements OnInit {
         () => {}
       );
   }
-
+  getPnList() {
+    this.httpClient.get(environment.api + '/api/pn_list').subscribe(
+      (res: any) => {
+        if (res.status === 200) {
+          this.pn_list = res.data;
+        }
+      },
+      (err) => {
+        alert(
+          'something went wrong on getting pn_list (endpoint: pn_list), try later!!'
+        );
+        return;
+      },
+      () => {}
+    );
+  }
   getProjects() {
-    this.httpClient.get('/api/directory_list').subscribe(
+    this.httpClient.get(environment.api + '/api/directory_list').subscribe(
       (res: any) => {
         if (res.status === 200) {
           this.projects = res.data;
@@ -200,11 +219,11 @@ export class LoginComponent implements OnInit {
     //let password = this.registerFormHld.value.password;
     let scheme = this.registerFormHld.value.scheme;
     this.httpClient
-      .post('/api/register', {
+      .post(environment.api + '/api/register', {
         username: username,
         //password: password,
         schemaname: scheme,
-        nameuser: nameuser,
+        schema: nameuser,
       })
       .subscribe(
         (res) => {

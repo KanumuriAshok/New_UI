@@ -190,7 +190,7 @@
                       id="name"
                     />
                   </div>
-                  <div class="mb-4">
+                  <!-- <div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label"
                       >Password</label
                     >
@@ -199,7 +199,7 @@
                       formControlName="password"
                       class="form-control"
                     />
-                  </div>
+                  </div> -->
                   <!-- <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label"
                       >Scheme</label
@@ -233,7 +233,7 @@
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label">
-                      PN Number</label
+                      User name</label
                     >
                     <input
                       type="text"
@@ -241,7 +241,7 @@
                       class="form-control"
                     />
                   </div>
-                  <div class="mb-4">
+                  <!--div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label">
                       Username</label
                     >
@@ -251,7 +251,7 @@
                       class="form-control"
                     />
                   </div>
-                  <div class="mb-4">
+                  <div class="mb-4 hidden">
                     <label for="exampleInputEmail1" class="form-label">
                       Password</label
                     >
@@ -261,17 +261,31 @@
                       class="form-control"
                       id="name"
                     />
-                  </div>
+                  </div-->
                   <div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label">
-                      Schema</label
+                      PN number</label
                     >
-                    <input
+                    <!-- <input
                       type="text"
                       formControlName="scheme"
                       class="form-control"
-                    /></div
-                ></ng-container>
+                    /> -->
+                    <select
+                      class="form-select form-select-sm"
+                      aria-label=".form-select-sm example"
+                      formControlName="nameuser"
+                    >
+                      <option value="default">Select Dropdown</option>
+                      <option
+                        *ngFor="let pn_item of pn_list"
+                        [value]="pn_item.name"
+                      >
+                        {{ pn_item.name }}
+                      </option>
+                    </select>
+                  </div></ng-container
+                >
                 <div class="container mb-5">
                   <div class="row">
                     <div class="col d-grid gap-2">

@@ -120,7 +120,7 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'secondary_add_page',
       },
     },
-    {
+    /*{
       name: 'Distribution network',
       key: 'secondary_dis_page',
       result: {},
@@ -154,6 +154,51 @@ export class DragdropComponent implements OnInit {
       formData: null,
       form: {
         endpointApi: 'snboundary_page',
+      },
+    },*/
+    {
+      name: 'Trenching',
+      key: 'trenching',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'trenching',
+      },
+    },
+    {
+      name: 'Integrated infrastructure',
+      key: 'integrated_infrastructure',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'integrated_infrastructure',
+      },
+    },
+    {
+      name: 'Data cleanup',
+      key: 'data_cleanup',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'data_cleanup',
+      },
+    },
+    {
+      name: 'Address association',
+      key: 'address_association',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'address_association',
+      },
+    },
+    {
+      name: 'Address creation',
+      key: 'address_creation',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'address_creation',
       },
     },
   ];
