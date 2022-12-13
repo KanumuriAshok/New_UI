@@ -318,7 +318,13 @@
   <div class="modal-dialog" style="margin-top: 10%">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Change password</h3>
+        <h3 class="modal-title" id="exampleModalLabel">
+          {{
+            registerUserType == "google_manager"
+              ? "Change password for DB Manager"
+              : "Change password for HLD LLD Designer"
+          }}
+        </h3>
         <button
           type="button"
           class="btn-close"
@@ -329,7 +335,9 @@
       <div class="modal-body">
         <form [formGroup]="changePasswordForm">
           <div class="mb-4">
-            <label class="form-label text-capitalize">User name:</label>
+            <label class="form-label text-capitalize">{{
+              registerUserType == "google_manager" ? "Area name:" : "User name"
+            }}</label>
             <input
               type="text"
               class="form-control"

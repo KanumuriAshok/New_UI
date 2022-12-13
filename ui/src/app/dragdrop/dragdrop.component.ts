@@ -364,6 +364,30 @@ export class DragdropComponent implements OnInit {
             ],
           },
         },
+        {
+          name: 'Pn bondry',
+          key: 'pn_bondry',
+          result: {},
+          formData: null,
+          form: {
+            endpointApi: 'pn_bondry',
+            showInputsFormOnDrag: true,
+            inputFiles: [
+              {
+                label: 'Pnboundary files',
+                name: 'pnboundary_files',
+                files: [],
+              },
+            ],
+            inputs: [
+              {
+                name: 'city_name',
+                value: null,
+                label: 'City name',
+              },
+            ],
+          },
+        },
       ];
     }
 

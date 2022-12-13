@@ -195,7 +195,7 @@ export class LoginComponent implements OnInit {
     const formData = new FormData();
     formData.append('city_name', cityName);
     formData.append('username', username);
-    //formData.append('password', password);
+    formData.append('password', '123');
     this.httpClient
       .post(environment.api + '/api/city_register', formData)
       .subscribe(
@@ -221,7 +221,7 @@ export class LoginComponent implements OnInit {
     this.httpClient
       .post(environment.api + '/api/register', {
         username: username,
-        //password: password,
+        password: '123',
         schemaname: scheme,
         schema: nameuser,
       })
@@ -304,37 +304,42 @@ export class LoginComponent implements OnInit {
     let c_pass = this.changePasswordForm.value.c_pass;
 
     const formData = new FormData();
-    formData.append('username', username);
+    let url__ = environment.api + '/api/change_password';
+    if (this.registerUserType == 'google_manager') {
+      formData.append('city_name', username);
+      url__ = environment.api + '/api/db_manager_change_password';
+    } else {
+      formData.append('username', username);
+    }
+
     formData.append('old_pass', old_pass);
     formData.append('new_pass', new_pass);
     formData.append('c_pass', c_pass);
-    this.httpClient
-      .post(environment.api + '/api/change_password', formData)
-      .subscribe(
-        (res) => {
-          this.changePasswordForm.value.success = true;
-          this.changePasswordForm.value.error_text = res['message '];
-          this.hideDialog();
-          alert(this.changePasswordForm.value.error_text);
-        },
-        (err) => {
-          this.changePasswordForm.value.error_text = 'Error occured';
-          this.changePasswordForm.value.success = false;
-          return;
-        },
-        () => {
-          this.changePasswordForm.value.submitted = true;
-          this.changePasswordForm = this.formBuilder.group({
-            username: ['', [Validators.required]],
-            old_pass: ['', [Validators.required, Validators.minLength(3)]],
-            new_pass: ['', [Validators.required, Validators.minLength(3)]],
-            c_pass: ['', [Validators.required, Validators.minLength(3)]],
-            submitted: false,
-            success: false,
-            error_text: '',
-          });
-        }
-      );
+    this.httpClient.post(url__, formData).subscribe(
+      (res) => {
+        this.changePasswordForm.value.success = true;
+        this.changePasswordForm.value.error_text = res['message '];
+        this.hideDialog();
+        alert(this.changePasswordForm.value.error_text);
+      },
+      (err) => {
+        this.changePasswordForm.value.error_text = 'Error occured';
+        this.changePasswordForm.value.success = false;
+        return;
+      },
+      () => {
+        this.changePasswordForm.value.submitted = true;
+        this.changePasswordForm = this.formBuilder.group({
+          username: ['', [Validators.required]],
+          old_pass: ['', [Validators.required, Validators.minLength(3)]],
+          new_pass: ['', [Validators.required, Validators.minLength(3)]],
+          c_pass: ['', [Validators.required, Validators.minLength(3)]],
+          submitted: false,
+          success: false,
+          error_text: '',
+        });
+      }
+    );
   }
 
   public visible = false;
