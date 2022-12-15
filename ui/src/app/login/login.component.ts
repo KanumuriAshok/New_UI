@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         { value: '123', disabled: true },
         [Validators.required, Validators.minLength(3)],
       ],*/
-      scheme: ['', [Validators.required]],
+      // scheme: ['', [Validators.required]],
     });
   }
   onSignUpTypeChange() {
@@ -217,13 +217,13 @@ export class LoginComponent implements OnInit {
     let username = this.registerFormHld.value.username;
     let nameuser = this.registerFormHld.value.nameuser; //label:username
     //let password = this.registerFormHld.value.password;
-    let scheme = this.registerFormHld.value.scheme;
+    // let scheme = this.registerFormHld.value.scheme;
     this.httpClient
       .post(environment.api + '/api/register', {
         username: username,
         password: '123',
-        schemaname: scheme,
-        schema: nameuser,
+        schemaname: nameuser,
+        // schema: nameuser,
       })
       .subscribe(
         (res) => {
