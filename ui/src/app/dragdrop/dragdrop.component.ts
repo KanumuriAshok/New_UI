@@ -210,12 +210,12 @@ export class DragdropComponent implements OnInit {
 
   dropNewModel(event, node_) {
     if (this.activatedRoute.snapshot.params['type'] == 'google') {
-      if (this.draggedNodes.length == 0 && node_.key != 'SHAPEFILES_PATH') {
-        alert(
-          'Warning!!! First model should be one of the following: SHAPEFILES_PATH!'
-        );
-        return;
-      }
+      // if (this.draggedNodes.length == 0 && node_.key != 'SHAPEFILES_PATH') {
+      //   // alert(
+      //   //   'Warning!!! First model should be one of the following: SHAPEFILES_PATH!'
+      //   // );
+      //   return;
+      // }
     } else {
       if (
         this.draggedNodes.length == 0 &&
@@ -344,6 +344,36 @@ export class DragdropComponent implements OnInit {
                 name: 'primarynodes_files',
                 files: [],
               },
+              {
+                label: 'FAC-FHUB',
+                name: 'FAC-FHUB',
+                files: [],
+              },
+              {
+                label: 'Feeder Ring Cables',
+                name: 'Feeder Ring Cables',
+                files: [],
+              },
+              {
+                label: 'IN_CustomerPremises',
+                name: 'IN_CustomerPremises',
+                files: [],
+              },
+              {
+                label: 'IN_ForcedPrimDistributionClusters',
+                name: 'IN_ForcedPrimDistributionClusters',
+                files: [],
+              },
+              {
+                label: 'OUT_BackBonePoints',
+                name: 'OUT_BackBonePoints',
+                files: [],
+              },
+              {
+                label: 'TopographicArea',
+                name: 'TopographicArea',
+                files: [],
+              },
             ],
           },
         },
@@ -383,7 +413,8 @@ export class DragdropComponent implements OnInit {
               {
                 name: 'city_name',
                 value: null,
-                label: 'City name',
+                label: 'Pn Number',
+                placeholder: 'Enter Pn Number'
               },
             ],
           },

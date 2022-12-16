@@ -70,13 +70,13 @@
           <button class="btn btn-login" (click)="showTerminal()">
             Show Terminal
           </button>
-          <button
+          <!-- <button
             class="btn btn-login"
             style="margin-left: 10px"
             (click)="export()"
           >
             Export
-          </button>
+          </button> -->
         </div>
       </div>
 
@@ -206,13 +206,13 @@
     />
   </svg>
 </div>
-<div
+<!-- <div
   class="container-fluid"
   style="background-color: #f5f5f5; margin-top: 200px"
 >
   <div class="row">
     <div class="col-3">
-      <!--cluster correction part start-->
+     // cluster correction part start
       <div>
         <div
           *ngIf="
@@ -280,7 +280,7 @@
         </button>
       </div>
 
-      <!--end-->
+      //end
     </div>
     <div class="col-9">
       <app-ol-map
@@ -291,7 +291,7 @@
       ></app-ol-map>
     </div>
   </div>
-</div>
+</div> -->
 <div
   (click)="onContainerClicked($event)"
   class="modal fade"
@@ -320,6 +320,7 @@
             [type]="input_.type"
             class="form-control"
             [(ngModel)]="input_.value"
+            [placeholder]="input_.placeholder"
           />
         </div>
         <div
