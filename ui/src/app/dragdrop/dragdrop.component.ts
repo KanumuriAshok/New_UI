@@ -201,6 +201,33 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'address_creation',
       },
     },
+    {
+      name: 'Splice Joint',
+      key: 'splice_joint',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'splice_joint',
+      },
+    },
+    {
+      name: 'Preprocess CP',
+      key: 'preprocess_CP',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'preprocess_CP',
+      },
+    },
+    {
+      name: 'Preprocess DP',
+      key: 'preprocess_DP',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'preprocess_DP',
+      },
+    },
   ];
   draggedNodes = [];
   lines = [];
