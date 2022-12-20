@@ -289,6 +289,36 @@ export class ConnectionHandelingComponent implements OnInit {
       );
   }
 
+  UploadRef1() {
+    const formData = new FormData();
+    this.loadingLoader = true;
+    formData.append('username', localStorage.getItem('username'));
+    for (var k in this.filesRef) {
+      for (let j = 0; j < this.filesRef[k].length; j++) {
+        formData.append(k, this.filesRef[k][j]);
+      }
+    }
+
+    this.httpClient
+      .post(environment.api + '/api/SWIMS_data_file_upload', formData)
+      .subscribe(
+        (res) => {
+          alert('upload completed successfully');
+          this.uploadRefFilesStatus = 'green_status';
+          this.UploadGoogle();
+        },
+        (err) => {
+          console.error(err);
+          alert(' upload completed with error');
+          this.uploadRefFilesStatus = 'red_status';
+        },
+        () => {
+          this.loadingLoader = false;
+          this.loadLastUpdateDates();
+        }
+      );
+  }
+
   UploadGoogle() {
     const formData = new FormData();
     this.loadingLoader = true;
