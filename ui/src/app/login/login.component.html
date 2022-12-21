@@ -320,7 +320,7 @@
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">
           {{
-            registerUserType == "google_manager"
+            loginForm.value.userType == "google_manager"
               ? "Change password for DB Manager"
               : "Change password for HLD LLD Designer"
           }}
@@ -336,7 +336,9 @@
         <form [formGroup]="changePasswordForm">
           <div class="mb-4">
             <label class="form-label text-capitalize">{{
-              registerUserType == "google_manager" ? "Area name:" : "User name"
+              loginForm.value.userType == "google_manager"
+                ? "Area name:"
+                : "User name"
             }}</label>
             <input
               type="text"
@@ -385,7 +387,12 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="hideDialog()">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          style="margin-right: auto"
+          (click)="hideDialog()"
+        >
           Close
         </button>
         <button
