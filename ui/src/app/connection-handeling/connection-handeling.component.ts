@@ -395,7 +395,7 @@ export class ConnectionHandelingComponent implements OnInit {
           return;
         },
         () => {
-          this.loadLastUpdateDates();
+          // this.loadLastUpdateDates();
         }
       );
   }
