@@ -246,6 +246,15 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'secondary_preprodp',
       },
     },
+    {
+      name: 'SWIMS DATA',
+      key: 'SWIMS_data_file_upload',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'SWIMS_data_file_upload',
+      },
+    },
   ];
   draggedNodes = [];
   lines = [];
