@@ -65,15 +65,19 @@ export class LoginComponent implements OnInit {
       ],*/
       // scheme: ['', [Validators.required]],
     });
+
+    this.registerFormHld.get('projectName').valueChanges.subscribe((x) => {
+      this.getPnList(x);
+    });
   }
   onSignUpTypeChange() {
     if (this.registerUserType == 'hld_designer') {
       if (!this.projects || this.projects.length == 0) {
         this.getProjects();
       }
-      if (!this.pn_list || this.pn_list.length == 0) {
-        this.getPnList();
-      }
+      // if (!this.pn_list || this.pn_list.length == 0) {
+      //   this.getPnList();
+      // }
     }
   }
 
@@ -145,8 +149,11 @@ export class LoginComponent implements OnInit {
         () => {}
       );
   }
-  getPnList() {
-    this.httpClient.get(environment.api + '/api/pn_list').subscribe(
+  getPnList(cityName) {
+    let formData = new FormData();
+    formData.append('city_name', cityName);
+
+    this.httpClient.post(environment.api + '/api/pn_list', formData).subscribe(
       (res: any) => {
         if (res.status === 200) {
           this.pn_list = res.data;
@@ -156,7 +163,6 @@ export class LoginComponent implements OnInit {
         alert(
           'something went wrong on getting pn_list (endpoint: pn_list), try later!!'
         );
-        return;
       },
       () => {}
     );
@@ -165,7 +171,9 @@ export class LoginComponent implements OnInit {
     this.httpClient.get(environment.api + '/api/directory_list').subscribe(
       (res: any) => {
         if (res.status === 200) {
-          this.projects = res.data;
+          this.projects = res.data.filter(function (item) {
+            return item.name !== 'data_input';
+          });
         }
       },
       (err) => {
@@ -361,7 +369,5 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSelectLoginUserType(e) {
-    debugger;
-  }
+  onSelectLoginUserType(e) {}
 }

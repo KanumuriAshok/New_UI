@@ -66,12 +66,21 @@ export class DragdropComponent implements OnInit {
       },
     },
     {
-      name: 'PN Nodeplacement',
-      key: 'secondary_pn_np',
+      name: 'PN Nodeplacement (fachubchambers)',
+      key: 'secondary_fachubchambers',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'secondary_pn_np',
+        endpointApi: 'secondary_fachubchambers',
+      },
+    },
+    {
+      name: 'PN Nodeplacement (chamberplacement)',
+      key: 'secondary_chamberplacement',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_chamberplacement',
       },
     },
     {
@@ -202,30 +211,39 @@ export class DragdropComponent implements OnInit {
       },
     },
     {
-      name: 'Splice Joint',
-      key: 'splice_joint',
+      name: 'Splice Joint (ring)',
+      key: 'secondary_ringarchsj',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'splice_joint',
+        endpointApi: 'secondary_ringarchsj',
+      },
+    },
+    {
+      name: 'Splice Joint (ribbon)',
+      key: 'secondary_ribbonarchsj',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_ribbonarchsj',
       },
     },
     {
       name: 'Preprocess CP',
-      key: 'preprocess_CP',
+      key: 'secondary_preprocp',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'preprocess_CP',
+        endpointApi: 'secondary_preprocp',
       },
     },
     {
       name: 'Preprocess DP',
-      key: 'preprocess_DP',
+      key: 'secondary_preprodp',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'preprocess_DP',
+        endpointApi: 'secondary_preprodp',
       },
     },
   ];
@@ -430,18 +448,37 @@ export class DragdropComponent implements OnInit {
             endpointApi: 'pn_bondry',
             showInputsFormOnDrag: true,
             inputFiles: [
-              {
-                label: 'Pnboundary files',
-                name: 'pnboundary_files',
-                files: [],
-              },
+              // {
+              //   label: 'Pnboundary files',
+              //   name: 'pnboundary_files',
+              //   files: [],
+              // },
             ],
             inputs: [
               {
                 name: 'username',
                 value: null,
                 label: 'Pn Number',
-                placeholder: 'Enter Pn Number'
+                placeholder: 'Enter Pn Number',
+              },
+            ],
+          },
+        },
+        {
+          name: 'Clip',
+          key: 'secondary_clip',
+          result: {},
+          formData: null,
+          form: {
+            endpointApi: 'secondary_clip',
+            showInputsFormOnDrag: true,
+            inputFiles: [],
+            inputs: [
+              {
+                name: 'city_name',
+                value: null,
+                label: 'Pn Number',
+                placeholder: 'Enter Pn Number',
               },
             ],
           },
