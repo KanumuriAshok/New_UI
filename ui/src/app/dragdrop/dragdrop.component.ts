@@ -248,11 +248,27 @@ export class DragdropComponent implements OnInit {
     },
     {
       name: 'SWIMS DATA',
-      key: 'SWIMS_data_file_upload',
+      key: 'swims_data',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'SWIMS_data_file_upload',
+        endpointApi: 'swims_data',
+        showInputsFormOnDrag: true,
+          inputFiles: [
+            {
+              label: 'streetcenterline files',
+              name: 'streetcenterline_files',
+              files: [],
+            },
+          ],
+          inputs: [
+            {
+              name: 'username',
+              value: null,
+              label: 'Username',
+              placeholder: 'Enter Username'
+            },
+          ],
       },
     },
   ];
