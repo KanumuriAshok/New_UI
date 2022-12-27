@@ -51,6 +51,7 @@ export class ConnectionHandelingComponent implements OnInit {
     this.sigdisplay = 'block';
   }
   files = {};
+  filesSwimsData = {};
   filesRef = {};
   filesGoogle = {};
   fileValidatedpoles = {};
@@ -58,6 +59,10 @@ export class ConnectionHandelingComponent implements OnInit {
     this.files[fileType] = event.target.files;
   }
 
+  filesSwimsDataDropped(event, fileType) {
+    this.filesSwimsData[fileType] = event.target.files;
+  }
+  
   filesRefDropped(event, fileType) {
     this.filesRef[fileType] = event.target.files;
   }
@@ -275,7 +280,8 @@ export class ConnectionHandelingComponent implements OnInit {
         (res) => {
           alert('upload completed successfully');
           this.uploadRefFilesStatus = 'green_status';
-          this.UploadGoogle();
+          // this.UploadGoogle();
+          this.UploadValidatedpoles();
         },
         (err) => {
           console.error(err);
@@ -293,14 +299,14 @@ export class ConnectionHandelingComponent implements OnInit {
     const formData = new FormData();
     this.loadingLoader = true;
     formData.append('username', localStorage.getItem('username'));
-    for (var k in this.filesRef) {
-      for (let j = 0; j < this.filesRef[k].length; j++) {
-        formData.append(k, this.filesRef[k][j]);
+    for (var k in this.filesSwimsData) {
+      for (let j = 0; j < this.filesSwimsData[k].length; j++) {
+        formData.append(k, this.filesSwimsData[k][j]);
       }
     }
 
     this.httpClient
-      .post(environment.api + '/api/SWIMS_data_file_upload', formData)
+      .post(environment.api + '/api/swims_input_data', formData)
       .subscribe(
         (res) => {
           alert('upload completed successfully');
