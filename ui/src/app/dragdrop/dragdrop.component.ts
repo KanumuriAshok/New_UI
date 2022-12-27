@@ -341,6 +341,15 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'secondary_preprodp',
       },
     },
+    {
+      name: 'SWIMS DATA',
+      key: 'SWIMS_data_file_upload',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'SWIMS_data_file_upload',
+      },
+    },
   ];
   draggedNodes = [];
   lines = [];
@@ -555,7 +564,7 @@ export class DragdropComponent implements OnInit {
             ],
             inputs: [
               {
-                name: 'city_name',
+                name: 'username',
                 value: null,
                 label: 'Pn Number',
                 placeholder: 'Enter Pn Number',
@@ -578,6 +587,24 @@ export class DragdropComponent implements OnInit {
                 value: null,
                 label: 'Pn Number',
                 placeholder: 'Enter Pn Number',
+              },
+            ],
+          },
+        },
+        {
+          name: 'Clipping',
+          key: 'secondary_clip',
+          result: {},
+          formData: null,
+          form: {
+            endpointApi: 'secondary_clip',
+            showInputsFormOnDrag: true,
+            inputs: [
+              {
+                name: 'username',
+                value: null,
+                label: 'Username',
+                placeholder: 'Enter Username'
               },
             ],
           },
@@ -721,7 +748,7 @@ export class DragdropComponent implements OnInit {
       this.draggedNodes[i].form.endpointApi = endpointUrl;
 
       const formData = new FormData();
-      formData.append('username', localStorage.getItem('username'));
+      formData.append('city_name', localStorage.getItem('username'));
       if (this.draggedNodes[i].form.inputs) {
         for (let j = 0; j < this.draggedNodes[i].form.inputs.length; j++) {
           formData.append(
