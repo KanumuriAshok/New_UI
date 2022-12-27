@@ -80,6 +80,13 @@
                 <p style="color: red">Please provide a valid Username.</p>
               </div>
             </div>
+            <div
+              class="mb-4"
+              *ngIf="loginForm.value.userType == 'google_manager'"
+            >
+              <label class="form-label text-capitalize">User name</label>
+              <input type="text" class="form-control" />
+            </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"
                 >Password:</label

@@ -85,6 +85,12 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   login() {
+    /*localStorage.setItem('isUserLoggedId', '1');
+    localStorage.setItem('username', 'username');
+    var user_type = 'hld_designer';
+    let usertype = localStorage.setItem('usertype', 'hld_designer');
+    console.log(usertype);
+    this.router.navigate(['dashboard']);*/
     if (this.loginForm.value.userType == 'google_manager') {
       this.loginGoogle();
     } else {

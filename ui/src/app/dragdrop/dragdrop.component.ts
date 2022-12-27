@@ -165,6 +165,101 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'snboundary_page',
       },
     },*/
+
+    {
+      name: 'Secondary feederringends',
+      key: 'secondary_feederringends',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_feederringends',
+        showInputsFormOnDrag: true,
+        inputFiles: [
+          {
+            label: 'Feederringcable files',
+            name: 'feederringcable_files',
+            files: [],
+          },
+        ],
+      },
+    },
+    {
+      name: 'Secondary footpathwidth',
+      key: 'secondary_footpathwidth',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_footpathwidth',
+        showInputsFormOnDrag: true,
+        inputFiles: [
+          {
+            label: 'Topographicarea files',
+            name: 'topographicarea_files',
+            files: [],
+          },
+        ],
+      },
+    },
+
+    {
+      name: 'Secondary coreroute',
+      key: 'secondary_coreroute',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_coreroute',
+        showInputsFormOnDrag: true,
+        inputFiles: [
+          {
+            label: 'Busyarea files',
+            name: 'busyarea_files',
+            files: [],
+          },
+          {
+            label: 'Cartographictext files',
+            name: 'cartographictext_files',
+            files: [],
+          },
+          {
+            label: 'Doubleyellowline files',
+            name: 'doubleyellowline_files',
+            files: [],
+          },
+          {
+            label: 'feederringcable files',
+            name: 'feederringcable_files',
+            files: [],
+          },
+          {
+            label: 'Hospitals files',
+            name: 'hospitals_files',
+            files: [],
+          },
+
+          {
+            label: 'Piaduct files',
+            name: 'piaduct_files',
+            files: [],
+          },
+          {
+            label: 'Schools files',
+            name: 'schools_files',
+            files: [],
+          },
+          {
+            label: 'Topographicarea files',
+            name: 'topographicarea_files',
+            files: [],
+          },
+          {
+            label: 'Trees files',
+            name: 'trees_files',
+            files: [],
+          },
+        ],
+      },
+    },
+
     {
       name: 'Trenching',
       key: 'trenching',
@@ -316,7 +411,11 @@ export class DragdropComponent implements OnInit {
   }
 
   removeDraggedModel(ind_, node) {
-    this.mapComponent.removeLayerByModelName(this.draggedNodes[ind_].modelName);
+    this.mapComponent
+      ? this.mapComponent.removeLayerByModelName(
+          this.draggedNodes[ind_].modelName
+        )
+      : '';
     this.draggedNodes.splice(ind_, 1);
     this.refreshLines();
   }
