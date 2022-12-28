@@ -82,15 +82,28 @@
                     ? "Area name"
                     : "PN Username"
                 }}: -->
-              <input
+              <!-- <input
                 type="text"
                 class="form-control"
                 formControlName="username"
                 [ngClass]="{ invalid: submitted && f['username'].invalid }"
-              />
-              <div *ngIf="submitted && f['username'].invalid">
+              /> -->
+              <select
+                class="form-select form-select-sm"
+                aria-label=".form-select-sm example"
+                formControlName="username"
+              >
+                <option value="default">Select Dropdown</option>
+                <option
+                  *ngFor="let project of projects"
+                  [value]="project.name"
+                >
+                  {{ project.name }}
+                </option>
+              </select>
+              <!-- <div *ngIf="submitted && f['username'].invalid">
                 <p style="color: red">Please provide a valid Username.</p>
-              </div>
+              </div> -->
             </div>
 
             <div class="mb-4" *ngIf="loginForm.value.userType == 'hld_designer'">
@@ -182,16 +195,23 @@
             <div class="container mb-5">
               <div class="row">
                 <div
-                  class="col text-center text-danger text-capitalize"
+                  class="col text-center text-capitalize"
                   (click)="showDialog()"
                 >
-                  <button style="color: brown">
+                  <!-- <button style="color: brown">
                     Change your password? <br />
                     Click Here
-                  </button>
+                  </button> -->
+                  <label
+                    class="form-check-label text-capitalize"
+                    style="cursor: pointer;"
+                  >
+                  Change your password? <br />
+                  Click Here</label
+                  >
                 </div>
               </div>
-              <div class="row">
+              <div class="row" style="margin-top: 16px;">
                 <div class="col d-grid gap-2">
                   <button class="btn btn-login" (click)="login()">Login</button>
                 </div>

@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
     this.loginForm.get('areaName').valueChanges.subscribe((x) => {
       this.getPnList(x);
     });
+    this.getProjects();
   }
   onSignUpTypeChange() {
     if (this.registerUserType == 'hld_designer') {
@@ -88,7 +89,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginTypeChange() {
-    if (this.loginForm.value.userType == 'hld_designer') {
+    if (this.loginForm.value.userType == 'hld_designer' || this.loginForm.value.userType == 'google_manager') {
       if (!this.projects || this.projects.length == 0) {
         this.getProjects();
       }

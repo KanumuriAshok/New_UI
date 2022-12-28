@@ -382,7 +382,7 @@ export class DragdropComponent implements OnInit {
       //   return;
       // }
     } else {
-      if ( node_.key == 'swims_data' || 
+      if ( this.draggedNodes.length == 0 || node_.key == 'swims_data' || 
         node_.key == 'secondary_preprodp' || node_.key == 'secondary_preprocp' ||
         node_.key == 'secondary_ribbonarchsj' || node_.key == 'secondary_ringarchsj' ||
         node_.key == 'address_creation' || node_.key == 'address_association' ||
