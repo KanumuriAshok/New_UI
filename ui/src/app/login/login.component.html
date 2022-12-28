@@ -57,19 +57,31 @@
             </div>
             <div class="mb-4">
               <label class="form-label text-capitalize">User type:</label>
-              <select class="form-control" formControlName="userType">
+              <select class="form-control" formControlName="userType" (change)="onLoginTypeChange()">
                 <option value="hld_designer">HLD LLD Designer</option>
                 <option value="google_manager">DB Manager</option>
               </select>
             </div>
-            <div class="mb-4">
+            <div
+              class="mb-4"
+              
+            >
+            <!-- *ngIf="loginForm.value.userType == 'google_manager'" -->
+              <label class="form-label text-capitalize">User name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="username2"
+              />
+            </div>
+            <div class="mb-4" *ngIf="loginForm.value.userType == 'google_manager'">
               <label class="form-label text-capitalize"
-                >{{
+                >Area name</label>
+                <!-- {{
                   loginForm.value.userType == "google_manager"
                     ? "Area name"
                     : "PN Username"
-                }}:</label
-              >
+                }}: -->
               <input
                 type="text"
                 class="form-control"
@@ -80,16 +92,53 @@
                 <p style="color: red">Please provide a valid Username.</p>
               </div>
             </div>
-            <div
-              class="mb-4"
-              *ngIf="loginForm.value.userType == 'google_manager'"
-            >
-              <label class="form-label text-capitalize">User name</label>
-              <input
+
+            <div class="mb-4" *ngIf="loginForm.value.userType == 'hld_designer'">
+              <label class="form-label"> Area Name</label>
+              <select
+                class="form-select form-select-sm"
+                aria-label=".form-select-sm example"
+                formControlName="areaName"
+              >
+                <option value="default">Select Dropdown</option>
+                <option
+                  *ngFor="let project of projects"
+                  [value]="project.name"
+                >
+                  {{ project.name }}
+                </option>
+              </select>
+            </div>
+            <div class="mb-4" *ngIf="loginForm.value.userType == 'hld_designer'">
+              <label class="form-label text-capitalize"
+                >PN Number</label>
+                <!-- {{
+                  loginForm.value.userType == "google_manager"
+                    ? "Area name"
+                    : "PN Username"
+                }}: -->
+              <!-- <input
                 type="text"
                 class="form-control"
-                formControlName="username2"
-              />
+                formControlName="username"
+                [ngClass]="{ invalid: submitted && f['username'].invalid }"
+              /> -->
+              <select
+                class="form-select form-select-sm"
+                aria-label=".form-select-sm example"
+                formControlName="username"
+              >
+                <option value="default">Select Dropdown</option>
+                <option
+                  *ngFor="let pn_item of pn_list"
+                  [value]="pn_item.name"
+                >
+                  {{ pn_item.name }}
+                </option>
+              </select>
+              <!-- <div *ngIf="submitted && f['username'].invalid">
+                <p style="color: red">Please provide a valid Username.</p>
+              </div> -->
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"
@@ -227,7 +276,17 @@
                   [formGroup]="registerFormHld"
                 >
                   <div class="mb-4">
-                    <label class="form-label"> Project Name</label>
+                    <label for="exampleInputEmail1" class="form-label">
+                      User name</label
+                    >
+                    <input
+                      type="text"
+                      formControlName="username"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label class="form-label"> Area Name</label>
                     <select
                       class="form-select form-select-sm"
                       aria-label=".form-select-sm example"
@@ -241,16 +300,6 @@
                         {{ project.name }}
                       </option>
                     </select>
-                  </div>
-                  <div class="mb-4">
-                    <label for="exampleInputEmail1" class="form-label">
-                      User name</label
-                    >
-                    <input
-                      type="text"
-                      formControlName="username"
-                      class="form-control"
-                    />
                   </div>
                   <!--div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label">

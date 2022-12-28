@@ -391,13 +391,17 @@ export class DragdropComponent implements OnInit {
       ) {
 
       }
-      // } else 
-      // {
-      //   alert(
-      //         'Warning!!! First model should be one of the following: Cluster Boundary, Fully UG Cluster Grouping, PN Nodeplacement!'
-      //       );
-      //       return;
-      // }
+     else if (
+        node_.key != 'secondary_clusterbndry' &&
+        node_.key != 'ug_page' &&
+        node_.key != 'secondary_pn_np'
+      ) 
+      {
+        alert(
+              'Warning!!! First model should be one of the following: Cluster Boundary, Fully UG Cluster Grouping, PN Nodeplacement!'
+            );
+            return;
+      }
       // if (
       //   this.draggedNodes.length == 0 &&
       //   node_.key != 'secondary_clusterbndry' &&
