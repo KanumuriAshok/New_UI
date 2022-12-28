@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(3)]],
       userType: ['google_manager'],
+      username2: [''],
       rememberMe: [false],
     });
     this.registerFormGoogle = this.formBuilder.group({
@@ -100,8 +101,10 @@ export class LoginComponent implements OnInit {
   loginGoogle() {
     this.submitted = true;
     let username = this.loginForm.value.username;
+    let username2 = this.loginForm.value.username2;
     let password = this.loginForm.value.password;
     const formData = new FormData();
+    formData.append('username', username2);
     formData.append('city_name', username);
     formData.append('password', password);
     this.httpClient

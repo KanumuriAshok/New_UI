@@ -85,7 +85,11 @@
               *ngIf="loginForm.value.userType == 'google_manager'"
             >
               <label class="form-label text-capitalize">User name</label>
-              <input type="text" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                formControlName="username2"
+              />
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label"
