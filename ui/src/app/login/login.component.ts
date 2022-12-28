@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   registerFormHld: FormGroup;
   changePasswordForm: FormGroup;
   registerUserType = 'google_manager'; //hld_designer,google_manager
+
   projects = [];
   pn_list = [];
   constructor(
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(3)]],
       userType: ['google_manager'],
       username2: [''],
+      areaName: [''],
       rememberMe: [false],
     });
     this.registerFormGoogle = this.formBuilder.group({
@@ -70,9 +72,24 @@ export class LoginComponent implements OnInit {
     this.registerFormHld.get('projectName').valueChanges.subscribe((x) => {
       this.getPnList(x);
     });
+    this.loginForm.get('areaName').valueChanges.subscribe((x) => {
+      this.getPnList(x);
+    });
+    this.getProjects();
   }
   onSignUpTypeChange() {
     if (this.registerUserType == 'hld_designer') {
+      if (!this.projects || this.projects.length == 0) {
+        this.getProjects();
+      }
+      // if (!this.pn_list || this.pn_list.length == 0) {
+      //   this.getPnList();
+      // }
+    }
+  }
+
+  onLoginTypeChange() {
+    if (this.loginForm.value.userType == 'hld_designer' || this.loginForm.value.userType == 'google_manager') {
       if (!this.projects || this.projects.length == 0) {
         this.getProjects();
       }
@@ -130,11 +147,19 @@ export class LoginComponent implements OnInit {
   loginHld() {
     this.submitted = true;
     let username = this.loginForm.value.username;
+    let areaname = this.loginForm.value.areaName;
+    let username2 = this.loginForm.value.username2;
     let password = this.loginForm.value.password;
     this.httpClient
       .post(environment.api + '/api/login', {
-        username: username, //---todo: check how to pass for city_register_login
-        password: password,
+        username : username2,
+        city_name : areaname,
+        schemaname : username, //---todo: check how to pass for city_register_login
+        password : password,
+
+        // username: username,
+        // password: '123',
+        // schemaname: nameuser,
       })
       .subscribe(
         (res) => {
@@ -240,6 +265,7 @@ export class LoginComponent implements OnInit {
         username: username,
         password: '123',
         schemaname: nameuser,
+        city_name : projectName,
         // schema: nameuser,
       })
       .subscribe(

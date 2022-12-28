@@ -382,17 +382,33 @@ export class DragdropComponent implements OnInit {
       //   return;
       // }
     } else {
-      if (
-        this.draggedNodes.length == 0 &&
-        node_.key != 'secondary_clusterbndry' &&
-        node_.key != 'ug_page' &&
-        node_.key != 'secondary_pn_np'
+      if ( this.draggedNodes.length == 0 || node_.key == 'swims_data' || 
+        node_.key == 'secondary_preprodp' || node_.key == 'secondary_preprocp' ||
+        node_.key == 'secondary_ribbonarchsj' || node_.key == 'secondary_ringarchsj' ||
+        node_.key == 'address_creation' || node_.key == 'address_association' ||
+        node_.key == 'data_cleanup' || node_.key == 'integrated_infrastructure' ||
+        node_.key == 'trenching' || node_.key == 'secondary_add_page'
       ) {
-        alert(
-          'Warning!!! First model should be one of the following: Cluster Boundary, Fully UG Cluster Grouping, PN Nodeplacement!'
-        );
-        return;
+
       }
+      // } else 
+      // {
+      //   alert(
+      //         'Warning!!! First model should be one of the following: Cluster Boundary, Fully UG Cluster Grouping, PN Nodeplacement!'
+      //       );
+      //       return;
+      // }
+      // if (
+      //   this.draggedNodes.length == 0 &&
+      //   node_.key != 'secondary_clusterbndry' &&
+      //   node_.key != 'ug_page' &&
+      //   node_.key != 'secondary_pn_np'
+      // ) {
+      //   alert(
+      //     'Warning!!! First model should be one of the following: Cluster Boundary, Fully UG Cluster Grouping, PN Nodeplacement!'
+      //   );
+      //   return;
+      // }
       if (this.draggedNodes.length == 0 && node_.key == 'cluster_corrections') {
         alert(
           'Warning!!! Before cluster corrections model should be selected cluster grouping model!'
@@ -565,18 +581,18 @@ export class DragdropComponent implements OnInit {
         },
         {
           name: 'Pn bondry',
-          key: 'pn_bondry',
+          key: 'secondary_clip',
           result: {},
           formData: null,
           form: {
-            endpointApi: 'pn_bondry',
+            endpointApi: 'secondary_clip',
             showInputsFormOnDrag: true,
             inputFiles: [
-              // {
-              //   label: 'Pnboundary files',
-              //   name: 'pnboundary_files',
-              //   files: [],
-              // },
+              {
+                label: 'Pnboundary files',
+                name: 'pnboundary_files',
+                files: [],
+              },
             ],
             inputs: [
               {
@@ -588,43 +604,43 @@ export class DragdropComponent implements OnInit {
             ],
           },
         },
-        {
-          name: 'Clip',
-          key: 'secondary_clip',
-          result: {},
-          formData: null,
-          form: {
-            endpointApi: 'secondary_clip',
-            showInputsFormOnDrag: true,
-            inputFiles: [],
-            inputs: [
-              {
-                name: 'city_name',
-                value: null,
-                label: 'Pn Number',
-                placeholder: 'Enter Pn Number',
-              },
-            ],
-          },
-        },
-        {
-          name: 'Clipping',
-          key: 'secondary_clip',
-          result: {},
-          formData: null,
-          form: {
-            endpointApi: 'secondary_clip',
-            showInputsFormOnDrag: true,
-            inputs: [
-              {
-                name: 'username',
-                value: null,
-                label: 'Username',
-                placeholder: 'Enter Username',
-              },
-            ],
-          },
-        },
+        // {
+        //   name: 'Clip',
+        //   key: 'secondary_clip',
+        //   result: {},
+        //   formData: null,
+        //   form: {
+        //     endpointApi: 'secondary_clip',
+        //     showInputsFormOnDrag: true,
+        //     inputFiles: [],
+        //     inputs: [
+        //       {
+        //         name: 'city_name',
+        //         value: null,
+        //         label: 'Pn Number',
+        //         placeholder: 'Enter Pn Number',
+        //       },
+        //     ],
+        //   },
+        // },
+        // {
+        //   name: 'Clipping',
+        //   key: 'secondary_clip',
+        //   result: {},
+        //   formData: null,
+        //   form: {
+        //     endpointApi: 'secondary_clip',
+        //     showInputsFormOnDrag: true,
+        //     inputs: [
+        //       {
+        //         name: 'username',
+        //         value: null,
+        //         label: 'Username',
+        //         placeholder: 'Enter Username'
+        //       },
+        //     ],
+        //   },
+        // },
       ];
     }
 
