@@ -604,6 +604,7 @@ export class DragdropComponent implements OnInit {
             ],
           },
         },
+        
         // {
         //   name: 'Clip',
         //   key: 'secondary_clip',
