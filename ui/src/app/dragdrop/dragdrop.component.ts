@@ -349,27 +349,27 @@ export class DragdropComponent implements OnInit {
       form: {
         endpointApi: 'swims_data',
         showInputsFormOnDrag: true,
-          inputFiles: [
-            {
-              label: 'streetcenterline files',
-              name: 'streetcenterline_files',
-              files: [],
-            },
-          ],
-          inputs: [
-            {
-              name: 'username',
-              value: null,
-              label: 'Username',
-              placeholder: 'Enter Username'
-            },
-          ],
+        inputFiles: [
+          {
+            label: 'streetcenterline files',
+            name: 'streetcenterline_files',
+            files: [],
+          },
+        ],
+        inputs: [
+          {
+            name: 'username',
+            value: null,
+            label: 'Username',
+            placeholder: 'Enter Username',
+          },
+        ],
       },
     },
   ];
   draggedNodes = [];
   lines = [];
-  @ViewChild('mapComponent') mapComponent: OlMapComponent;
+  //@ViewChild('mapComponent') mapComponent: OlMapComponent;
 
   terminalDetails = [];
 
@@ -452,11 +452,11 @@ export class DragdropComponent implements OnInit {
   }
 
   removeDraggedModel(ind_, node) {
-    this.mapComponent
+    /*this.mapComponent
       ? this.mapComponent.removeLayerByModelName(
           this.draggedNodes[ind_].modelName
         )
-      : '';
+      : '';*/
     this.draggedNodes.splice(ind_, 1);
     this.refreshLines();
   }
@@ -940,9 +940,9 @@ export class DragdropComponent implements OnInit {
           this.draggedNodes[i].key != 'cluster_corrections' &&
           this.draggedNodes[i].result
         ) {
-          this.mapComponent.removeLayerByModelName(
+          /*this.mapComponent.removeLayerByModelName(
             this.draggedNodes[i].modelName
-          );
+          );*/
           switch (this.draggedNodes[i].key) {
             case 'node_placements':
               if (this.draggedNodes[i].result.status === 200) {
@@ -959,14 +959,14 @@ export class DragdropComponent implements OnInit {
                   ) {
                     continue;
                   }
-                  this.mapComponent.addWmsLayer(
+                  /*this.mapComponent.addWmsLayer(
                     this.draggedNodes[i].result.workspace_name +
                       ':' +
                       'sample_flask_' +
                       this.draggedNodes[i].result.table_name[j],
                     'Point',
                     this.draggedNodes[i].modelName
-                  );
+                  );*/
                 }
               }
               break;
@@ -987,32 +987,32 @@ export class DragdropComponent implements OnInit {
                   j++
                 ) {
                   if (this.draggedNodes[i].result.table_name[j]) {
-                    this.mapComponent.addWmsLayer(
+                    /*this.mapComponent.addWmsLayer(
                       this.draggedNodes[i].result.workspace_name +
                         ':' +
                         'sample_flask_' +
                         this.draggedNodes[i].result.table_name[j],
                       'Point',
                       this.draggedNodes[i].modelName
-                    );
+                    );*/
                   }
                 }
               }
               break;
             case 'node_boundary':
               if (this.draggedNodes[i].result.status === 200) {
-                this.mapComponent.addWmsLayer(
+                /*this.mapComponent.addWmsLayer(
                   this.draggedNodes[i].result.workspace +
                     ':' +
                     this.draggedNodes[i].result.sample_flask,
                   'Polygon',
                   this.draggedNodes[i].modelName
-                );
+                );*/
               }
               break;
             case 'distribution_network':
               if (this.draggedNodes[i].result.status === 200) {
-                this.mapComponent.addWmsLayer(
+                /*this.mapComponent.addWmsLayer(
                   this.draggedNodes[i].result.workspace_name +
                     ':' +
                     'sample_flask_' +
@@ -1027,7 +1027,7 @@ export class DragdropComponent implements OnInit {
                     this.draggedNodes[i].result.table_name[1],
                   'Point',
                   this.draggedNodes[i].modelName
-                );
+                );*/
               }
               break;
           }
@@ -1084,7 +1084,7 @@ export class DragdropComponent implements OnInit {
             sum_pon_homes: res['sum_pon_homes'][i],
           });
         }
-        this.mapComponent.removeLayerByModelName(
+        /*this.mapComponent.removeLayerByModelName(
           this.draggedNodes[this.currentExecuteNodeIndex].modelName
         );
         this.mapComponent.addWmsLayer(
@@ -1092,7 +1092,7 @@ export class DragdropComponent implements OnInit {
           'geometryType',
           'cluster_corrections' +
             this.draggedNodes[this.currentExecuteNodeIndex].modelName
-        );
+        );*/
       },
       (err) => {
         console.error(err);
