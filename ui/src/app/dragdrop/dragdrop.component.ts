@@ -671,7 +671,7 @@ export class DragdropComponent implements OnInit {
             ],   
             inputs: [
               {
-                name: 'username',
+                name: 'pn_number',
                 value: null,
                 label: 'Pn Number',
                 placeholder: 'Enter Pn Number',
@@ -857,6 +857,7 @@ export class DragdropComponent implements OnInit {
 
       const formData = new FormData();
       formData.append('city_name', localStorage.getItem('username'));
+      formData.append('username', localStorage.getItem('usernamelogindb'));
       if (this.draggedNodes[i].form.inputs) {
         for (let j = 0; j < this.draggedNodes[i].form.inputs.length; j++) {
           formData.append(
