@@ -131,6 +131,8 @@ export class LoginComponent implements OnInit {
           if (res['success'] == true) {
             localStorage.setItem('isUserLoggedId', '1');
             localStorage.setItem('username', username);
+            localStorage.setItem('usernamelogindb', username2);
+
             this.router.navigate(['dashboard/workflow/google']);
           } else {
             alert(res['message']);
