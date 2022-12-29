@@ -634,7 +634,7 @@ export class DragdropComponent implements OnInit {
                 files: [],
               },
               {
-                label: 'Piaduct files',
+                label: 'Piaduct file',
                 name: 'piaduct_file',
                 files: [],
               },
