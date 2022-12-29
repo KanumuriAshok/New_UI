@@ -165,10 +165,19 @@ export class LoginComponent implements OnInit {
         (res) => {
           console.log(res);
           if (res['success'] == true) {
+            let city_name = res['city_name'];
+            let pn_number = res['pn_number'];
+            let usernamelogin = res['username'];
+
             localStorage.setItem('isUserLoggedId', '1');
             localStorage.setItem('username', username);
+            localStorage.setItem('usernamelogin', usernamelogin);
+            localStorage.setItem('city_name', city_name);
+            localStorage.setItem('pn_number', pn_number);
+            // {username: "testdemo2", city_name: "vizag", schemaname: "666", password: "123"}
             var user_type = 'hld_designer';
             let usertype = localStorage.setItem('usertype', user_type);
+
             console.log(usertype);
             this.router.navigate(['dashboard']);
           } else {

@@ -299,6 +299,8 @@ export class ConnectionHandelingComponent implements OnInit {
     const formData = new FormData();
     this.loadingLoader = true;
     formData.append('username', localStorage.getItem('username'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     for (var k in this.filesSwimsData) {
       for (let j = 0; j < this.filesSwimsData[k].length; j++) {
         formData.append(k, this.filesSwimsData[k][j]);
