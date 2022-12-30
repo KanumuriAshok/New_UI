@@ -16,6 +16,11 @@ export class NavbarComponent implements OnInit {
     this.username = null;
     localStorage.setItem('isUserLoggedId', '0');
     localStorage.setItem('username', '');
+    localStorage.removeItem('isUserLoggedId');
+    localStorage.removeItem('username');
+    localStorage.removeItem('usernamelogin');
+    localStorage.removeItem('city_name');
+    localStorage.removeItem('pn_number');
     this.router.navigate(['login']);
   }
 }

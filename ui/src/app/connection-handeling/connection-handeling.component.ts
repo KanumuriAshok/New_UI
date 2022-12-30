@@ -77,7 +77,10 @@ export class ConnectionHandelingComponent implements OnInit {
 
   uploadFiles() {
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     for (var k in this.files) {
       for (let j = 0; j < this.files[k].length; j++) {
         formData.append(k, this.files[k][j]);
@@ -102,7 +105,10 @@ export class ConnectionHandelingComponent implements OnInit {
   extractExisting() {
     this.loadingLoader = true;
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.httpClient
       .post(environment.api + '/api/secondary_structures', formData)
       .subscribe(
@@ -110,7 +116,8 @@ export class ConnectionHandelingComponent implements OnInit {
           alert('completed successfully');
           this.loadingLoader = false;
           this.extractExistingStatus = 'green_status';
-          this.missingDemand();
+          this.PreprocessCP();
+          // this.missingDemand();
         },
         (err) => {
           console.error(err);
@@ -124,12 +131,40 @@ export class ConnectionHandelingComponent implements OnInit {
         }
       );
   }
-  missingDemand() {
+  PreprocessCP() {
     this.loadingLoader = true;
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.httpClient
-      .post(environment.api + '/api/secondary_preprocessdp', formData)
+      .post(environment.api + '/api/secondary_preprocp', formData)
+      .subscribe(
+        (res) => {
+          alert('completed successfully');
+          this.loadingLoader = false;
+          this.missingDemandStatus = 'green_status';
+          this.PreprocessDP();
+        },
+        (err) => {
+          console.error(err);
+          alert(' completed with error');
+          this.missingDemandStatus = 'red_status';
+        },
+        () => {
+          this.loadingLoader = false;
+          this.loadLastUpdateDates();
+        }
+      );
+  }
+  PreprocessDP() {
+    this.loadingLoader = true;
+    const formData = new FormData();
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
+    this.httpClient
+      .post(environment.api + '/api/secondary_preprodp', formData)
       .subscribe(
         (res) => {
           alert('completed successfully');
@@ -148,11 +183,37 @@ export class ConnectionHandelingComponent implements OnInit {
         }
       );
   }
+  // missingDemand() {
+  //   this.loadingLoader = true;
+  //   const formData = new FormData();
+  //   formData.append('username', localStorage.getItem('username'));
+  //   this.httpClient
+  //     .post(environment.api + '/api/secondary_preprocessdp', formData)
+  //     .subscribe(
+  //       (res) => {
+  //         alert('completed successfully');
+  //         this.loadingLoader = false;
+  //         this.missingDemandStatus = 'green_status';
+  //         // this.export();
+  //       },
+  //       (err) => {
+  //         console.error(err);
+  //         alert(' completed with error');
+  //         this.missingDemandStatus = 'red_status';
+  //       },
+  //       () => {
+  //         this.loadingLoader = false;
+  //         this.loadLastUpdateDates();
+  //       }
+  //     );
+  // }
   secondaryPreprocessgp() {
     //
     this.loadingLoader = true;
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.httpClient
       .post(environment.api + '/api/secondary_preprocessgp', formData)
       .subscribe(
@@ -177,16 +238,21 @@ export class ConnectionHandelingComponent implements OnInit {
   pnBoundaryCheck() {
     this.loadingLoader = true;
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
-    formData.append('schema', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    // formData.append('schema', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.httpClient
-      .post(environment.api + '/api/pnboundary_check', formData)
+    // .post(environment.api + '/api/pnboundary_check', formData)
+      .post(environment.api + '/api/secondary_pnb_fed_ug', formData)
       .subscribe(
         (res: any) => {
           alert('completed successfully');
           this.loadingLoader = false;
           this.pnBoundaryCheckStatus = res.fedtype;
-          this.extractExisting();
+          this.PreprocessCP();
+          // this.extractExisting();
         },
         (err) => {
           console.error(err);
@@ -207,7 +273,10 @@ export class ConnectionHandelingComponent implements OnInit {
 
     this.loadingLoader = true;
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.httpClient
       .post(environment.api + '/api/export_output', formData)
       .subscribe(
@@ -267,7 +336,10 @@ export class ConnectionHandelingComponent implements OnInit {
   UploadRef() {
     const formData = new FormData();
     this.loadingLoader = true;
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     for (var k in this.filesRef) {
       for (let j = 0; j < this.filesRef[k].length; j++) {
         formData.append(k, this.filesRef[k][j]);
@@ -298,7 +370,8 @@ export class ConnectionHandelingComponent implements OnInit {
   UploadRef1() {
     const formData = new FormData();
     this.loadingLoader = true;
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
     formData.append('city_name', localStorage.getItem('city_name'));
     formData.append('pn_number', localStorage.getItem('pn_number'));
     for (var k in this.filesSwimsData) {
@@ -330,7 +403,10 @@ export class ConnectionHandelingComponent implements OnInit {
   UploadGoogle() {
     const formData = new FormData();
     this.loadingLoader = true;
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.loadingLoader = true;
     /*
     for (var k in this.filesGoogle) {
@@ -363,7 +439,10 @@ export class ConnectionHandelingComponent implements OnInit {
     ///upload_validatedpoles googlepoles_files
     this.loadingLoader = true;
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     for (var k in this.fileValidatedpoles) {
       for (let j = 0; j < this.fileValidatedpoles[k].length; j++) {
         formData.append(k, this.fileValidatedpoles[k][j]);
@@ -391,11 +470,15 @@ export class ConnectionHandelingComponent implements OnInit {
 
   loadLastUpdateDates(): void {
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.httpClient
       .post(environment.api + `/api/get_model_history`, formData)
       .subscribe(
         (res) => {
+          // console.log(res);
           this.lastUpdateDates = res;
         },
         (err) => {

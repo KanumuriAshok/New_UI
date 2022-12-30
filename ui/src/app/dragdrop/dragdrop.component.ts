@@ -30,12 +30,28 @@ export class DragdropComponent implements OnInit {
   currentExecuteNodeIndex = -1;
   mainNodes: any = [
     {
-      name: 'Cluster Boundary',
-      key: 'secondary_clusterbndry',
+      name: 'SWIMS DATA',
+      key: 'swims_data',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'secondary_clusterbndry',
+        endpointApi: 'swims_data',
+        showInputsFormOnDrag: true,
+        inputFiles: [
+          {
+            label: 'streetcenterline files',
+            name: 'streetcenterline_files',
+            files: [],
+          },
+        ],
+        inputs: [
+          {
+            name: 'username',
+            value: null,
+            label: 'Username',
+            placeholder: 'Enter Username',
+          },
+        ],
       },
     },
     {
@@ -48,39 +64,21 @@ export class DragdropComponent implements OnInit {
       },
     },
     {
+      name: 'Cluster Boundary',
+      key: 'secondary_clusterbndry',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_clusterbndry',
+      },
+    },
+    {
       name: 'Nodeplacement',
       key: 'hybrid_nodeplacement',
       result: {},
       formData: null,
       form: {
         endpointApi: 'secondary_hybrid_np',
-      },
-    },
-    {
-      name: 'Node Boundary ',
-      key: 'node_boundary',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'nb_page',
-      },
-    },
-    {
-      name: 'PN Nodeplacement (fachubchambers)',
-      key: 'secondary_fachubchambers',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_fachubchambers',
-      },
-    },
-    {
-      name: 'PN Nodeplacement (chamberplacement)',
-      key: 'secondary_chamberplacement',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_chamberplacement',
       },
     },
     {
@@ -92,43 +90,108 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'secondary_cp',
       },
     },
+    // {
+    //   name: 'Add address creation',
+    //   key: 'secondary_add_page',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'secondary_add_page',
+    //   },
+    // },
     {
-      name: 'Cluster Corrections',
-      key: 'cluster_corrections',
+      name: 'Address association',
+      key: 'address_association',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'update_db',
-        renderData: '',
-        loadRenderData: function () {
-          this.httpClient
-            .get(
-              this.mainApi +
-                'load_data?username=' +
-                localStorage.getItem('username')
-            )
-            .subscribe((res) => {
-              let outliers_data = [];
-              for (var i = 0; i < res['cluster_id'].length; i++) {
-                console.log(res['cluster_id'][i]);
-                outliers_data.push({
-                  cluster_id: res['cluster_id'][i],
-                  sum_pon_homes: res['sum_pon_homes'][i],
-                });
-              }
-            });
-        },
+        endpointApi: 'address_association',
       },
     },
     {
-      name: 'Add address creation',
-      key: 'secondary_add_page',
+      name: 'PN Nodeplacement',
+      key: '',
       result: {},
       formData: null,
       form: {
-        endpointApi: 'secondary_add_page',
+        endpointApi: '',
       },
     },
+    {
+      name: 'Fachub Chambers',
+      key: 'secondary_fachubchambers',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_fachubchambers',
+      },
+    },
+    {
+      name: 'Chamber Placement',
+      key: 'secondary_chamberplacement',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_chamberplacement',
+      },
+    },
+    // {
+    //   name: 'Node Boundary ',
+    //   key: 'node_boundary',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'nb_page',
+    //   },
+    // },
+    // {
+    //   name: 'PN Nodeplacement (fachubchambers)',
+    //   key: 'secondary_fachubchambers',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'secondary_fachubchambers',
+    //   },
+    // },
+    // {
+    //   name: 'PN Nodeplacement (chamberplacement)',
+    //   key: 'secondary_chamberplacement',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'secondary_chamberplacement',
+    //   },
+    // },
+   
+    // {
+    //   name: 'Cluster Corrections',
+    //   key: 'cluster_corrections',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'update_db',
+    //     renderData: '',
+    //     loadRenderData: function () {
+    //       this.httpClient
+    //         .get(
+    //           this.mainApi +
+    //             'load_data?username=' +
+    //             localStorage.getItem('username')
+    //         )
+    //         .subscribe((res) => {
+    //           let outliers_data = [];
+    //           for (var i = 0; i < res['cluster_id'].length; i++) {
+    //             console.log(res['cluster_id'][i]);
+    //             outliers_data.push({
+    //               cluster_id: res['cluster_id'][i],
+    //               sum_pon_homes: res['sum_pon_homes'][i],
+    //             });
+    //           }
+    //         });
+    //     },
+    //   },
+    // },
+   
     /*{
       name: 'Distribution network',
       key: 'secondary_dis_page',
@@ -269,42 +332,34 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'trenching',
       },
     },
-    {
-      name: 'Integrated infrastructure',
-      key: 'integrated_infrastructure',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'integrated_infrastructure',
-      },
-    },
-    {
-      name: 'Data cleanup',
-      key: 'data_cleanup',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'data_cleanup',
-      },
-    },
-    {
-      name: 'Address association',
-      key: 'address_association',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'address_association',
-      },
-    },
-    {
-      name: 'Address creation',
-      key: 'address_creation',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'address_creation',
-      },
-    },
+    // {
+    //   name: 'Integrated infrastructure',
+    //   key: 'integrated_infrastructure',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'integrated_infrastructure',
+    //   },
+    // },
+    // {
+    //   name: 'Data cleanup',
+    //   key: 'data_cleanup',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'data_cleanup',
+    //   },
+    // },
+   
+    // {
+    //   name: 'Address creation',
+    //   key: 'address_creation',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'address_creation',
+    //   },
+    // },
     {
       name: 'Splice Joint (ring)',
       key: 'secondary_ringarchsj',
@@ -314,58 +369,37 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'secondary_ringarchsj',
       },
     },
-    {
-      name: 'Splice Joint (ribbon)',
-      key: 'secondary_ribbonarchsj',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_ribbonarchsj',
-      },
-    },
-    {
-      name: 'Preprocess CP',
-      key: 'secondary_preprocp',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_preprocp',
-      },
-    },
-    {
-      name: 'Preprocess DP',
-      key: 'secondary_preprodp',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_preprodp',
-      },
-    },
-    {
-      name: 'SWIMS DATA',
-      key: 'swims_data',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'swims_data',
-        showInputsFormOnDrag: true,
-        inputFiles: [
-          {
-            label: 'streetcenterline files',
-            name: 'streetcenterline_files',
-            files: [],
-          },
-        ],
-        inputs: [
-          {
-            name: 'username',
-            value: null,
-            label: 'Username',
-            placeholder: 'Enter Username',
-          },
-        ],
-      },
-    },
+    // {
+    //   name: 'Splice Joint (ribbon)',
+    //   key: 'secondary_ribbonarchsj',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'secondary_ribbonarchsj',
+    //   },
+    // },
+
+    //move to connection handeling
+
+    // {
+    //   name: 'Preprocess CP',
+    //   key: 'secondary_preprocp',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'secondary_preprocp',
+    //   },
+    // },
+    // {
+    //   name: 'Preprocess DP',
+    //   key: 'secondary_preprodp',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'secondary_preprodp',
+    //   },
+    // },
+    
   ];
   draggedNodes = [];
   lines = [];
@@ -857,7 +891,8 @@ export class DragdropComponent implements OnInit {
 
       const formData = new FormData();
       formData.append('city_name', localStorage.getItem('username'));
-      formData.append('username', localStorage.getItem('usernamelogindb'));
+      formData.append('username', localStorage.getItem('usernamelogin'));
+      formData.append('pn_number', localStorage.getItem('pn_number'));
       if (this.draggedNodes[i].form.inputs) {
         for (let j = 0; j < this.draggedNodes[i].form.inputs.length; j++) {
           formData.append(

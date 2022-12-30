@@ -207,7 +207,7 @@
                         </td>
           </tr-->
 
-          <tr class="tableColor">
+          <!-- <tr class="tableColor">
             <td class="tableTitles">
               <button
                 type="button"
@@ -227,9 +227,52 @@
             <td class="tableTitles">
               <div [ngClass]="extractExistingStatus"></div>
             </td>
+          </tr> -->
+
+          <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+                (click)="PreprocessCP()"
+              >
+              PREPROCESS CP
+              </button>
+            </td>
+            <td class="tableTitles">
+              {{ lastUpdateDates.missing_demand_infrastructure }}
+            </td>
+            <td class="tableTitles">
+              Generate Preprocess CP from cartographic text
+            </td>
+            <td class="tableTitles">
+              <div [ngClass]="missingDemandStatus"></div>
+            </td>
           </tr>
 
           <tr class="tableColor">
+            <td class="tableTitles">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-size btn_shadow"
+                (click)="PreprocessDP()"
+              >
+              PREPROCESS DP
+              </button>
+            </td>
+            <td class="tableTitles">
+              {{ lastUpdateDates.missing_demand_infrastructure }}
+            </td>
+            <td class="tableTitles">
+              Generate Preprocess DP from cartographic text
+            </td>
+            <td class="tableTitles">
+              <div [ngClass]="missingDemandStatus"></div>
+            </td>
+          </tr>
+
+
+          <!-- <tr class="tableColor">
             <td class="tableTitles">
               <button
                 type="button"
@@ -249,7 +292,7 @@
             <td class="tableTitles">
               <div [ngClass]="missingDemandStatus"></div>
             </td>
-          </tr>
+          </tr> -->
 
           <tr class="tableColor">
             <td class="tableTitles">
