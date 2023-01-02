@@ -114,7 +114,7 @@ export class DragdropComponent implements OnInit {
       result: {},
       formData: null,
       form: {
-        endpointApi: '',
+        endpointApi: 'secondary_pnplacement',
       },
     },
     {
