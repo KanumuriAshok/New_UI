@@ -37,21 +37,21 @@ export class DragdropComponent implements OnInit {
       form: {
         endpointApi: 'swims_data',
         showInputsFormOnDrag: true,
-        inputFiles: [
-          {
-            label: 'streetcenterline files',
-            name: 'streetcenterline_files',
-            files: [],
-          },
-        ],
-        inputs: [
-          {
-            name: 'username',
-            value: null,
-            label: 'Username',
-            placeholder: 'Enter Username',
-          },
-        ],
+        // inputFiles: [
+        //   {
+        //     label: 'streetcenterline files',
+        //     name: 'streetcenterline_files',
+        //     files: [],
+        //   },
+        // ],
+        // inputs: [
+        //   {
+        //     name: 'username',
+        //     value: null,
+        //     label: 'Username',
+        //     placeholder: 'Enter Username',
+        //   },
+        // ],
       },
     },
     {
@@ -110,11 +110,11 @@ export class DragdropComponent implements OnInit {
     },
     {
       name: 'PN Nodeplacement',
-      key: '',
+      key: 'secondary_pnplacement',
       result: {},
       formData: null,
       form: {
-        endpointApi: '',
+        endpointApi: 'secondary_pnplacement',
       },
     },
     {
@@ -230,7 +230,7 @@ export class DragdropComponent implements OnInit {
     },*/
 
     {
-      name: 'Secondary feederringends',
+      name: 'Feederringends',
       key: 'secondary_feederringends',
       result: {},
       formData: null,
@@ -247,7 +247,7 @@ export class DragdropComponent implements OnInit {
       },
     },
     {
-      name: 'Secondary footpathwidth',
+      name: 'Footpathwidth',
       key: 'secondary_footpathwidth',
       result: {},
       formData: null,
@@ -265,7 +265,7 @@ export class DragdropComponent implements OnInit {
     },
 
     {
-      name: 'Secondary coreroute',
+      name: 'Coreroute',
       key: 'secondary_coreroute',
       result: {},
       formData: null,
@@ -416,15 +416,16 @@ export class DragdropComponent implements OnInit {
       //   return;
       // }
     } else {
-      if ( this.draggedNodes.length == 0 || node_.key == 'swims_data' || 
-        node_.key == 'secondary_preprodp' || node_.key == 'secondary_preprocp' ||
-        node_.key == 'secondary_ribbonarchsj' || node_.key == 'secondary_ringarchsj' ||
-        node_.key == 'address_creation' || node_.key == 'address_association' ||
-        node_.key == 'data_cleanup' || node_.key == 'integrated_infrastructure' ||
-        node_.key == 'trenching' || node_.key == 'secondary_add_page'
-      ) {
+      // if ( this.draggedNodes.length == 0 || node_.key == 'swims_data' || 
+      //   node_.key == 'secondary_preprodp' || node_.key == 'secondary_preprocp' ||
+      //   node_.key == 'secondary_ribbonarchsj' || node_.key == 'secondary_ringarchsj' ||
+      //   node_.key == 'address_creation' || node_.key == 'address_association' ||
+      //   node_.key == 'data_cleanup' || node_.key == 'integrated_infrastructure' ||
+      //   node_.key == 'trenching' || node_.key == 'secondary_add_page'
+      // ) {
 
-      }
+      // }
+
       // } else 
       // {
       //   alert(
@@ -443,12 +444,13 @@ export class DragdropComponent implements OnInit {
       //   );
       //   return;
       // }
-      if (this.draggedNodes.length == 0 && node_.key == 'cluster_corrections') {
-        alert(
-          'Warning!!! Before cluster corrections model should be selected cluster grouping model!'
-        );
-        return;
-      }
+
+      // if (this.draggedNodes.length == 0 && node_.key == 'cluster_corrections') {
+      //   alert(
+      //     'Warning!!! Before cluster corrections model should be selected cluster grouping model!'
+      //   );
+      //   return;
+      // }
     }
 
     let copiedNewNode = JSON.parse(JSON.stringify(node_));
@@ -515,7 +517,7 @@ export class DragdropComponent implements OnInit {
             inputFiles: [
               {
                 label: 'demand files',
-                name: 'demand_files',
+                name: 'demandpoints_files',
                 files: [],
               },
               {
@@ -535,7 +537,7 @@ export class DragdropComponent implements OnInit {
               },
               {
                 label: 'streetcenterline files',
-                name: 'streetcenterline_files',
+                name: 'streetcenterlines_files',
                 files: [],
               },
               {
@@ -553,11 +555,11 @@ export class DragdropComponent implements OnInit {
                 name: 'cartograpgictext_file',
                 files: [],
               },
-              {
-                label: 'pnboundary_files',
-                name: 'pnboundary_files',
-                files: [],
-              },
+              // {
+              //   label: 'pnboundary_files',
+              //   name: 'pnboundary_files',
+              //   files: [],
+              // },
               {
                 label: 'primarynodes_files',
                 name: 'primarynodes_files',
@@ -565,32 +567,32 @@ export class DragdropComponent implements OnInit {
               },
               {
                 label: 'FAC-FHUB',
-                name: 'FAC-FHUB',
+                name: 'fachub_files',
                 files: [],
               },
               {
                 label: 'Feeder Ring Cables',
-                name: 'Feeder Ring Cables',
+                name: 'feederringcable_files',
                 files: [],
               },
               {
                 label: 'IN_CustomerPremises',
-                name: 'IN_CustomerPremises',
+                name: 'customerpremises_files',
                 files: [],
               },
-              {
-                label: 'IN_ForcedPrimDistributionClusters',
-                name: 'IN_ForcedPrimDistributionClusters',
-                files: [],
-              },
+              // {
+              //   label: 'IN_ForcedPrimDistributionClusters',
+              //   name: 'IN_ForcedPrimDistributionClusters',
+              //   files: [],
+              // },
               {
                 label: 'OUT_BackBonePoints',
-                name: 'OUT_BackBonePoints',
+                name: 'backbonepoints_files',
                 files: [],
               },
               {
                 label: 'TopographicArea',
-                name: 'TopographicArea',
+                name: 'topographicarea_files',
                 files: [],
               },
             ],
@@ -859,137 +861,273 @@ export class DragdropComponent implements OnInit {
   }
 
   start() {
-    for (let i = 0; i < this.draggedNodes.length; i++) {
-      let endpointUrl = '';
-      if (this.draggedNodes[i].key == 'node_placements')
-        for (
-          let j = 0;
-          j < this.draggedNodes[i].form.inputSelects.length;
-          j++
-        ) {
-          if (
-            this.draggedNodes[i].form.inputSelects[j].name == 'cluster_type'
+    if (this.activatedRoute.snapshot.params['type'] == 'google') {
+      for (let i = 0; i < this.draggedNodes.length; i++) {
+        let endpointUrl = '';
+        if (this.draggedNodes[i].key == 'node_placements')
+          for (
+            let j = 0;
+            j < this.draggedNodes[i].form.inputSelects.length;
+            j++
           ) {
-            endpointUrl =
-              this.draggedNodes[i].form.inputSelects[j].value == '1'
-                ? 'aerial_page'
-                : 'ug_page';
-            if (this.draggedNodes[i].key == 'node_placements') {
+            if (
+              this.draggedNodes[i].form.inputSelects[j].name == 'cluster_type'
+            ) {
               endpointUrl =
                 this.draggedNodes[i].form.inputSelects[j].value == '1'
-                  ? 'np_page'
-                  : 'np_ug_page';
-            }
-            break;
-          }
-        }
-      else {
-        endpointUrl = this.draggedNodes[i].form.endpointApi;
-      }
-      endpointUrl = `${this.mainApi}${endpointUrl}`;
-      this.draggedNodes[i].form.endpointApi = endpointUrl;
-
-      const formData = new FormData();
-      formData.append('city_name', localStorage.getItem('username'));
-      formData.append('username', localStorage.getItem('usernamelogin'));
-      formData.append('pn_number', localStorage.getItem('pn_number'));
-      if (this.draggedNodes[i].form.inputs) {
-        for (let j = 0; j < this.draggedNodes[i].form.inputs.length; j++) {
-          formData.append(
-            this.draggedNodes[i].form.inputs[j].name,
-            this.draggedNodes[i].form.inputs[j].value
-          );
-        }
-      }
-      /*if (this.draggedNodes[i].form.inputSelects) {
-        for (
-          let j = 0;
-          j < this.draggedNodes[i].form.inputSelects.length;
-          j++
-        ) {
-          formData.append(
-            this.draggedNodes[i].form.inputSelects[j].name,
-            this.draggedNodes[i].form.inputSelects[j].value
-          );
-        }
-      }*/
-      if (this.draggedNodes[i].form.inputFiles) {
-        for (let j = 0; j < this.draggedNodes[i].form.inputFiles.length; j++) {
-          let inputFile = this.draggedNodes[i].form.inputFiles[j];
-          for (let k = 0; k < inputFile.files.length; k++) {
-            formData.append(inputFile.name, inputFile.files[k].file);
-          }
-        }
-      }
-      this.draggedNodes[i].formData = formData;
-    }
-    if (this.draggedNodes.length > 0) {
-      this.draggedNodes[0].isRunning = true;
-      this.terminalDetails.push(
-        this.draggedNodes[0].name + ' run started .....'
-      );
-      this.httpClient
-        .post(
-          this.draggedNodes[0].form.endpointApi,
-          this.draggedNodes[0].formData
-        )
-        .subscribe(
-          (res) => {
-            this.draggedNodes[0].isRunning = false;
-            this.draggedNodes[0].isCompleted = true;
-            this.draggedNodes[0].result = res;
-            this.terminalDetails.push(
-              this.draggedNodes[0].name + ' run completed successfully'
-            );
-            if (this.draggedNodes[0].key == 'google_api_fetch') {
-              const formData2 = new FormData();
-              formData2.append('city_name', localStorage.getItem('username'));
-              this.httpClient
-                .post('/api/google_api_fetch', formData2)
-                .subscribe(
-                  (res2) => {
-                    alert('google_api_fetch success');
-                  },
-                  (err2) => {
-                    alert('google_api_fetch error');
-                  }
-                );
-            }
-          },
-          (err) => {
-            console.error(err);
-            this.draggedNodes[0].isCompleted = true;
-            this.draggedNodes[0].hasError = true;
-            this.terminalDetails.push(
-              this.draggedNodes[0].name + ' run completed with error'
-            );
-          },
-          () => {
-            if (this.draggedNodes.length > 1) {
-              if (this.draggedNodes[1].key == 'cluster_corrections') {
-                //TODO:
-                this.loadClusterCorrections();
-
-                setTimeout(() => {
-                  window.scrollTo(0, document.body.scrollHeight);
-                }, 2000);
-                this.draggedNodes[1].isRunning = true;
-                this.currentExecuteNodeIndex = 1;
-              } else if (this.draggedNodes[1].key == 'distribution_network') {
-                setTimeout(() => {
-                  window.scrollTo(0, document.body.scrollHeight);
-                }, 2000);
-                this.draggedNodes[1].isRunning = true;
-                this.currentExecuteNodeIndex = 1;
-                this.loopPostRequestThroughDraggedModels(1);
-              } else {
-                this.loopPostRequestThroughDraggedModels(1);
+                  ? 'aerial_page'
+                  : 'ug_page';
+              if (this.draggedNodes[i].key == 'node_placements') {
+                endpointUrl =
+                  this.draggedNodes[i].form.inputSelects[j].value == '1'
+                    ? 'np_page'
+                    : 'np_ug_page';
               }
+              break;
             }
-            this.showUpdateMap();
           }
+        else {
+          endpointUrl = this.draggedNodes[i].form.endpointApi;
+        }
+        endpointUrl = `${this.mainApi}${endpointUrl}`;
+        this.draggedNodes[i].form.endpointApi = endpointUrl;
+  
+        const formData = new FormData();
+        formData.append('city_name', localStorage.getItem('username'));
+        formData.append('username', localStorage.getItem('usernamelogin'));
+        // formData.append('pn_number', localStorage.getItem('pn_number'));
+        if (this.draggedNodes[i].form.inputs) {
+          for (let j = 0; j < this.draggedNodes[i].form.inputs.length; j++) {
+            formData.append(
+              this.draggedNodes[i].form.inputs[j].name,
+              this.draggedNodes[i].form.inputs[j].value
+            );
+          }
+        }
+        /*if (this.draggedNodes[i].form.inputSelects) {
+          for (
+            let j = 0;
+            j < this.draggedNodes[i].form.inputSelects.length;
+            j++
+          ) {
+            formData.append(
+              this.draggedNodes[i].form.inputSelects[j].name,
+              this.draggedNodes[i].form.inputSelects[j].value
+            );
+          }
+        }*/
+        if (this.draggedNodes[i].form.inputFiles) {
+          for (let j = 0; j < this.draggedNodes[i].form.inputFiles.length; j++) {
+            let inputFile = this.draggedNodes[i].form.inputFiles[j];
+            for (let k = 0; k < inputFile.files.length; k++) {
+              formData.append(inputFile.name, inputFile.files[k].file);
+            }
+          }
+        }
+        this.draggedNodes[i].formData = formData;
+      }
+      if (this.draggedNodes.length > 0) {
+        this.draggedNodes[0].isRunning = true;
+        this.terminalDetails.push(
+          this.draggedNodes[0].name + ' run started .....'
         );
+        this.httpClient
+          .post(
+            this.draggedNodes[0].form.endpointApi,
+            this.draggedNodes[0].formData
+          )
+          .subscribe(
+            (res) => {
+              this.draggedNodes[0].isRunning = false;
+              this.draggedNodes[0].isCompleted = true;
+              this.draggedNodes[0].result = res;
+              this.terminalDetails.push(
+                this.draggedNodes[0].name + ' run completed successfully'
+              );
+              if (this.draggedNodes[0].key == 'google_api_fetch') {
+                const formData2 = new FormData();
+                formData2.append('city_name', localStorage.getItem('username'));
+                formData2.append('username', localStorage.getItem('usernamelogin'));
+                this.httpClient
+                  .post('/api/google_api_fetch', formData2)
+                  .subscribe(
+                    (res2) => {
+                      alert('google_api_fetch success');
+                    },
+                    (err2) => {
+                      alert('google_api_fetch error');
+                    }
+                  );
+              }
+            },
+            (err) => {
+              console.error(err);
+              this.draggedNodes[0].isCompleted = true;
+              this.draggedNodes[0].hasError = true;
+              this.terminalDetails.push(
+                this.draggedNodes[0].name + ' run completed with error'
+              );
+            },
+            () => {
+              if (this.draggedNodes.length > 1) {
+                if (this.draggedNodes[1].key == 'cluster_corrections') {
+                  //TODO:
+                  this.loadClusterCorrections();
+  
+                  setTimeout(() => {
+                    window.scrollTo(0, document.body.scrollHeight);
+                  }, 2000);
+                  this.draggedNodes[1].isRunning = true;
+                  this.currentExecuteNodeIndex = 1;
+                } else if (this.draggedNodes[1].key == 'distribution_network') {
+                  setTimeout(() => {
+                    window.scrollTo(0, document.body.scrollHeight);
+                  }, 2000);
+                  this.draggedNodes[1].isRunning = true;
+                  this.currentExecuteNodeIndex = 1;
+                  this.loopPostRequestThroughDraggedModels(1);
+                } else {
+                  this.loopPostRequestThroughDraggedModels(1);
+                }
+              }
+              this.showUpdateMap();
+            }
+          );
+      }  
+    } else {
+      for (let i = 0; i < this.draggedNodes.length; i++) {
+        let endpointUrl = '';
+        if (this.draggedNodes[i].key == 'node_placements')
+          for (
+            let j = 0;
+            j < this.draggedNodes[i].form.inputSelects.length;
+            j++
+          ) {
+            if (
+              this.draggedNodes[i].form.inputSelects[j].name == 'cluster_type'
+            ) {
+              endpointUrl =
+                this.draggedNodes[i].form.inputSelects[j].value == '1'
+                  ? 'aerial_page'
+                  : 'ug_page';
+              if (this.draggedNodes[i].key == 'node_placements') {
+                endpointUrl =
+                  this.draggedNodes[i].form.inputSelects[j].value == '1'
+                    ? 'np_page'
+                    : 'np_ug_page';
+              }
+              break;
+            }
+          }
+        else {
+          endpointUrl = this.draggedNodes[i].form.endpointApi;
+        }
+        endpointUrl = `${this.mainApi}${endpointUrl}`;
+        this.draggedNodes[i].form.endpointApi = endpointUrl;
+  
+        const formData = new FormData();
+        formData.append('city_name', localStorage.getItem('city_name'));
+        formData.append('username', localStorage.getItem('usernamelogin'));
+        formData.append('pn_number', localStorage.getItem('pn_number'));
+        if (this.draggedNodes[i].form.inputs) {
+          for (let j = 0; j < this.draggedNodes[i].form.inputs.length; j++) {
+            formData.append(
+              this.draggedNodes[i].form.inputs[j].name,
+              this.draggedNodes[i].form.inputs[j].value
+            );
+          }
+        }
+        /*if (this.draggedNodes[i].form.inputSelects) {
+          for (
+            let j = 0;
+            j < this.draggedNodes[i].form.inputSelects.length;
+            j++
+          ) {
+            formData.append(
+              this.draggedNodes[i].form.inputSelects[j].name,
+              this.draggedNodes[i].form.inputSelects[j].value
+            );
+          }
+        }*/
+        if (this.draggedNodes[i].form.inputFiles) {
+          for (let j = 0; j < this.draggedNodes[i].form.inputFiles.length; j++) {
+            let inputFile = this.draggedNodes[i].form.inputFiles[j];
+            for (let k = 0; k < inputFile.files.length; k++) {
+              formData.append(inputFile.name, inputFile.files[k].file);
+            }
+          }
+        }
+        this.draggedNodes[i].formData = formData;
+      }
+      if (this.draggedNodes.length > 0) {
+        this.draggedNodes[0].isRunning = true;
+        this.terminalDetails.push(
+          this.draggedNodes[0].name + ' run started .....'
+        );
+        this.httpClient
+          .post(
+            this.draggedNodes[0].form.endpointApi,
+            this.draggedNodes[0].formData
+          )
+          .subscribe(
+            (res) => {
+              this.draggedNodes[0].isRunning = false;
+              this.draggedNodes[0].isCompleted = true;
+              this.draggedNodes[0].result = res;
+              this.terminalDetails.push(
+                this.draggedNodes[0].name + ' run completed successfully'
+              );
+              if (this.draggedNodes[0].key == 'google_api_fetch') {
+                const formData2 = new FormData();
+                formData2.append('city_name', localStorage.getItem('city_name'));
+                this.httpClient
+                  .post('/api/google_api_fetch', formData2)
+                  .subscribe(
+                    (res2) => {
+                      alert('google_api_fetch success');
+                    },
+                    (err2) => {
+                      alert('google_api_fetch error');
+                    }
+                  );
+              }
+            },
+            (err) => {
+              console.error(err);
+              this.draggedNodes[0].isCompleted = true;
+              this.draggedNodes[0].hasError = true;
+              this.terminalDetails.push(
+                this.draggedNodes[0].name + ' run completed with error'
+              );
+            },
+            () => {
+              if (this.draggedNodes.length > 1) {
+                if (this.draggedNodes[1].key == 'cluster_corrections') {
+                  //TODO:
+                  this.loadClusterCorrections();
+  
+                  setTimeout(() => {
+                    window.scrollTo(0, document.body.scrollHeight);
+                  }, 2000);
+                  this.draggedNodes[1].isRunning = true;
+                  this.currentExecuteNodeIndex = 1;
+                } else if (this.draggedNodes[1].key == 'distribution_network') {
+                  setTimeout(() => {
+                    window.scrollTo(0, document.body.scrollHeight);
+                  }, 2000);
+                  this.draggedNodes[1].isRunning = true;
+                  this.currentExecuteNodeIndex = 1;
+                  this.loopPostRequestThroughDraggedModels(1);
+                } else {
+                  this.loopPostRequestThroughDraggedModels(1);
+                }
+              }
+              this.showUpdateMap();
+            }
+          );
+      } 
     }
+    
   }
 
   loopPostRequestThroughDraggedModels(runIndex) {

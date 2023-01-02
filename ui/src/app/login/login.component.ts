@@ -120,6 +120,7 @@ export class LoginComponent implements OnInit {
     let username = this.loginForm.value.username;
     let username2 = this.loginForm.value.username2;
     let password = this.loginForm.value.password;
+    let usertype = this.loginForm.value.userType;
     const formData = new FormData();
     formData.append('username', username2);
     formData.append('city_name', username);
@@ -132,6 +133,13 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('isUserLoggedId', '1');
             localStorage.setItem('username', username);
             localStorage.setItem('usernamelogin', username2);
+            localStorage.setItem('user_type', usertype);
+
+            // let usertype = this.loginForm.value.userType;
+            // console.log(usertype)
+            // var usertypelogin = localStorage.setItem('usertype', usertype);
+            // console.log(usertypelogin);
+            // console.log(localStorage.setItem('usertype', usertype));
 
             this.router.navigate(['dashboard/workflow/google']);
           } else {
@@ -152,6 +160,7 @@ export class LoginComponent implements OnInit {
     let areaname = this.loginForm.value.areaName;
     let username2 = this.loginForm.value.username2;
     let password = this.loginForm.value.password;
+    let usertype = this.loginForm.value.userType;
     this.httpClient
       .post(environment.api + '/api/login', {
         username : username2,
@@ -176,11 +185,12 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('usernamelogin', usernamelogin);
             localStorage.setItem('city_name', city_name);
             localStorage.setItem('pn_number', pn_number);
-            // {username: "testdemo2", city_name: "vizag", schemaname: "666", password: "123"}
-            var user_type = 'hld_designer';
-            let usertype = localStorage.setItem('usertype', user_type);
+            localStorage.setItem('user_type', usertype);
 
-            console.log(usertype);
+            // var user_type = 'hld_designer';
+            // let usertype = localStorage.setItem('usertype', user_type);
+
+            // console.log(usertype);
             this.router.navigate(['dashboard']);
           } else {
             alert(res['message']);

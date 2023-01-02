@@ -2,7 +2,12 @@
   <div
     class="container-fluid d-flex justify-content-between align-items-center"
   >
-    <a class="navbar-brand" [routerLink]="['/dashboard']"
+    <a *ngIf="usertype == 'hld_designer'" class="navbar-brand" [routerLink]="['/dashboard']"
+      ><img
+        width="130"
+        src="http://media-s3-us-east-1.ceros.com/cyient/images/2017/04/04/f7fa573edde0c1a740ab3a5071a45b68/cyient-white-std-rgb.png"
+    /></a>
+    <a *ngIf="usertype == 'google_manager'" class="navbar-brand"
       ><img
         width="130"
         src="http://media-s3-us-east-1.ceros.com/cyient/images/2017/04/04/f7fa573edde0c1a740ab3a5071a45b68/cyient-white-std-rgb.png"
