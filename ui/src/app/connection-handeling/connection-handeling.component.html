@@ -43,10 +43,11 @@
             </td>
             <td class="tableTitles">{{ lastUpdateDates.pn_boundry }}</td>
             <td class="tableTitles">
-              TO CHECK TO PN BOUNDARY FED BY AERIAL OR UNDERGROUND
+              UPLOAD SWIMS DATA EXCEL FOR THIS PN
+              <!-- TO CHECK TO SWIMS DATA BY AERIAL OR UNDERGROUND -->
             </td>
             <td class="tableTitles">
-              <div [ngClass]="uploadRefFilesStatus"></div>
+              <div [ngClass]="uploadSwimsFilesStatus"></div>
             </td>
           </tr>
           <tr
@@ -84,7 +85,7 @@
               <div [ngClass]="uploadFilesStatus"></div>
             </td>
           </tr>
-          <tr class="tableColor">
+          <!-- <tr class="tableColor">
             <td class="tableTitles">
               <button
                 type="button"
@@ -98,23 +99,10 @@
             <td class="tableTitles">
               Algorithm fetch data from Google street view
             </td>
-            <!-- <td class="tableTitles">
-              <div>
-                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
-                <i class="fa fa-trash fa-2x mx-3" aria-hidden="true"></i>
-                <button
-                  type="button"
-                  [routerLink]="['/dashboard/api-review']"
-                  class="btn btn-primary btn-sm"
-                >
-                  Review
-                </button>
-              </div>
-            </td> -->
             <td class="tableTitles">
               <div [ngClass]="googleFetchStatus"></div>
             </td>
-          </tr>
+          </tr> -->
 
           <tr class="tableColor">
             <td class="tableTitles">
@@ -181,6 +169,7 @@
             </td> -->
             <td class="tableTitles">
               <!-- <div [ngClass]="pnBoundaryCheckStatus"></div> -->
+              <!-- <p *ngIf="pnBoundaryCheckStatus">pnboundary_1</p> -->
               <p *ngIf="!pnBoundaryCheckStatus">HB/AR</p>
               <p *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'ug'">UG</p>
               <p *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'error'">
@@ -246,7 +235,7 @@
               Generate Preprocess CP from cartographic text
             </td>
             <td class="tableTitles">
-              <div [ngClass]="missingDemandStatus"></div>
+              <div [ngClass]="preprocessCPStatus"></div>
             </td>
           </tr>
 
@@ -267,7 +256,7 @@
               Generate Preprocess DP from cartographic text
             </td>
             <td class="tableTitles">
-              <div [ngClass]="missingDemandStatus"></div>
+              <div [ngClass]="preprocessDPStatus"></div>
             </td>
           </tr>
 

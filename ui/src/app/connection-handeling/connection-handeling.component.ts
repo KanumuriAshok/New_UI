@@ -13,8 +13,11 @@ export class ConnectionHandelingComponent implements OnInit {
 
   uploadFilesStatus = 'none_status'; //success,fail
   uploadRefFilesStatus = 'none_status'; //success,fail
+  uploadSwimsFilesStatus = 'none_status'; //success,fail
   extractExistingStatus = 'none_status'; //success,fail
   missingDemandStatus = 'none_status'; //success,fail
+  preprocessCPStatus = 'none_status'; //success,fail
+  preprocessDPStatus = 'none_status'; //success,fail
   secondaryPreprocessgpStatus = 'none_status'; //success,fail
   pnBoundaryCheckStatus = 'none'; //success,fail
   exportStatus = 'none_status'; //success,fail
@@ -42,7 +45,7 @@ export class ConnectionHandelingComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.userType = localStorage.getItem('usertype');
+    this.userType = localStorage.getItem('user_type');
     this.loadLastUpdateDates();
     console.log(this.userType);
   }
@@ -143,13 +146,13 @@ export class ConnectionHandelingComponent implements OnInit {
         (res) => {
           alert('completed successfully');
           this.loadingLoader = false;
-          this.missingDemandStatus = 'green_status';
+          this.preprocessCPStatus = 'green_status';
           this.PreprocessDP();
         },
         (err) => {
           console.error(err);
           alert(' completed with error');
-          this.missingDemandStatus = 'red_status';
+          this.preprocessCPStatus = 'red_status';
         },
         () => {
           this.loadingLoader = false;
@@ -169,13 +172,13 @@ export class ConnectionHandelingComponent implements OnInit {
         (res) => {
           alert('completed successfully');
           this.loadingLoader = false;
-          this.missingDemandStatus = 'green_status';
+          this.preprocessDPStatus = 'green_status';
           // this.export();
         },
         (err) => {
           console.error(err);
           alert(' completed with error');
-          this.missingDemandStatus = 'red_status';
+          this.preprocessDPStatus = 'red_status';
         },
         () => {
           this.loadingLoader = false;
@@ -248,15 +251,17 @@ export class ConnectionHandelingComponent implements OnInit {
       .post(environment.api + '/api/secondary_pnb_fed_ug', formData)
       .subscribe(
         (res: any) => {
+          console.log(res);
           alert('completed successfully');
           this.loadingLoader = false;
           this.pnBoundaryCheckStatus = res.fedtype;
+          // this.pnBoundaryCheckStatus = res.table_name[0];
           this.PreprocessCP();
           // this.extractExisting();
         },
         (err) => {
           console.error(err);
-          alert(' completed with error');
+          alert('completed with error');
           this.loadingLoader = false;
           this.pnBoundaryCheckStatus = 'error';
         },
@@ -385,13 +390,14 @@ export class ConnectionHandelingComponent implements OnInit {
       .subscribe(
         (res) => {
           alert('upload completed successfully');
-          this.uploadRefFilesStatus = 'green_status';
-          this.UploadGoogle();
+          this.uploadSwimsFilesStatus = 'green_status';
+          this.secondaryPreprocessgp();
+          // this.UploadGoogle();
         },
         (err) => {
           console.error(err);
           alert(' upload completed with error');
-          this.uploadRefFilesStatus = 'red_status';
+          this.uploadSwimsFilesStatus = 'red_status';
         },
         () => {
           this.loadingLoader = false;

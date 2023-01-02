@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   constructor(public router: Router) {}
   username = '';
+  usertype:any;
+
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
+    this.usertype = localStorage.getItem('user_type');
   }
 
   logout() {
@@ -21,6 +24,8 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('usernamelogin');
     localStorage.removeItem('city_name');
     localStorage.removeItem('pn_number');
+    localStorage.removeItem('user_type');
+    window.location.reload();
     this.router.navigate(['login']);
   }
 }
