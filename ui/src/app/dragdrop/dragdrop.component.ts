@@ -599,6 +599,31 @@ export class DragdropComponent implements OnInit {
           },
         },
         {
+          name: 'Pn bondry',
+          key: 'secondary_clip',
+          result: {},
+          formData: null,
+          form: {
+            endpointApi: 'secondary_clip',
+            showInputsFormOnDrag: true,
+            inputFiles: [
+              {
+                label: 'Pnboundary files',
+                name: 'pnboundary_files',
+                files: [],
+              },
+            ],   
+            inputs: [
+              {
+                name: 'pn_number',
+                value: null,
+                label: 'Pn Number',
+                placeholder: 'Enter Pn Number',
+              },
+            ],
+          },
+        },
+        {
           name: 'Google api fetch',
           key: 'google_api_fetch',
           result: {},
@@ -616,103 +641,28 @@ export class DragdropComponent implements OnInit {
           },
         },
         {
-          name: 'Pn bondry',
-          key: 'secondary_clip',
+          name: 'Google data clip',
+          key: 'secondary_googledataclip',
           result: {},
           formData: null,
           form: {
-            endpointApi: 'secondary_clip',
+            endpointApi: 'secondary_googledataclip',
             showInputsFormOnDrag: true,
             inputFiles: [
-              // {
-              //   label: 'Backbonepoints files',
-              //   name: 'backbonepoints_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Cartograpgictext files',
-              //   name: 'cartograpgictext_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Customerpremises files',
-              //   name: 'customerpremises_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Demandpoints files',
-              //   name: 'demandpoints_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Piaduct files',
-              //   name: 'piaduct_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Fachub files',
-              //   name: 'fachub_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Feederringcable files',
-              //   name: 'feederringcable_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Gaist files',
-              //   name: 'gaist_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Landboundary files',
-              //   name: 'landboundary_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Piaduct file',
-              //   name: 'piaduct_file',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Piastructures files',
-              //   name: 'piastructures_files',
-              //   files: [],
-              // },
               {
                 label: 'Pnboundary files',
                 name: 'pnboundary_files',
                 files: [],
               },
-              // {
-              //   label: 'Primarynodes files',
-              //   name: 'primarynodes_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Streetcenterlines files',
-              //   name: 'streetcenterlines_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Topographiclines files',
-              //   name: 'topographiclines_files',
-              //   files: [],
-              // },
-              // {
-              //   label: 'Topographicarea files',
-              //   name: 'topographicarea_files',
-              //   files: [],
-              // },
             ],   
-            inputs: [
-              {
-                name: 'pn_number',
-                value: null,
-                label: 'Pn Number',
-                placeholder: 'Enter Pn Number',
-              },
-            ],
+            // inputs: [
+            //   {
+            //     name: 'pn_number',
+            //     value: null,
+            //     label: 'Pn Number',
+            //     placeholder: 'Enter Pn Number',
+            //   },
+            // ],
           },
         },
         
