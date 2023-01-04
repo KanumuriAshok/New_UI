@@ -25,7 +25,13 @@ export class ConnectionHandelingComponent implements OnInit {
   uploadValidatedpolesStatus = 'none_status'; //success,fail
   userType: any;
 
-  sigdisplay = 'none';
+  // sigdisplay = 'none';
+  // opacity = 0;
+  // sigdisplay1 = 'none';
+  // sigdisplay2 = 'none';
+  // sigdisplay3 = 'none';
+  // sigdisplay4 = 'none';
+  // sigdisplay5 = 'none';
 
   lastUpdateDates: any = {
     data_fetch: '',
@@ -50,9 +56,15 @@ export class ConnectionHandelingComponent implements OnInit {
     console.log(this.userType);
   }
 
-  UploadRefPoint() {
-    this.sigdisplay = 'block';
-  }
+  // UploadRefPoint() {
+  //   this.sigdisplay = 'block';
+  // }
+  // SwimsData() {
+  //   this.sigdisplay1 = 'block';
+  // }
+  // ValidatedPoles() {
+  //   this.sigdisplay2 = 'block';
+  // }
   files = {};
   filesSwimsData = {};
   filesRef = {};
@@ -287,7 +299,7 @@ export class ConnectionHandelingComponent implements OnInit {
       .subscribe(
         (res) => {
           this.httpClient
-            .post('/api/download_qgis_files', formData, {
+            .post(environment.api + '/api/download_qgis_files', formData, {
               responseType: 'arraybuffer',
             })
             .subscribe(
@@ -333,6 +345,7 @@ export class ConnectionHandelingComponent implements OnInit {
           this.exportStatus = 'red_status';
         },
         () => {
+          this.loadingLoader = false;
           this.loadLastUpdateDates();
         }
       );
@@ -357,13 +370,17 @@ export class ConnectionHandelingComponent implements OnInit {
         (res) => {
           alert('upload completed successfully');
           this.uploadRefFilesStatus = 'green_status';
+          // this.sigdisplay = 'none';
+          // this.opacity = 0;
           // this.UploadGoogle();
-          this.UploadValidatedpoles();
+          // this.UploadValidatedpoles();
         },
         (err) => {
           console.error(err);
           alert(' upload completed with error');
           this.uploadRefFilesStatus = 'red_status';
+          // this.sigdisplay = 'none';
+          // this.opacity = 0;
         },
         () => {
           this.loadingLoader = false;
@@ -391,6 +408,7 @@ export class ConnectionHandelingComponent implements OnInit {
         (res) => {
           alert('upload completed successfully');
           this.uploadSwimsFilesStatus = 'green_status';
+          // this.sigdisplay1 = 'none';
           this.secondaryPreprocessgp();
           // this.UploadGoogle();
         },
@@ -398,6 +416,7 @@ export class ConnectionHandelingComponent implements OnInit {
           console.error(err);
           alert(' upload completed with error');
           this.uploadSwimsFilesStatus = 'red_status';
+          // this.sigdisplay1 = 'none';
         },
         () => {
           this.loadingLoader = false;
@@ -461,11 +480,14 @@ export class ConnectionHandelingComponent implements OnInit {
         (res) => {
           alert('upload completed successfully');
           this.uploadValidatedpolesStatus = 'green_status';
+          // this.sigdisplay2 = 'none';
+          
         },
         (err) => {
           console.error(err);
           alert(' upload completed with error');
           this.uploadValidatedpolesStatus = 'red_status';
+          // this.sigdisplay2 = 'none';
         },
         () => {
           this.loadingLoader = false;

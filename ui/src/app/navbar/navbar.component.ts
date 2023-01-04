@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('city_name');
     localStorage.removeItem('pn_number');
     localStorage.removeItem('user_type');
-    window.location.reload();
+    // window.location.reload();
     this.router.navigate(['login']);
   }
 }

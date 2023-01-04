@@ -67,16 +67,16 @@
           <button class="btn btn-login" (click)="start()">Start</button>
         </div>
         <div class="col-6" style="text-align: end; z-index: 1">
-          <button class="btn btn-login" (click)="showTerminal()">
+          <button *ngIf="usertype == 'google_manager'" class="btn btn-login" (click)="showTerminal()" >
             Show Terminal
           </button>
-          <!-- <button
+          <button *ngIf="usertype == 'hld_designer'"
             class="btn btn-login"
             style="margin-left: 10px"
             (click)="export()"
           >
             Export
-          </button> -->
+          </button>
         </div>
       </div>
 
