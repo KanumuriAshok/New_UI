@@ -308,13 +308,12 @@
                 class="btn btn-primary btn-sm btn-size btn_shadow1"
                 data-bs-target="#UploadRefPoint"
                 data-bs-toggle="modal"
-                (click)="UploadRefPoint()"
               >
-                UPLOAD REF. POINT
+                UPLOAD REF. LINE
               </button>
             </td>
             <td class="tableTitles">{{ lastUpdateDates.upload_ref_points }}</td>
-            <td class="tableTitles">Upload ref. points created in QGIS</td>
+            <td class="tableTitles">Upload ref. lines created in QGIS</td>
             <td class="tableTitles">
               <div [ngClass]="uploadRefFilesStatus"></div>
             </td>
@@ -681,9 +680,10 @@
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
-  [ngStyle]="{ display: sigdisplay }"
 >
-  <div class="modal-dialog" [ngStyle]="{ display: sigdisplay }">
+<!-- [ngStyle]="{ display: sigdisplay }" -->
+  <div class="modal-dialog" >
+    <!-- [ngStyle]="{ display: sigdisplay }" -->
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">
@@ -771,8 +771,8 @@
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
->
-  <div class="modal-dialog">
+  >
+  <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">

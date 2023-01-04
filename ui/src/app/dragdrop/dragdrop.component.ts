@@ -17,6 +17,7 @@ export class DragdropComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
+  usertype:any;
   exportStatus = 'none'; //success,fail
   /**cluster corrections */
   loadingLoader = false;
@@ -237,13 +238,13 @@ export class DragdropComponent implements OnInit {
       form: {
         endpointApi: 'secondary_feederringends',
         showInputsFormOnDrag: true,
-        inputFiles: [
-          {
-            label: 'Feederringcable files',
-            name: 'feederringcable_files',
-            files: [],
-          },
-        ],
+        // inputFiles: [
+        //   {
+        //     label: 'Feederringcable files',
+        //     name: 'feederringcable_files',
+        //     files: [],
+        //   },
+        // ],
       },
     },
     {
@@ -504,6 +505,7 @@ export class DragdropComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usertype = localStorage.getItem('user_type');
     if (this.activatedRoute.snapshot.params['type'] == 'google') {
       this.mainNodes = [
         {
@@ -1322,7 +1324,7 @@ export class DragdropComponent implements OnInit {
       .subscribe(
         (res) => {
           this.httpClient
-            .post('/api/download_qgis_files', formData, {
+            .post(environment.api + '/api/download_qgis_files', formData, {
               responseType: 'arraybuffer',
             })
             .subscribe(
