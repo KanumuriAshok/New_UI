@@ -1318,7 +1318,10 @@ export class DragdropComponent implements OnInit {
   export() {
     this.loadingLoader = true;
     const formData = new FormData();
-    formData.append('username', localStorage.getItem('username'));
+    // formData.append('username', localStorage.getItem('username'));
+    formData.append('username', localStorage.getItem('usernamelogin'));
+    formData.append('city_name', localStorage.getItem('city_name'));
+    formData.append('pn_number', localStorage.getItem('pn_number'));
     this.httpClient
       .post(environment.api + '/api/export_output', formData)
       .subscribe(
@@ -1331,14 +1334,22 @@ export class DragdropComponent implements OnInit {
               (res2: any) => {
                 let blob = new Blob([res2], { type: 'application/zip' });
                 let url = window.URL.createObjectURL(blob);
-                let pwa = window.open(url);
-                if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-                  alert('Please disable your Pop-up blocker and try again.');
-                }
+                // let pwa = window.open(url);
+                var a = document.createElement('a');
+                document.body.appendChild(a);
+                url = window.URL.createObjectURL(blob);
+                a.href = url;
+                a.download = localStorage.getItem('username') + '.zip';
+                a.click();
+                window.URL.revokeObjectURL(url);
+                // if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+                //   alert('Please disable your Pop-up blocker and try again.');
+                // }
 
                 alert('completed successfully');
                 this.loadingLoader = false;
                 this.exportStatus = 'success';
+                document.body.removeChild(a);
               },
               (err2) => {
                 console.error(err2);
@@ -1357,7 +1368,9 @@ export class DragdropComponent implements OnInit {
           this.loadingLoader = false;
           this.exportStatus = 'fail';
         },
-        () => {}
+        () => {
+          this.loadingLoader = false;
+        }
       );
   }
 }

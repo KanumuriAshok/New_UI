@@ -117,35 +117,35 @@ export class ConnectionHandelingComponent implements OnInit {
       }
     );
   }
-  extractExisting() {
-    this.loadingLoader = true;
-    const formData = new FormData();
-    // formData.append('username', localStorage.getItem('username'));
-    formData.append('username', localStorage.getItem('usernamelogin'));
-    formData.append('city_name', localStorage.getItem('city_name'));
-    formData.append('pn_number', localStorage.getItem('pn_number'));
-    this.httpClient
-      .post(environment.api + '/api/secondary_structures', formData)
-      .subscribe(
-        (res) => {
-          alert('completed successfully');
-          this.loadingLoader = false;
-          this.extractExistingStatus = 'green_status';
-          this.PreprocessCP();
-          // this.missingDemand();
-        },
-        (err) => {
-          console.error(err);
-          alert('completed with error');
-          this.extractExistingStatus = 'red_status';
-          this.loadingLoader = false;
-        },
-        () => {
-          this.loadingLoader = false;
-          this.loadLastUpdateDates();
-        }
-      );
-  }
+  // extractExisting() {
+  //   this.loadingLoader = true;
+  //   const formData = new FormData();
+  //   // formData.append('username', localStorage.getItem('username'));
+  //   formData.append('username', localStorage.getItem('usernamelogin'));
+  //   formData.append('city_name', localStorage.getItem('city_name'));
+  //   formData.append('pn_number', localStorage.getItem('pn_number'));
+  //   this.httpClient
+  //     .post(environment.api + '/api/secondary_structures', formData)
+  //     .subscribe(
+  //       (res) => {
+  //         alert('completed successfully');
+  //         this.loadingLoader = false;
+  //         this.extractExistingStatus = 'green_status';
+  //         this.PreprocessCP();
+  //         // this.missingDemand();
+  //       },
+  //       (err) => {
+  //         console.error(err);
+  //         alert('completed with error');
+  //         this.extractExistingStatus = 'red_status';
+  //         this.loadingLoader = false;
+  //       },
+  //       () => {
+  //         this.loadingLoader = false;
+  //         this.loadLastUpdateDates();
+  //       }
+  //     );
+  // }
   PreprocessCP() {
     this.loadingLoader = true;
     const formData = new FormData();

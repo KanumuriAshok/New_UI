@@ -41,7 +41,7 @@
                 SWIMS DATA
               </button>
             </td>
-            <td class="tableTitles">{{ lastUpdateDates.pn_boundry }}</td>
+            <td class="tableTitles">{{ lastUpdateDates.swims_data }}</td>
             <td class="tableTitles">
               UPLOAD SWIMS DATA EXCEL FOR THIS PN
               <!-- TO CHECK TO SWIMS DATA BY AERIAL OR UNDERGROUND -->
@@ -171,8 +171,10 @@
               <!-- <div [ngClass]="pnBoundaryCheckStatus"></div> -->
               <!-- <p *ngIf="pnBoundaryCheckStatus">pnboundary_1</p> -->
               <p *ngIf="!pnBoundaryCheckStatus">HB/AR</p>
-              <p *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'ug'">UG</p>
-              <p *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'error'">
+              <!-- *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'ug'" -->
+              <p *ngIf="pnBoundaryCheckStatus == 'ug'">UG</p>
+              <p *ngIf="pnBoundaryCheckStatus == 'error'">
+              <!-- <p *ngIf="pnBoundaryCheckStatus.toLowerCase() == 'error'"> -->
                 Error
               </p>
             </td>
@@ -229,7 +231,7 @@
               </button>
             </td>
             <td class="tableTitles">
-              {{ lastUpdateDates.missing_demand_infrastructure }}
+              {{ lastUpdateDates.preprocess_cp }}
             </td>
             <td class="tableTitles">
               Generate Preprocess CP from cartographic text
@@ -250,7 +252,7 @@
               </button>
             </td>
             <td class="tableTitles">
-              {{ lastUpdateDates.missing_demand_infrastructure }}
+              {{ lastUpdateDates.preprocess_dp }}
             </td>
             <td class="tableTitles">
               Generate Preprocess DP from cartographic text
