@@ -37,7 +37,7 @@ export class DragdropComponent implements OnInit {
       formData: null,
       form: {
         endpointApi: 'swims_data',
-        showInputsFormOnDrag: true,
+        // showInputsFormOnDrag: true,
         // inputFiles: [
         //   {
         //     label: 'streetcenterline files',
@@ -237,7 +237,7 @@ export class DragdropComponent implements OnInit {
       formData: null,
       form: {
         endpointApi: 'secondary_feederringends',
-        showInputsFormOnDrag: true,
+        // showInputsFormOnDrag: true,
         // inputFiles: [
         //   {
         //     label: 'Feederringcable files',
@@ -254,14 +254,14 @@ export class DragdropComponent implements OnInit {
       formData: null,
       form: {
         endpointApi: 'secondary_footpathwidth',
-        showInputsFormOnDrag: true,
-        inputFiles: [
-          {
-            label: 'Topographicarea files',
-            name: 'topographicarea_files',
-            files: [],
-          },
-        ],
+        // showInputsFormOnDrag: true,
+        // inputFiles: [
+        //   {
+        //     label: 'Topographicarea files',
+        //     name: 'topographicarea_files',
+        //     files: [],
+        //   },
+        // ],
       },
     },
 
@@ -272,55 +272,55 @@ export class DragdropComponent implements OnInit {
       formData: null,
       form: {
         endpointApi: 'secondary_coreroute',
-        showInputsFormOnDrag: true,
-        inputFiles: [
-          {
-            label: 'Busyarea files',
-            name: 'busyarea_files',
-            files: [],
-          },
-          {
-            label: 'Cartographictext files',
-            name: 'cartographictext_files',
-            files: [],
-          },
-          {
-            label: 'Doubleyellowline files',
-            name: 'doubleyellowline_files',
-            files: [],
-          },
-          {
-            label: 'feederringcable files',
-            name: 'feederringcable_files',
-            files: [],
-          },
-          {
-            label: 'Hospitals files',
-            name: 'hospitals_files',
-            files: [],
-          },
+        // showInputsFormOnDrag: true,
+        // inputFiles: [
+        //   {
+        //     label: 'Busyarea files',
+        //     name: 'busyarea_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Cartographictext files',
+        //     name: 'cartographictext_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Doubleyellowline files',
+        //     name: 'doubleyellowline_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'feederringcable files',
+        //     name: 'feederringcable_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Hospitals files',
+        //     name: 'hospitals_files',
+        //     files: [],
+        //   },
 
-          {
-            label: 'Piaduct files',
-            name: 'piaduct_files',
-            files: [],
-          },
-          {
-            label: 'Schools files',
-            name: 'schools_files',
-            files: [],
-          },
-          {
-            label: 'Topographicarea files',
-            name: 'topographicarea_files',
-            files: [],
-          },
-          {
-            label: 'Trees files',
-            name: 'trees_files',
-            files: [],
-          },
-        ],
+        //   {
+        //     label: 'Piaduct files',
+        //     name: 'piaduct_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Schools files',
+        //     name: 'schools_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Topographicarea files',
+        //     name: 'topographicarea_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Trees files',
+        //     name: 'trees_files',
+        //     files: [],
+        //   },
+        // ],
       },
     },
 
@@ -650,6 +650,14 @@ export class DragdropComponent implements OnInit {
           form: {
             endpointApi: 'secondary_googledataclip',
             showInputsFormOnDrag: true,
+            inputs: [
+              {
+                name: 'pn_number',
+                value: null,
+                label: 'Pn Number',
+                placeholder: 'Enter Pn Number',
+              },
+            ],
             inputFiles: [
               {
                 label: 'Pnboundary files',
@@ -657,14 +665,7 @@ export class DragdropComponent implements OnInit {
                 files: [],
               },
             ],   
-            // inputs: [
-            //   {
-            //     name: 'pn_number',
-            //     value: null,
-            //     label: 'Pn Number',
-            //     placeholder: 'Enter Pn Number',
-            //   },
-            // ],
+           
           },
         },
         
