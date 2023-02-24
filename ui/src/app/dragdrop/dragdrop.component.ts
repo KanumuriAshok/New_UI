@@ -100,15 +100,15 @@ export class DragdropComponent implements OnInit {
     //     endpointApi: 'secondary_add_page',
     //   },
     // },
-    {
-      name: 'Address association',
-      key: 'address_association',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'address_association',
-      },
-    },
+    // {
+    //   name: 'Address association',
+    //   key: 'address_association',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'address_association',
+    //   },
+    // },
     {
       name: 'PN Nodeplacement',
       key: 'secondary_pnplacement',
