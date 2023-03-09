@@ -2,3 +2,11 @@
     width: 800px !important;
     border: 1px solid #cbb6b6;
 }
+
+select.form-control{
+    -webkit-appearance: menulist!important;
+    -moz-appearance: menulist!important;
+    -ms-appearance: menulist!important;
+    -o-appearance: menulist!important;
+    appearance: menulist!important;
+}

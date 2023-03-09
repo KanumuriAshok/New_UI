@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiReviewComponent } from './api-review/api-review.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ApiReviewComponent,
+    HelpComponent,
     // AddEditConnectionComponent
     // ConnectionHandelingComponent
     // InputHandelingComponent

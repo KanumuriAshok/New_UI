@@ -6,10 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { ManageConnectionsComponent } from './manage-connections/manage-connections.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
+import { HelpComponent } from './help/help.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'help', component: HelpComponent },
+
   // { path: 'dashboard-tiles', component: DashboardtilesComponent },
   {
     path: 'dashboard',
