@@ -178,7 +178,7 @@
                 <p style="color: red">Password should be 6 charecter long.</p>
               </div>
             </div>
-            <div class="mb-3 d-flex justify-content-center">
+            <!-- <div class="mb-3 d-flex justify-content-center">
               <input
                 type="checkbox"
                 class="form-check-input"
@@ -191,9 +191,26 @@
               >
                 Remember me</label
               >
-            </div>
+            </div> -->
             <div class="container mb-5">
               <div class="row">
+
+                <div class="col">
+                  <div class="mb-3 d-flex justify-content-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="exampleCheck1"
+                      formControlName="rememberMe"
+                    />
+                    <label
+                      class="form-check-label text-capitalize"
+                      for="exampleCheck1"
+                    >
+                      Remember me</label
+                    >
+                  </div>
+                </div>
                 <div
                   class="col text-center text-capitalize"
                   (click)="showDialog()"
@@ -206,12 +223,11 @@
                     class="form-check-label text-capitalize"
                     style="cursor: pointer;"
                   >
-                  Change your password? <br />
-                  Click Here</label
+                  Change your password?</label
                   >
                 </div>
                 <div class="col">
-                  <a href="/help">
+                  <a class="text-decoration-none text-black" href="/help">
                   Help
                 </a>
                 </div>
