@@ -89,8 +89,7 @@
                 [ngClass]="{ invalid: submitted && f['username'].invalid }"
               /> -->
               <select
-                class="form-select form-select-sm"
-                aria-label=".form-select-sm example"
+                class="form-control "
                 formControlName="username"
               >
                 <option value="default">Select Dropdown</option>
@@ -109,8 +108,7 @@
             <div class="mb-4" *ngIf="loginForm.value.userType == 'hld_designer'">
               <label class="form-label"> Area Name</label>
               <select
-                class="form-select form-select-sm"
-                aria-label=".form-select-sm example"
+                class="form-control"
                 formControlName="areaName"
               >
                 <option value="default">Select Dropdown</option>
@@ -137,8 +135,7 @@
                 [ngClass]="{ invalid: submitted && f['username'].invalid }"
               /> -->
               <select
-                class="form-select form-select-sm"
-                aria-label=".form-select-sm example"
+                class="form-control "
                 formControlName="username"
               >
                 <option value="default">Select Dropdown</option>
@@ -227,7 +224,7 @@
                   >
                 </div>
                 <div class="col">
-                  <a class="text-decoration-none text-black" href="/help">
+                  <a class="text-decoration-none text-black" (click)="helpClick()" href="/help">
                   Help
                 </a>
                 </div>
@@ -329,8 +326,7 @@
                   <div class="mb-4">
                     <label class="form-label"> Area Name</label>
                     <select
-                      class="form-select form-select-sm"
-                      aria-label=".form-select-sm example"
+                      class="form-control "
                       formControlName="projectName"
                     >
                       <option value="default">Select Dropdown</option>
@@ -373,8 +369,7 @@
                       class="form-control"
                     /> -->
                     <select
-                      class="form-select form-select-sm"
-                      aria-label=".form-select-sm example"
+                      class="form-control "
                       formControlName="nameuser"
                     >
                       <option value="default">Select Dropdown</option>

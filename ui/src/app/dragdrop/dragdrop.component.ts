@@ -31,6 +31,33 @@ export class DragdropComponent implements OnInit {
   currentExecuteNodeIndex = -1;
   mainNodes: any = [
     {
+      name: 'Cluster Boundary',
+      key: 'secondary_clusterbndry',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_clusterbndry',
+      },
+    },
+    {
+      name: 'Nodeplacement',
+      key: 'hybrid_nodeplacement',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_hybrid_np',
+      },
+    },
+    {
+      name: 'PN Nodeplacement',
+      key: 'secondary_pnplacement',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_pnplacement',
+      },
+    },
+    {
       name: 'SWIMS DATA',
       key: 'swims_data',
       result: {},
@@ -56,6 +83,116 @@ export class DragdropComponent implements OnInit {
       },
     },
     {
+      name: 'Footpathwidth',
+      key: 'secondary_footpathwidth',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_footpathwidth',
+        // showInputsFormOnDrag: true,
+        // inputFiles: [
+        //   {
+        //     label: 'Topographicarea files',
+        //     name: 'topographicarea_files',
+        //     files: [],
+        //   },
+        // ],
+      },
+    },  
+    {
+      name: 'Coreroute',
+      key: 'secondary_coreroute',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_coreroute',
+        // showInputsFormOnDrag: true,
+        // inputFiles: [
+        //   {
+        //     label: 'Busyarea files',
+        //     name: 'busyarea_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Cartographictext files',
+        //     name: 'cartographictext_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Doubleyellowline files',
+        //     name: 'doubleyellowline_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'feederringcable files',
+        //     name: 'feederringcable_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Hospitals files',
+        //     name: 'hospitals_files',
+        //     files: [],
+        //   },
+
+        //   {
+        //     label: 'Piaduct files',
+        //     name: 'piaduct_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Schools files',
+        //     name: 'schools_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Topographicarea files',
+        //     name: 'topographicarea_files',
+        //     files: [],
+        //   },
+        //   {
+        //     label: 'Trees files',
+        //     name: 'trees_files',
+        //     files: [],
+        //   },
+        // ],
+      },
+    },
+    {
+      name: 'Feederringends',
+      key: 'secondary_feederringends',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_feederringends',
+        // showInputsFormOnDrag: true,
+        // inputFiles: [
+        //   {
+        //     label: 'Feederringcable files',
+        //     name: 'feederringcable_files',
+        //     files: [],
+        //   },
+        // ],
+      },
+    },
+    {
+      name: 'Trenching',
+      key: 'trenching',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'trenching',
+      },
+    },
+    {
+      name: 'Fachub Chambers',
+      key: 'secondary_fachubchambers',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_fachubchambers',
+      },
+    },
+    {
       name: 'Fully UG Cluster Grouping',
       key: 'ug_page',
       result: {},
@@ -64,24 +201,7 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'ug_page',
       },
     },
-    {
-      name: 'Cluster Boundary',
-      key: 'secondary_clusterbndry',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_clusterbndry',
-      },
-    },
-    {
-      name: 'Nodeplacement',
-      key: 'hybrid_nodeplacement',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_hybrid_np',
-      },
-    },
+    
     {
       name: 'Cabinet Placement',
       key: 'secondary_cp',
@@ -110,21 +230,21 @@ export class DragdropComponent implements OnInit {
     //   },
     // },
     {
-      name: 'PN Nodeplacement',
-      key: 'secondary_pnplacement',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_pnplacement',
-      },
-    },
-    {
       name: 'Fachub Chambers',
       key: 'secondary_fachubchambers',
       result: {},
       formData: null,
       form: {
         endpointApi: 'secondary_fachubchambers',
+      },
+    },
+    {
+      name: 'Splice Joint (ring)',
+      key: 'secondary_ringarchsj',
+      result: {},
+      formData: null,
+      form: {
+        endpointApi: 'secondary_ringarchsj',
       },
     },
     {
@@ -230,109 +350,12 @@ export class DragdropComponent implements OnInit {
       },
     },*/
 
-    {
-      name: 'Feederringends',
-      key: 'secondary_feederringends',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_feederringends',
-        // showInputsFormOnDrag: true,
-        // inputFiles: [
-        //   {
-        //     label: 'Feederringcable files',
-        //     name: 'feederringcable_files',
-        //     files: [],
-        //   },
-        // ],
-      },
-    },
-    {
-      name: 'Footpathwidth',
-      key: 'secondary_footpathwidth',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_footpathwidth',
-        // showInputsFormOnDrag: true,
-        // inputFiles: [
-        //   {
-        //     label: 'Topographicarea files',
-        //     name: 'topographicarea_files',
-        //     files: [],
-        //   },
-        // ],
-      },
-    },
+    
+    
 
-    {
-      name: 'Coreroute',
-      key: 'secondary_coreroute',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_coreroute',
-        // showInputsFormOnDrag: true,
-        // inputFiles: [
-        //   {
-        //     label: 'Busyarea files',
-        //     name: 'busyarea_files',
-        //     files: [],
-        //   },
-        //   {
-        //     label: 'Cartographictext files',
-        //     name: 'cartographictext_files',
-        //     files: [],
-        //   },
-        //   {
-        //     label: 'Doubleyellowline files',
-        //     name: 'doubleyellowline_files',
-        //     files: [],
-        //   },
-        //   {
-        //     label: 'feederringcable files',
-        //     name: 'feederringcable_files',
-        //     files: [],
-        //   },
-        //   {
-        //     label: 'Hospitals files',
-        //     name: 'hospitals_files',
-        //     files: [],
-        //   },
+    
 
-        //   {
-        //     label: 'Piaduct files',
-        //     name: 'piaduct_files',
-        //     files: [],
-        //   },
-        //   {
-        //     label: 'Schools files',
-        //     name: 'schools_files',
-        //     files: [],
-        //   },
-        //   {
-        //     label: 'Topographicarea files',
-        //     name: 'topographicarea_files',
-        //     files: [],
-        //   },
-        //   {
-        //     label: 'Trees files',
-        //     name: 'trees_files',
-        //     files: [],
-        //   },
-        // ],
-      },
-    },
-
-    {
-      name: 'Trenching',
-      key: 'trenching',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'trenching',
-      },
-    },
+    
     // {
     //   name: 'Integrated infrastructure',
     //   key: 'integrated_infrastructure',
@@ -361,15 +384,7 @@ export class DragdropComponent implements OnInit {
     //     endpointApi: 'address_creation',
     //   },
     // },
-    {
-      name: 'Splice Joint (ring)',
-      key: 'secondary_ringarchsj',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_ringarchsj',
-      },
-    },
+    
     // {
     //   name: 'Splice Joint (ribbon)',
     //   key: 'secondary_ribbonarchsj',
@@ -408,7 +423,18 @@ export class DragdropComponent implements OnInit {
 
   terminalDetails = [];
 
-  dropNewModel(event, node_) {
+  showAllModules() {
+    this.mainNodes.forEach( (node_, index) => {
+      console.log("node_ = ", node_);
+      console.log("index = ", index);
+      this.dropNewModel(node_);
+    });
+    // this.dropNewModel('', 0);
+  }
+
+  // dropNewModel(event, node_) {
+    dropNewModel(node_) {
+      console.log("node_ = ", node_);
     if (this.activatedRoute.snapshot.params['type'] == 'google') {
       // if (this.draggedNodes.length == 0 && node_.key != 'SHAPEFILES_PATH') {
       //   // alert(

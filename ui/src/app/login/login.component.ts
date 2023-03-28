@@ -99,6 +99,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  helpClick() {
+    sessionStorage.setItem('helpClick', this.loginForm.value.userType);
+  }
+
   get f() {
     return this.loginForm.controls;
   }

@@ -11,11 +11,29 @@
       </a>
     </div>
   </nav>
-
   <div class="container"><h1>Help</h1>
 
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <div *ngIf="helpContent =='google_manager'">
+      <p>Description:- DB manger manage the input data of the Whole area and slice The input data with respective PN boundary.</p>
+      <p>sign up for the DB Manager by clicking SIGN UP.</p>
+      <p>Step:-1 Select the user type as DB Manager</p>
+      <p>Step:-2 Enter the Username</p>
+      <p>Step:-3 Enter the Area name</p>
+      <p>Step:-4 Click on the Sign U</p>
+      <p>1 Login for the DB Manager by entering credential created in DB manager sign up, Make Sure To select Type as DB Manager in login page .</p>
+    </div>      
 
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <div *ngIf="helpContent =='hld_designer'">
+      <p>Description:- HLD -LLD Designer module help user to  automate the process of the HLD and LLD for their Telecommunication customers for Fibre distribution networks.</p>
+      <p>Note:-One key point is that we start registration of  HLD -LLD designer with Pn which is registered inside db manager and area name  which is register during signup of db manager .  so it is important to register db manager first and login db manager and run the pn inside the db manager  then only start sign up for HLD -LLD designer.</p>
+      <p>Sign up for the HLD -LLD by clicking  SIGN UP.</p>
+      <p>Step:-1 Select the user type as HLD -LLD Designer</p>
+      <p>Step:-2 Enter the Username</p>
+      <p>Step:-3 select the Area name</p>
+      <p>Step:-4 select the PN number</p>
+      <p>Step:-5 Click on the sign up button.</p>
+
+      <p>- Login for the HLD -LLD by entering credential created in HLD -LLD  sign up, Make Sure To select Type as HLD -LLD in login page </p>
+      <p>- 3,4 point need to select from drop down.</p>
+    </div>
 </div>

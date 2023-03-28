@@ -41,14 +41,14 @@
         <div
           class="example-box"
           style="width: 180px; height: 50px; margin: 5px"
-          (click)="dropNewModel($event, index)"
+          (click)="dropNewModel(index)"
         >
           <div
             style="display: flex; justify-content: center; align-items: center"
             class="row"
           >
             <p style="font-size: 10px; margin-left: 5px">
-              {{ node.name }}
+              {{ node.name }} 
             </p>
           </div>
         </div>
@@ -63,10 +63,13 @@
         <!-- <div class="col-4" style="text-align: center; z-index: 1;">
         <button class="btn btn-login" (click)="Sort()">Sort</button>
       </div> -->
-        <div class="col-6" style="text-align: center; z-index: 1">
+      <div class="col-4" style="text-align: center; z-index: 1">
+          <button class="btn btn-login" (click)="showAllModules()">all modules</button>
+        </div>
+        <div class="col-4" style="text-align: center; z-index: 1">
           <button class="btn btn-login" (click)="start()">Start</button>
         </div>
-        <div class="col-6" style="text-align: end; z-index: 1">
+        <div class="col-4" style="text-align: end; z-index: 1">
           <button *ngIf="usertype == 'google_manager'" class="btn btn-login" (click)="showTerminal()" >
             Show Terminal
           </button>
