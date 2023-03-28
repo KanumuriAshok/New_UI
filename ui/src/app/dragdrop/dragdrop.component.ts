@@ -192,15 +192,15 @@ export class DragdropComponent implements OnInit {
         endpointApi: 'secondary_fachubchambers',
       },
     },
-    {
-      name: 'Fully UG Cluster Grouping',
-      key: 'ug_page',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'ug_page',
-      },
-    },
+    // {
+    //   name: 'Fully UG Cluster Grouping',
+    //   key: 'ug_page',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'ug_page',
+    //   },
+    // },
     
     {
       name: 'Cabinet Placement',
@@ -229,15 +229,15 @@ export class DragdropComponent implements OnInit {
     //     endpointApi: 'address_association',
     //   },
     // },
-    {
-      name: 'Fachub Chambers',
-      key: 'secondary_fachubchambers',
-      result: {},
-      formData: null,
-      form: {
-        endpointApi: 'secondary_fachubchambers',
-      },
-    },
+    // {
+    //   name: 'Fachub Chambers',
+    //   key: 'secondary_fachubchambers',
+    //   result: {},
+    //   formData: null,
+    //   form: {
+    //     endpointApi: 'secondary_fachubchambers',
+    //   },
+    // },
     {
       name: 'Splice Joint (ring)',
       key: 'secondary_ringarchsj',
